@@ -4,47 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Bramble Management</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-            font-size: 18px;
-            margin: 10px 0;
-        }
-        a {
-            color: #007BFF;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Bramble Management - Home of D2D Bingo and D2D Sim.">
+    <meta name="keywords" content="Bramble Management, D2D Bingo, D2D Sim, Gaming">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <!-- Google Analytics (Optional: Replace 'YOUR_TRACKING_ID' with your actual ID) -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'YOUR_TRACKING_ID');
+    </script>
+    -->
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>Welcome to Bramble Management</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <!-- Add more navigation items as needed -->
+        </ul>
+    </nav>
+    <main>
         <p>Home of D2D Bingo and D2D Sim</p>
         <p>Need help? Contact me at <a href="mailto:Nic@bramblemanagement.com">Nic@bramblemanagement.com</a></p>
-    </div>
+        <!-- Contact Form (Requires server-side handling) -->
+        <!--
+        <form action="/send-message" method="POST">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" required></textarea><br>
+            <button type="submit">Send Message</button>
+        </form>
+        -->
+    </main>
+    <footer>
+        <p>&copy; 2024 Bramble Management</p>
+        <p>Connect with us:</p>
+        <a href="https://twitter.com/yourprofile">Twitter</a>
+        <!-- Add other social media links -->
+    </footer>
 </body>
 </html>
