@@ -1,79 +1,134 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #ffffff;
-    color: #333;
     margin: 0;
     padding: 0;
-}
-
-header, nav, main, footer {
-    text-align: center;
-    padding: 20px;
-}
-
-header h1 {
+    background-color: #f4f4f4;
     color: #333;
 }
 
-nav ul {
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header .logo h1 {
+    margin: 0;
+}
+
+header .nav-links {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: #007BFF;
-    overflow: hidden;
+    display: flex;
 }
 
-nav li {
-    display: inline-block;
+header .nav-links li {
+    margin-left: 20px;
 }
 
-nav a {
-    display: block;
+header .nav-links a {
     color: #fff;
-    padding: 14px 20px;
-    text-decoration: none;
-}
-
-nav a:hover {
-    background-color: #0056b3;
-}
-
-main p {
-    color: #666;
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-a {
-    color: #007BFF;
     text-decoration: none;
     font-weight: bold;
 }
 
-a:hover {
+header .nav-links a:hover {
     text-decoration: underline;
+}
+
+.main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.hero {
+    background-color: #0073e6;
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.hero p {
+    margin: 20px 0;
+    font-size: 1.2em;
+}
+
+.hero .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #0073e6;
+    background-color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.hero .btn:hover {
+    background-color: #e6e6e6;
+}
+
+.about, .projects, .careers {
+    margin: 40px 0;
+}
+
+h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.project-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.project {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(50% - 10px);
+}
+
+.project h4 {
+    margin-top: 0;
+}
+
+.project p {
+    margin: 10px 0;
 }
 
 footer {
-    background-color: #f1f1f1;
-    color: #666;
-    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
 }
 
-footer a {
-    color: #007BFF;
+footer .social-links a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.2em;
 }
 
-footer a:hover {
+footer .social-links a:hover {
     text-decoration: underline;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 600px) {
-    nav li {
-        display: block;
-    }
 }
