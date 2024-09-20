@@ -5,57 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Bramble Management</title>
     <!-- Meta tags for SEO -->
-    <meta name="description" content="Bramble Management - Home of D2D Bingo and D2D Sim.">
-    <meta name="keywords" content="Bramble Management, D2D Bingo, D2D Sim, Gaming">
+    <meta name="description" content="Bramble Management - Sales company and the home of innovative apps like D2D Bingo and D2D Sim.">
+    <meta name="keywords" content="Bramble Management, D2D Bingo, D2D Sim, Sales, Apps, Software">
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- External CSS -->
     <link rel="stylesheet" href="styles.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <!-- Google Analytics (Optional: Replace 'YOUR_TRACKING_ID' with your actual ID) -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'YOUR_TRACKING_ID');
-    </script>
-    -->
+    <!-- External JavaScript -->
+    <script src="scripts.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Welcome to Bramble Management</h1>
+        <nav>
+            <div class="logo">
+                <h1>Bramble Management</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <!-- Add more navigation items as needed -->
-        </ul>
-    </nav>
+
     <main>
-        <p>Home of D2D Bingo and D2D Sim</p>
-        <p>Need help? Contact me at <a href="mailto:Nic@bramblemanagement.com">Nic@bramblemanagement.com</a></p>
-        <!-- Contact Form (Requires server-side handling) -->
-        <!--
-        <form action="/send-message" method="POST">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br>
-            <label for="message">Message:</label><br>
-            <textarea id="message" name="message" required></textarea><br>
-            <button type="submit">Send Message</button>
-        </form>
-        -->
+        <section class="hero">
+            <h2>Innovative Sales Solutions and Cutting-Edge Apps</h2>
+            <p>Explore our projects or join our team to make an impact.</p>
+            <a href="projects.html" class="btn">View Projects</a>
+            <a href="careers.html" class="btn">Work With Us</a>
+        </section>
+
+        <section class="about">
+            <h3>About Bramble Management</h3>
+            <p>We specialize in direct-to-direct sales and developing apps that enhance productivity and user engagement.</p>
+        </section>
+
+        <section class="projects">
+            <h3>Our Projects</h3>
+            <div class="project-list">
+                <article class="project">
+                    <h4>D2D Bingo</h4>
+                    <p>A gamified approach to door-to-door sales, enhancing engagement and performance.</p>
+                    <a href="d2d-bingo.html" class="btn">Learn More</a>
+                </article>
+                <article class="project">
+                    <h4>D2D Sim</h4>
+                    <p>A simulation tool designed for training and improving sales strategies in real-time.</p>
+                    <a href="d2d-sim.html" class="btn">Learn More</a>
+                </article>
+                <!-- Add more projects as needed -->
+            </div>
+        </section>
+
+        <section class="careers">
+            <h3>Join Our Team</h3>
+            <p>We're looking for talented individuals passionate about sales and technology. <a href="careers.html">See open positions</a>.</p>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; 2024 Bramble Management</p>
-        <p>Connect with us:</p>
-        <a href="https://twitter.com/yourprofile">Twitter</a>
-        <!-- Add other social media links -->
+        <p>&copy; 2024 Bramble Management. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://twitter.com/yourprofile">Twitter</a>
+            <!-- Add other social media links -->
+        </div>
     </footer>
 </body>
 </html>
