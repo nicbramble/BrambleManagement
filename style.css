@@ -62,30 +62,6 @@ header {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* Slideshow Animation */
-/* Slideshow Animation */
-@keyframes slide {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(0); }
-    25% { transform: translateX(-100%); }
-    45% { transform: translateX(-100%); }
-    50% { transform: translateX(-200%); }
-    70% { transform: translateX(-200%); }
-    75% { transform: translateX(-300%); }
-    95% { transform: translateX(-300%); }
-    100% { transform: translateX(-400%); }
-}
-
-/* Adjust the duration to match the 2.5 seconds per slide */
-.slideshow {
-    animation: slide 15s infinite;
-}
-
-/* Adjust the duration to match the 2.5 seconds per slide */
-.slideshow {
-    animation: slide 12.5s infinite;
-}
-
 /* Main Section Styles */
 main {
     padding: 40px 20px;
