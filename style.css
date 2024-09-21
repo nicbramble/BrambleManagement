@@ -24,19 +24,20 @@ header {
     height: 100%;
 }
 
+/* Slideshow Adjustments */
 .slideshow {
-    display: flex;
-    width: 500%;
-    height: 100%;
-    animation: slide 15s infinite;
+    position: relative;
 }
 
 .slide {
-    width: 20%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
+    display: none;
+    opacity: 0;
     transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    display: block;
+    opacity: 1;
 }
 
 /* Overlay Text */
