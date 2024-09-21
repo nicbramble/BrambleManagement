@@ -51,6 +51,14 @@ header {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
+.overlay h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
 .overlay p {
     font-size: 1.5em;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
