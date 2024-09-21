@@ -13,9 +13,7 @@
 <body>
     <header>
         <div class="slideshow-container">
-            <div class="slideshow">
-                <div class="slide active" style="background-image: url('https://www.bramblemanagement.com/images/BMCover1.jpg');"></div>
-            </div>
+            <div class="slide active"></div>
             <div class="overlay">
                 <h1>Bramble Management</h1>
                 <p>Empowering Students to Earn $30k-$50k in Their First Summer of Sales</p>
@@ -55,20 +53,5 @@
         <p>&copy; 2024 Bramble Management. All rights reserved.</p>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let slides = document.querySelectorAll('.slide');
-            let currentIndex = 0;
-            const slideInterval = 2500; // 2.5 seconds
-
-            function showNextSlide() {
-                slides[currentIndex].classList.remove('active');
-                currentIndex = (currentIndex + 1) % slides.length;
-                slides[currentIndex].classList.add('active');
-            }
-
-            setInterval(showNextSlide, slideInterval);
-        });
-    </script>
 </body>
 </html>
