@@ -14,7 +14,7 @@
     <header>
         <div class="slideshow-container">
             <div class="slideshow">
-                <div class="slide" style="background-image: url('https://www.bramblemanagement.com/images/BMCover1.jpg');"></div>
+                <div class="slide active" style="background-image: url('https://www.bramblemanagement.com/images/BMCover1.jpg');"></div>
                 <div class="slide" style="background-image: url('https://www.bramblemanagement.com/images/BMCover2.jpg');"></div>
                 <div class="slide" style="background-image: url('https://www.bramblemanagement.com/images/BMCover3.jpeg');"></div>
                 <div class="slide" style="background-image: url('https://www.bramblemanagement.com/images/BMCover4.jpeg');"></div>
@@ -45,8 +45,23 @@
         <p>&copy; 2024 Bramble Management. All rights reserved.</p>
         <div class="social-links">
             <a href="https://www.instagram.com/nic.bramble/">Instagram</a>
-            <!-- Add other social media links -->
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let slides = document.querySelectorAll('.slide');
+            let currentIndex = 0;
+            const slideInterval = 2500; // 2.5 seconds
+
+            function showNextSlide() {
+                slides[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
+            }
+
+            setInterval(showNextSlide, slideInterval);
+        });
+    </script>
 </body>
 </html>
