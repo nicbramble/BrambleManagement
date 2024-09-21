@@ -17,7 +17,6 @@ header {
     overflow: hidden;
 }
 
-
 /* Slideshow Container */
 .slideshow-container {
     position: relative;
@@ -25,21 +24,13 @@ header {
     height: 100%;
 }
 
-/* Slideshow Adjustments */
-.slideshow {
-    position: relative;
-}
-
-.slide {
-    display: none;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
+/* Slide */
 .slide.active {
     background-image: url('https://www.bramblemanagement.com/images/BMCover1.jpg');
     background-size: cover;
     background-position: center;
+    width: 100%;
+    height: 100%;
 }
 
 /* Overlay Text */
