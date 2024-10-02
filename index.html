@@ -137,6 +137,23 @@
             background-color: #0056b3;
         }
 
+        /* Success Message Styling */
+        #successMessage {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #successMessage h2 {
+            font-size: 22px;
+            color: #28a745;
+        }
+
+        #successMessage p {
+            font-size: 16px;
+            color: #555;
+        }
+
         /* Responsive Styling */
         @media (min-width: 768px) {
             body {
@@ -164,13 +181,12 @@
     <!-- Form Container -->
     <div class="form-container">
         <h2>Get in Touch</h2>
-        <form class="contact-form" action="https://script.google.com/macros/s/AKfycby2rfLF0kJH_NbtrCt6moyERtbgBgKz4vlsubogGtw_zA9IW4qxkvmB7iDp4m32glQ/exec" method="POST">
+        <form class="contact-form" action="https://script.google.com/macros/s/AKfycbyfBr_1Cv6eA8gZxYiJKy2kyJzv4Y5q7VU4b-F269RADTZioSBaJ9RQqK9tStUBRbI/exec" method="POST" id="contactForm">
             <input type="text" name="name" id="name" placeholder="Your Name" required>
             
             <input type="number" name="age" id="age" placeholder="Your Age" required>
-
+            
             <input type="tel" name="phone" id="phone" placeholder="Your Phone Number" required>
-
             
             <!-- State Dropdown -->
             <select name="location" id="location" required>
@@ -227,13 +243,6 @@
                 <option value="WY">Wyoming</option>
             </select>
             
-            <!-- Chick-fil-A or Canes -->
-            <select name="preference" id="preference" required>
-                <option value="">Chick-fil-A or Canes?</option>
-                <option value="Chick-fil-A">Chick-fil-A</option>
-                <option value="Canes">Canes</option>
-            </select>
-
             <!-- Interest Level Dropdown -->
             <select name="interest" id="interest" required>
                 <option value="">Interest in sales (1-10)</option>
@@ -258,6 +267,12 @@
         </form>
     </div>
 
+    <!-- Success Page -->
+    <div id="successMessage">
+        <h2>Thank you for your submission!</h2>
+        <p>We will be in touch soon.</p>
+    </div>
+
     <!-- Info Section -->
     <div class="info-section">
         <h2>About Me</h2>
@@ -271,6 +286,27 @@
             <a href="https://calendly.com/nbramble-moxiepestcontrol/30min" target="_blank">Schedule a Free Call</a>
         </div>
     </div>
+
+    <script>
+        // Handle form submission using JavaScript
+        document.getElementById('contactForm').onsubmit = function(e) {
+            e.preventDefault(); // Prevent default form submission
+            
+            var formData = new FormData(this);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', this.action, true);
+            
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Hide form and show success message
+                    document.getElementById('contactForm').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                }
+            };
+            
+            xhr.send(formData); // Send form data via AJAX
+        };
+    </script>
 
 </body>
 </html>
