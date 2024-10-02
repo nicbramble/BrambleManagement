@@ -9,55 +9,199 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Styling for Tabs */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            margin: 0 10px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .tab.active {
+            background-color: #007BFF;
+            color: white;
+            border: 1px solid #007BFF;
+        }
+
+        /* Content Styling */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Form Styling */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-form input, .contact-form select, .contact-form textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form label {
+            margin-top: 10px;
+        }
+
+        .contact-form button {
+            padding: 10px;
+            font-size: 18px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-label input {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="slideshow-container">
-            <div class="slide active"></div>
-            <div class="overlay">
-                <h1>Nic Bramble</h1>
-                <h1>Moxie Pest Control</h1>
-                <p>Build Confidence, Learn Sales, Control Your Success</p>
+    <!-- Tab Navigation -->
+    <div class="tab-container">
+        <div class="tab active" id="home-tab">Home</div>
+        <div class="tab" id="contact-tab">Contact Me</div>
+    </div>
+
+    <!-- Home Tab Content -->
+    <div id="home-content" class="tab-content active">
+        <header>
+            <div class="slideshow-container">
+                <div class="slide active" style="background-image: url('images/success.jpg');"></div>
+                <div class="overlay">
+                    <h1>Nic Bramble</h1>
+                    <h1>Moxie Pest Control</h1>
+                    <p>Build Confidence, Learn Sales, Control Your Success</p>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <main>
-        <section class="about-me">
-            <h2>About Me</h2>
-            <p>In 2023, fresh off my mission and completely broke, I was desperate for a job. 
-                I applied at a car wash, but a friend urged me to consider summer sales—a career I’d never imagined. When the car wash never called back, 
-                I took a leap of faith into sales. What started as a backup plan became a life-changing experience. 
-                I thrived in the team atmosphere, loved the challenge, and, most importantly, realized that I controlled my paycheck. For the first time,
-                I could determine my own worth, and I’ve never looked back</p>
-        </section>
+        <main>
+            <section class="about-me">
+                <h2>About Me</h2>
+                <p>In 2023, fresh off my mission and completely broke, I was desperate for a job. 
+                    I applied at a car wash, but a friend urged me to consider summer sales—a career I’d never imagined. 
+                    When the car wash never called back, I took a leap of faith into sales. 
+                    What started as a backup plan became a life-changing experience. 
+                    I thrived in the team atmosphere, loved the challenge, and, most importantly, realized that I controlled my paycheck. 
+                    For the first time, I could determine my own worth, and I’ve never looked back</p>
+            </section>
 
-        <section class="anyone-can-do">
-            <h2>Anyone Can Succeed in Sales</h2>
-            <p>Students from diverse fields – Medical, Information Systems, Business, Psychology – have all found success in summer sales. With the right guidance, so can you.</p>
-        </section>
+            <section class="anyone-can-do">
+                <h2>Anyone Can Succeed in Sales</h2>
+                <p>Students from diverse fields – Medical, Information Systems, Business, Psychology – have all found success in summer sales. With the right guidance, so can you.</p>
+            </section>
 
-        <section class="nationwide-opportunity">
-            <h2>Work From Anywhere in the USA</h2>
-            <p>My team members are located across the country, proving that you can succeed no matter where you are! We have systems in place to train and coach you from all over.</p>
-            <img src="https://www.bramblemanagement.com/images/MapChart_Map-2.jpeg" alt="Map showing team members across the USA" style="width:100%; max-width:800px;">
-        </section>
+            <section class="nationwide-opportunity">
+                <h2>Work From Anywhere in the USA</h2>
+                <p>My team members are located across the country, proving that you can succeed no matter where you are! We have systems in place to train and coach you from all over.</p>
+                <img src="https://www.bramblemanagement.com/images/MapChart_Map-2.jpeg" alt="Map showing team members across the USA" style="width:100%; max-width:800px;">
+            </section>
 
-        <section class="cta">
-            <h2>Ready to Start Your Journey?</h2>
-            <p>Schedule your free one on one call now to see if sales is right for you. Limited spots available!</p>
-            <a href="https://calendly.com/nbramble-moxiepestcontrol/30min" class="link-btn">Schedule Your Quick 30 Minute Call Now</a>
-        </section>
-    </main>
+            <section class="cta">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Schedule your free one on one call now to see if sales is right for you. Limited spots available!</p>
+                <a href="https://calendly.com/nbramble-moxiepestcontrol/30min" class="link-btn">Schedule Your Quick 30 Minute Call Now</a>
+            </section>
+        </main>
+    </div>
+
+    <!-- Contact Tab Content -->
+    <div id="contact-content" class="tab-content">
+        <h2>Contact Me</h2>
+        <p>Fill out the form below, and someone from our team will reach out to set up a meeting with you!</p>
+        <form class="contact-form" action="https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_URL/exec" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            
+            <label for="age">Age:</label>
+            <input type="number" name="age" id="age" placeholder="Your Age" required>
+            
+            <label for="location">Location (State):</label>
+            <input type="text" name="location" id="location" placeholder="Your State" required>
+            
+            <label for="preference">Chick-fil-A or Canes?</label>
+            <select name="preference" id="preference" required>
+                <option value="">Select one</option>
+                <option value="Chick-fil-A">Chick-fil-A</option>
+                <option value="Canes">Canes</option>
+            </select>
+            
+            <label for="interest">How interested are you in doing sales (1-10)?</label>
+            <input type="number" name="interest" id="interest" min="1" max="10" required>
+            
+            <label class="checkbox-label">
+                <input type="checkbox" name="consent" required>
+                I am okay with being contacted by Bramble Management
+            </label>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
     <footer>
         <div class="social-links">
             <a href="https://www.instagram.com/nic.bramble/">Instagram</a>
             <a href="https://apps.apple.com/us/app/d2d-sim/id6661018788">D2D Sim</a>
-
         </div>
         <p>&copy; 2024 Bramble Management. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript for Tab Functionality -->
+    <script>
+        const homeTab = document.getElementById('home-tab');
+        const contactTab = document.getElementById('contact-tab');
+        const homeContent = document.getElementById('home-content');
+        const contactContent = document.getElementById('contact-content');
+
+        homeTab.addEventListener('click', () => {
+            homeTab.classList.add('active');
+            contactTab.classList.remove('active');
+            homeContent.classList.add('active');
+            contactContent.classList.remove('active');
+        });
+
+        contactTab.addEventListener('click', () => {
+            contactTab.classList.add('active');
+            homeTab.classList.remove('active');
+            contactContent.classList.add('active');
+            homeContent.classList.remove('active');
+        });
+    </script>
 </body>
 </html>
