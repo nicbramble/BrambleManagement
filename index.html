@@ -1,312 +1,262 @@
+<!-- Final Debugged Version: Single declaration of dataKey and all issues resolved -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bramble Management - Learn if Sales is Right for You</title>
-    <meta name="description" content="Bramble Management helps college students earn $30-50k in their first summer in door-to-door sales.">
-    <meta name="keywords" content="Bramble Management, Sales, Door-to-Door, Apps, Coaching">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* General Reset and Basic Styling */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f7f8fc;
-            color: #333;
-            padding: 20px;
-            line-height: 1.6;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        header h1 {
-            font-size: 24px;
-            font-weight: 700;
-            color: #007BFF;
-        }
-
-        header p {
-            font-size: 16px;
-            color: #555;
-        }
-
-        /* Form Styling */
-        .form-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-        }
-
-        .form-container h2 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .contact-form input, 
-        .contact-form select, 
-        .contact-form button,
-        .contact-form label {
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-            outline: none;
-        }
-
-        .contact-form input:focus,
-        .contact-form select:focus {
-            border-color: #007BFF;
-            box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
-        }
-
-        .contact-form button {
-            background-color: #007BFF;
-            color: white;
-            cursor: pointer;
-            border: none;
-        }
-
-        .contact-form button:hover {
-            background-color: #0056b3;
-        }
-
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-        }
-
-        .checkbox-label input {
-            margin-right: 10px;
-        }
-
-        /* Info Section Styling */
-        .info-section {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .info-section h2 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .info-section p {
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 15px;
-        }
-
-        .cta {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .cta a {
-            background-color: #007BFF;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .cta a:hover {
-            background-color: #0056b3;
-        }
-
-        /* Success Message Styling */
-        #successMessage {
-            display: none;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        #successMessage h2 {
-            font-size: 22px;
-            color: #28a745;
-        }
-
-        #successMessage p {
-            font-size: 16px;
-            color: #555;
-        }
-
-        /* Responsive Styling */
-        @media (min-width: 768px) {
-            body {
-                max-width: 600px;
-                margin: auto;
-            }
-
-            .form-container, .info-section {
-                padding: 30px;
-            }
-
-            .contact-form input, .contact-form select, .contact-form button {
-                font-size: 18px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    .login, .dashboard {
+      max-width: 900px;
+      margin: auto;
+      padding: 25px;
+      background: white;
+      border-radius: 16px;
+      margin-top: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .hidden { display: none; }
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .tab-buttons button {
+      margin: 0 10px;
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .tab-buttons button.active, .tab-buttons button:hover {
+      background: #1565c0;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .card {
+      background: #ffffff;
+      padding: 18px;
+      margin: 12px 0;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    .team-summary {
+      background: #d0e9ff;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 24px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.1);
+    }
+    input, button, select, textarea {
+      padding: 10px;
+      margin: 8px 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    button:hover { background: #1565c0; }
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    h3 { margin-top: 0; }
+    canvas { width: 100% !important; height: 200px !important; }
+    .member-entry { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+    .member-entry button { width: auto; margin-left: 10px; }
+  </style>
 </head>
 <body>
+  <div class="login">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="4-digit PIN" pattern="\d{4}" maxlength="4">
+    <button onclick="login()">Login</button>
+    <p id="loginMessage"></p>
+  </div>
 
-    <header>
-        <h1>Learn if Sales is Right for You</h1>
-        <p>Learn Sales, Build Confidence, and Control Your Success</p>
-    </header>
-
-    <!-- Form Container -->
-    <div class="form-container">
-        <h2>Get in Touch</h2>
-        <form class="contact-form" action="https://script.google.com/macros/s/AKfycbyfBr_1Cv6eA8gZxYiJKy2kyJzv4Y5q7VU4b-F269RADTZioSBaJ9RQqK9tStUBRbI/exec" method="POST" id="contactForm">
-            <input type="text" name="name" id="name" placeholder="Your Name" required>
-            
-            <input type="number" name="age" id="age" placeholder="Your Age" required>
-            
-            <input type="tel" name="phone" id="phone" placeholder="Your Phone Number" required>
-            
-            <!-- State Dropdown -->
-            <select name="location" id="location" required>
-                <option value="">Select your state</option>
-                <option value="AL">Alabama</option>
-                <option value="AK">Alaska</option>
-                <option value="AZ">Arizona</option>
-                <option value="AR">Arkansas</option>
-                <option value="CA">California</option>
-                <option value="CO">Colorado</option>
-                <option value="CT">Connecticut</option>
-                <option value="DE">Delaware</option>
-                <option value="FL">Florida</option>
-                <option value="GA">Georgia</option>
-                <option value="HI">Hawaii</option>
-                <option value="ID">Idaho</option>
-                <option value="IL">Illinois</option>
-                <option value="IN">Indiana</option>
-                <option value="IA">Iowa</option>
-                <option value="KS">Kansas</option>
-                <option value="KY">Kentucky</option>
-                <option value="LA">Louisiana</option>
-                <option value="ME">Maine</option>
-                <option value="MD">Maryland</option>
-                <option value="MA">Massachusetts</option>
-                <option value="MI">Michigan</option>
-                <option value="MN">Minnesota</option>
-                <option value="MS">Mississippi</option>
-                <option value="MO">Missouri</option>
-                <option value="MT">Montana</option>
-                <option value="NE">Nebraska</option>
-                <option value="NV">Nevada</option>
-                <option value="NH">New Hampshire</option>
-                <option value="NJ">New Jersey</option>
-                <option value="NM">New Mexico</option>
-                <option value="NY">New York</option>
-                <option value="NC">North Carolina</option>
-                <option value="ND">North Dakota</option>
-                <option value="OH">Ohio</option>
-                <option value="OK">Oklahoma</option>
-                <option value="OR">Oregon</option>
-                <option value="PA">Pennsylvania</option>
-                <option value="RI">Rhode Island</option>
-                <option value="SC">South Carolina</option>
-                <option value="SD">South Dakota</option>
-                <option value="TN">Tennessee</option>
-                <option value="TX">Texas</option>
-                <option value="UT">Utah</option>
-                <option value="VT">Vermont</option>
-                <option value="VA">Virginia</option>
-                <option value="WA">Washington</option>
-                <option value="WV">West Virginia</option>
-                <option value="WI">Wisconsin</option>
-                <option value="WY">Wyoming</option>
-            </select>
-            
-            <!-- Interest Level Dropdown -->
-            <select name="interest" id="interest" required>
-                <option value="">Interest in sales (1-10)</option>
-                <option value="1">1 - Not interested</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10 - Very interested</option>
-            </select>
-
-            <label class="checkbox-label">
-                <input type="checkbox" name="consent" required>
-                I am okay with being contacted by Bramble Management
-            </label>
-
-            <button type="submit">Submit</button>
-        </form>
+  <div class="dashboard hidden">
+    <h2>Sales Dashboard</h2>
+    <div class="tab-buttons">
+      <button id="tabMembersBtn" class="active" onclick="switchTab('members')">Members</button>
+      <button id="tabDashboardBtn" onclick="switchTab('dashboard')">Dashboard</button>
     </div>
 
-    <!-- Success Page -->
-    <div id="successMessage">
-        <h2>Thank you for your submission!</h2>
-        <p>We will be in touch soon.</p>
+    <div id="tabMembers" class="tab-content active">
+      <h3>Add Team Member</h3>
+      <input id="name" placeholder="Name">
+      <input id="start" type="date">
+      <input id="end" type="date">
+      <input id="goal" type="number" placeholder="Revenue Goal ($)">
+      <textarea id="note" placeholder="Notes about this rep (strengths, needs, plan, etc.)"></textarea>
+      <select id="teamOwner">
+        <option value="NicBramble">NicBramble</option>
+        <option value="CesarMiranda">CesarMiranda</option>
+      </select>
+      <button onclick="addMember()">➕ Add Member</button>
+      <h3>Team Members</h3>
+      <div id="memberList"></div>
     </div>
 
-    <!-- Info Section -->
-    <div class="info-section">
-        <h2>About Me</h2>
-        <p>In 2023, I took a leap of faith into sales after being broke and unsure of my next steps. The experience changed my life and helped me realize the power of controlling my own paycheck. Now, I help others do the same through door-to-door sales coaching.</p>
-
-        <h2>Work From Anywhere</h2>
-        <p>Our team members are located across the country, proving that no matter where you are, you can succeed in sales with the right training and guidance.</p>
-
-        <div class="cta">
-            <p>Ready to join now? Click here</p>
-            <a href="https://calendly.com/nbramble-moxiepestcontrol/30min" target="_blank">Schedule a Free Call</a>
-        </div>
+    <div id="tabDashboard" class="tab-content">
+      <div id="cards"></div>
+      <div class="team-summary" id="summary"></div>
     </div>
+  </div>
 
-    <script>
-        // Handle form submission using JavaScript
-        document.getElementById('contactForm').onsubmit = function(e) {
-            e.preventDefault(); // Prevent default form submission
-            
-            var formData = new FormData(this);
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', this.action, true);
-            
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    // Hide form and show success message
-                    document.getElementById('contactForm').style.display = 'none';
-                    document.getElementById('successMessage').style.display = 'block';
-                }
-            };
-            
-            xhr.send(formData); // Send form data via AJAX
-        };
-    </script>
+  <script>
+    const dataKey = "salesTeamData";
+    let currentUser = null;
 
+    function login() {
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value.trim();
+      if ((user === 'NicBramble' && pass === '0434') || (user === 'CesarMiranda' && pass === '1234')) {
+        currentUser = user;
+        document.querySelector('.login').classList.add('hidden');
+        document.querySelector('.dashboard').classList.remove('hidden');
+        loadMembers();
+      } else {
+        document.getElementById('loginMessage').innerText = 'Invalid credentials';
+      }
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-buttons button').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`#tab${tab.charAt(0).toUpperCase() + tab.slice(1)}Btn`).classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(div => div.classList.remove('active'));
+      document.getElementById(`tab${tab.charAt(0).toUpperCase() + tab.slice(1)}`).classList.add('active');
+    }
+
+    function getKnockingDays(start, end) {
+      let count = 0;
+      let date = new Date(start);
+      const endDate = new Date(end);
+      while (date <= endDate) {
+        if (date.getDay() !== 0) count++;
+        date.setDate(date.getDate() + 1);
+      }
+      return count;
+    }
+
+    function updateRevenue(index, inputId) {
+      const members = JSON.parse(localStorage.getItem(dataKey)) || [];
+      const newRev = parseFloat(document.getElementById(inputId).value);
+      if (!isNaN(newRev)) {
+        members[index].revenue = newRev;
+        localStorage.setItem(dataKey, JSON.stringify(members));
+        loadMembers();
+      }
+    }
+
+    function removeMember(index) {
+      const members = JSON.parse(localStorage.getItem(dataKey)) || [];
+      members.splice(index, 1);
+      localStorage.setItem(dataKey, JSON.stringify(members));
+      loadMembers();
+    }
+
+    function loadMembers() {
+      const members = JSON.parse(localStorage.getItem(dataKey)) || [];
+      const memberList = document.getElementById("memberList");
+      const cards = document.getElementById("cards");
+      const summary = document.getElementById("summary");
+      memberList.innerHTML = "";
+      cards.innerHTML = "";
+      summary.innerHTML = "";
+
+      const visibleMembers = members.filter(m => currentUser === 'NicBramble' || m.teamOwner === currentUser);
+      let totalRevenue = 0;
+      let totalGoal = 0;
+
+      visibleMembers.forEach((m, i) => {
+        const index = members.findIndex(mem => mem.name === m.name && mem.start === m.start);
+
+        const listItem = document.createElement("div");
+        listItem.className = "member-entry";
+        listItem.innerHTML = `<span>${m.name} (${m.teamOwner})</span><button onclick="removeMember(${index})">Remove</button>`;
+        memberList.appendChild(listItem);
+
+        const knockingDays = getKnockingDays(m.start, m.end);
+        const card = document.createElement("div");
+        card.className = "card";
+        const canvasId = `chart${i}`;
+        const inputId = `revInput${i}`;
+        card.innerHTML = `
+          <strong>${m.name}</strong><br>
+          Goal: $${m.goal.toFixed(2)}<br>
+          Revenue: $<input type='number' id='${inputId}' value='${m.revenue.toFixed(2)}'>
+          <button onclick='updateRevenue(${index}, "${inputId}")'>Update</button><br>
+          Days: ${knockingDays}<br>
+          Notes: ${m.note || ''}<br>
+          <canvas id='${canvasId}'></canvas>
+        `;
+        cards.appendChild(card);
+
+        const ctx = document.getElementById(canvasId);
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Goal', 'Revenue'],
+            datasets: [{
+              label: m.name,
+              data: [m.goal, m.revenue],
+              backgroundColor: ['#64b5f6', '#388e3c']
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        totalRevenue += m.revenue;
+        totalGoal += m.goal;
+      });
+
+      summary.innerHTML = `<strong>Team Total Revenue:</strong> $${totalRevenue.toFixed(2)}<br><strong>Team Total Goal:</strong> $${totalGoal.toFixed(2)}`;
+    }
+
+    function addMember() {
+      const name = document.getElementById('name').value.trim();
+      const start = document.getElementById('start').value;
+      const end = document.getElementById('end').value;
+      const note = document.getElementById('note').value.trim();
+      const goalInput = document.getElementById('goal').value;
+      const goal = parseFloat(goalInput);
+      const teamOwner = document.getElementById('teamOwner').value;
+
+      if (!name || !start || !end || isNaN(goal) || goal <= 0) {
+        alert("Please fill out all required fields including a valid goal.");
+        return;
+      }
+
+      const members = JSON.parse(localStorage.getItem(dataKey)) || [];
+      members.push({ name, start, end, note, goal, revenue: 0, teamOwner });
+      localStorage.setItem(dataKey, JSON.stringify(members));
+
+      document.getElementById('name').value = '';
+      document.getElementById('start').value = '';
+      document.getElementById('end').value = '';
+      document.getElementById('note').value = '';
+      document.getElementById('goal').value = '';
+      document.getElementById('teamOwner').value = 'NicBramble';
+
+      loadMembers();
+    }
+  </script>
 </body>
 </html>
