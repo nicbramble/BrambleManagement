@@ -1,593 +1,803 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Synker AI Race - Final</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --grid-size: 21;
-      --wall-color: #0f172a; 
-      --path-bg: #f1f5f9;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Master Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            touch-action: manipulation;
+        }
 
-    body {
-      font-family: "Inter", sans-serif;
-      background: radial-gradient(circle at 50% 50%, #eef2ff 0%, #e0e7ff 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-      touch-action: none;
-      overflow: hidden; /* Prevent body scroll */
-    }
+        /* Dynamic Grid Lines handled via JS classes now, removing hardcoded nth-child rules */
+        .sudoku-cell {
+            transition: background-color 0.1s ease;
+        }
+        
+        /* Border Utility Classes for JS application */
+        .border-r-thick {
+            border-right-width: 3px !important;
+            border-right-color: #374151 !important;
+        }
+        .border-b-thick {
+            border-bottom-width: 3px !important;
+            border-bottom-color: #374151 !important;
+        }
+        /* Reset default borders */
+        .border-r-normal {
+            border-right-width: 1px;
+            border-right-color: #d1d5db;
+        }
+        .border-b-normal {
+            border-bottom-width: 1px;
+            border-bottom-color: #d1d5db;
+        }
 
-    /* Glass Card Container */
-    .glass-card {
-      backdrop-filter: blur(20px);
-      background: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      border-radius: 24px;
-      display: flex;
-      flex-direction: column;
-    }
+        /* State Colors */
+        .selected {
+            background-color: #bfdbfe !important; /* blue-200 */
+        }
+        .highlighted {
+            background-color: #eff6ff !important; /* blue-50 */
+        }
+        .same-number {
+            background-color: #dbeafe !important; /* blue-100 */
+        }
+        .fixed-num {
+            color: #111827; /* gray-900 */
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .user-num {
+            color: #2563eb; /* blue-600 */
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        .error-num {
+            color: #dc2626 !important;
+            background-color: #fee2e2 !important;
+        }
+        
+        /* Notes Grid */
+        .note-grid {
+            display: grid;
+            width: 100%;
+            height: 100%;
+            padding: 2px;
+        }
+        .note-grid-9 {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+        }
+        .note-grid-6 {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
 
-    /* Maze Grid */
-    .maze-container {
-      background: var(--wall-color);
-      border-radius: 12px;
-      position: relative;
-      overflow: hidden;
-      transform: translateZ(0);
-      box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-    }
+        .note-num {
+            font-size: 10px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280; /* gray-500 */
+            font-weight: 500;
+        }
+        @media (min-width: 640px) {
+            .note-num { font-size: 12px; }
+            .fixed-num, .user-num { font-size: 1.75rem; }
+        }
 
-    .maze-cell {
-      background-color: var(--path-bg);
-      position: relative;
-      transition: background-color 0.1s;
-    }
-    
-    .maze-cell.wall { background-color: var(--wall-color); }
+        /* Active Toggle State */
+        .toggle-active {
+            background-color: #2563eb !important;
+            color: white !important;
+            border-color: #2563eb !important;
+        }
+        
+        /* Zen Mode Active State */
+        .zen-active {
+            background-color: #10b981 !important; /* emerald-500 */
+            color: white !important;
+            border-color: #10b981 !important;
+        }
+        
+        .btn-disabled {
+            opacity: 0.3;
+            pointer-events: none;
+            background-color: #f3f4f6;
+            color: #9ca3af;
+        }
 
-    /* Start/Finish Markers */
-    .maze-cell.start::after,
-    .maze-cell.finish::after {
-      content: "";
-      position: absolute;
-      width: 60%;
-      height: 60%;
-      top: 20%;
-      left: 20%;
-      border-radius: 6px;
-    }
-    .maze-cell.start::after { background: #3b82f6; box-shadow: 0 0 8px #3b82f6; }
-    .maze-cell.finish::after { background: #10b981; box-shadow: 0 0 8px #10b981; }
-    .maze-cell.finish { background-color: #d1fae5 !important; }
-
-    /* Neon Trails */
-    .trail-human { 
-      background-color: #f87171 !important; 
-      box-shadow: inset 0 0 0 2px #ef4444; 
-    }
-    .trail-ai { 
-      background-color: #34d399 !important; 
-      box-shadow: 0 0 10px #10b981; 
-      z-index: 5; 
-    }
-
-    /* Avatar */
-    .avatar {
-      width: calc(100% / var(--grid-size));
-      height: calc(100% / var(--grid-size));
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 20;
-      pointer-events: none;
-      transition: transform 0.1s linear; 
-      will-change: transform;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .avatar-body {
-      width: 85%;
-      height: 85%;
-      border-radius: 50%;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-      border: 2px solid white;
-    }
-    .avatar-human .avatar-body { background: #dc2626; }
-    .avatar-ai .avatar-body { background: #059669; box-shadow: 0 0 15px #10b981; }
-
-    /* Eyes */
-    .eye {
-      width: 25%;
-      height: 25%;
-      background: white;
-      border-radius: 50%;
-      position: relative;
-    }
-    .pupil {
-      width: 50%;
-      height: 50%;
-      background: black;
-      border-radius: 50%;
-      position: absolute;
-      top: 25%;
-      left: 25%;
-      transition: transform 0.1s;
-    }
-
-    /* Overlays */
-    #countdown-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(255,255,255,0.9);
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 6rem;
-      font-weight: 900;
-      color: #0f172a;
-      border-radius: 12px;
-      pointer-events: none; 
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-    #countdown-overlay.active { opacity: 1; pointer-events: auto; }
-
-    /* Mobile Controls */
-    .control-btn {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 0 #cbd5e1;
-      touch-action: none; 
-      user-select: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #475569;
-      transition: transform 0.05s, box-shadow 0.05s, background-color 0.05s;
-    }
-    .control-btn:active, .control-btn.pressed {
-      transform: translateY(4px);
-      box-shadow: 0 0 0 #cbd5e1;
-      background: #e2e8f0;
-    }
-
-    /* CTA Banner */
-    .cta-banner {
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-      border-top: 1px solid #cbd5e1;
-      border-radius: 0 0 24px 24px;
-    }
-  </style>
+        /* Animations */
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+        .pop-anim { animation: pop 0.2s ease-in-out; }
+    </style>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800 flex flex-col items-center min-h-screen py-6 select-none">
 
-  <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
-
-  <div class="max-w-4xl w-full mx-auto">
-    <div class="glass-card relative">
-      
-      <div class="p-4 sm:p-6 pb-2">
-        <header class="flex justify-between items-end mb-5">
-          <div>
-            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Race Synker AI</h1>
-            <p class="text-xs text-slate-500 font-bold mt-1 uppercase tracking-wider">Hold arrow keys to run</p>
-          </div>
-          <div class="text-right">
-             <div id="timer" class="text-3xl font-black text-slate-800 tabular-nums">0.00s</div>
-             <div class="text-[10px] font-bold text-slate-400 uppercase">Your Time</div>
-          </div>
-        </header>
-
-        <div class="flex flex-col md:flex-row gap-6">
-          
-          <div class="flex-1 relative">
-            <div id="countdown-overlay" class="hidden">3</div>
-            <div class="flex justify-between text-xs font-bold text-slate-500 mb-2 px-1">
-              <span class="flex items-center gap-2"><span class="w-3 h-3 bg-red-600 rounded-full"></span> YOU</span>
+    <!-- Header Area -->
+    <div class="w-full max-w-md px-4 mb-4 flex flex-col items-center">
+        <div class="flex justify-between w-full items-end mb-4">
+            <h1 class="text-4xl font-bold text-gray-800 tracking-tight">Sudoku</h1>
+            <div class="text-right">
+                 <span class="text-xs text-gray-500 uppercase tracking-wider font-bold">Time</span>
+                 <div id="timer" class="font-mono text-xl font-bold text-gray-700">00:00</div>
             </div>
-            <div id="human-maze" class="maze-container aspect-square grid"></div>
-
-            <div id="dpad" class="md:hidden grid grid-cols-3 gap-2 w-48 mx-auto mt-4 h-32">
-              <div></div>
-              <button class="control-btn" data-key="ArrowUp"><svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" fill="none"><path d="m18 15-6-6-6 6"/></svg></button>
-              <div></div>
-              <button class="control-btn" data-key="ArrowLeft"><svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" fill="none"><path d="m15 18-6-6 6-6"/></svg></button>
-              <button class="control-btn" data-key="ArrowDown"><svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" fill="none"><path d="m6 9 6 6 6-6"/></svg></button>
-              <button class="control-btn" data-key="ArrowRight"><svg width="28" height="28" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" fill="none"><path d="m9 18 6-6-6-6"/></svg></button>
-            </div>
-          </div>
-
-          <div class="flex-1">
-            <div class="flex justify-between text-xs font-bold text-slate-500 mb-2 px-1">
-              <span class="flex items-center gap-2"><span class="w-3 h-3 bg-emerald-500 rounded-full shadow-[0_0_8px_#10b981]"></span> SYNKER AI</span>
-              <span id="ai-timer" class="text-emerald-600">0.00s</span>
-            </div>
-            <div id="ai-maze" class="maze-container aspect-square grid opacity-60 grayscale transition-all duration-500"></div>
-            <div class="mt-6 space-y-3">
-              <button id="btn-start" class="w-full py-3.5 bg-slate-900 text-white font-bold rounded-xl shadow-lg hover:bg-slate-800 active:scale-95 transition-all">Start Race</button>
-              <button id="btn-reset" class="hidden w-full py-3.5 bg-white text-slate-700 border border-slate-200 font-bold rounded-xl hover:bg-slate-50 active:scale-95 transition-all">New Maze</button>
-            </div>
-          </div>
-
         </div>
-      </div>
+        
+        <div class="flex w-full justify-between items-center mb-4 bg-white p-2 rounded-xl shadow-sm border border-gray-200 gap-2">
+            <div class="flex-1 px-2">
+                <label class="text-[10px] text-gray-400 uppercase font-bold block mb-1">Mode</label>
+                <select id="game-mode" onchange="changeMode()" class="w-full text-sm font-bold bg-transparent outline-none cursor-pointer text-gray-700 hover:text-blue-600 transition">
+                    <option value="9" selected>Classic (9x9)</option>
+                    <option value="6">Mini (6x6)</option>
+                </select>
+            </div>
+            <div class="h-8 w-px bg-gray-200"></div>
+            <div class="flex-1 px-2">
+                <label class="text-[10px] text-gray-400 uppercase font-bold block mb-1">Difficulty</label>
+                <select id="difficulty" onchange="newGame()" class="w-full text-sm font-bold bg-transparent outline-none cursor-pointer text-gray-700 hover:text-blue-600 transition">
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            <div class="h-8 w-px bg-gray-200"></div>
+            <div class="flex-1 px-2 text-center">
+                <label id="mistakes-label" class="text-[10px] text-gray-400 uppercase font-bold block mb-1">Mistakes</label>
+                <span id="mistakes" class="text-sm font-bold text-gray-700">0/3</span>
+            </div>
+        </div>
 
-      <div class="cta-banner p-6 mt-4 text-center">
-        <p class="text-slate-600 font-medium text-sm sm:text-base mb-3">
-          Synker: AI Shift Scheduling for you!
-        </p>
-        <a href="https://synker.co" target="_blank" class="inline-flex items-center justify-center gap-2 text-indigo-600 font-bold text-sm hover:text-indigo-800 transition-colors">
-          Visit Synker.co <span aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
-
+        <div id="message-area" class="h-6 text-sm font-bold text-center text-green-600 transition-opacity opacity-0 mb-2"></div>
     </div>
 
-    <div id="modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
-      <div class="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-2xl transform transition-all scale-95">
-        <div class="mx-auto w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4 text-3xl">🚀</div>
-        
-        <h3 id="modal-title" class="text-2xl font-extrabold text-slate-900 mb-2"></h3>
-        
-        <div class="bg-slate-50 rounded-lg p-4 mb-6 grid grid-cols-2 gap-4 border border-slate-100">
-          <div>
-            <p class="text-xs uppercase text-slate-500 font-bold">You</p>
-            <p id="modal-human-time" class="text-xl font-bold text-slate-700">0.00s</p>
-          </div>
-          <div>
-            <p class="text-xs uppercase text-slate-500 font-bold">Synker AI</p>
-            <p id="modal-ai-time" class="text-xl font-bold text-emerald-600">0.00s</p>
-          </div>
+    <!-- Game Board -->
+    <div class="bg-gray-800 p-1 rounded-xl shadow-2xl mb-6">
+        <!-- Grid container sizing will be adjusted by JS -->
+        <div id="grid-container" class="bg-white border border-gray-300 overflow-hidden rounded-lg">
+            <!-- Cells generated by JS -->
         </div>
-
-        <p class="text-slate-700 font-medium text-lg leading-relaxed mb-6">
-          If Synker is that fast at solving puzzles, imagine how quick it will be at building your schedule.
-        </p>
-        
-        <div class="space-y-3">
-          <a href="https://synker.co/demo" target="_blank" class="block w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
-            Book a Demo
-          </a>
-          <button id="modal-close" class="block w-full py-3.5 text-slate-500 font-bold hover:text-slate-800 hover:bg-slate-50 rounded-xl transition-colors">
-            Play Again
-          </button>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <script>
-    // --- Configuration ---
-    const CONFIG = {
-      gridSize: 21,
-      moveRepeatDelay: 70, // Human movement smoothness
-      aiDuration: 1500     // AI Total Duration target
-    };
+    <!-- Controls -->
+    <div class="w-full max-w-md px-4">
+        
+        <!-- Tools Row -->
+        <div class="flex justify-between gap-2 mb-4">
+             <button id="btn-undo" onclick="undo()" class="flex-1 h-12 bg-white border border-gray-200 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-gray-800 shadow-sm transition flex flex-col items-center justify-center group">
+                <i class="fas fa-undo text-sm mb-1 group-hover:-rotate-45 transition-transform"></i>
+                <span class="text-[10px] font-bold uppercase">Undo</span>
+            </button>
+            
+            <button id="btn-note" onclick="toggleNoteMode()" class="flex-1 h-12 bg-white border border-gray-200 rounded-xl text-gray-600 hover:bg-gray-50 shadow-sm transition flex flex-col items-center justify-center relative">
+                <div class="absolute top-1 right-2 text-[10px] font-bold opacity-50" id="note-indicator">OFF</div>
+                <i class="fas fa-pencil-alt text-sm mb-1"></i>
+                <span class="text-[10px] font-bold uppercase">Notes</span>
+            </button>
 
-    // --- State ---
-    const state = {
-      grid: [],
-      solution: [],
-      human: { r: 1, c: 1 },
-      ai: { r: 1, c: 1 },
-      running: false,
-      startTime: 0,
-      finalTime: 0,
-      inputState: { up: false, down: false, left: false, right: false, lastMoveTime: 0 }
-    };
+            <button id="btn-zen" onclick="toggleZenMode()" class="flex-1 h-12 bg-white border border-gray-200 rounded-xl text-gray-600 hover:bg-gray-50 shadow-sm transition flex flex-col items-center justify-center relative">
+                <i class="fas fa-seedling text-sm mb-1"></i>
+                <span class="text-[10px] font-bold uppercase">Zen</span>
+            </button>
 
-    // --- Elements ---
-    const els = {
-      humanMaze: document.getElementById('human-maze'),
-      aiMaze: document.getElementById('ai-maze'),
-      timer: document.getElementById('timer'),
-      aiTimer: document.getElementById('ai-timer'),
-      btnStart: document.getElementById('btn-start'),
-      btnReset: document.getElementById('btn-reset'),
-      overlay: document.getElementById('countdown-overlay'),
-      dpad: document.getElementById('dpad'),
-      modal: document.getElementById('modal'),
-      modalTitle: document.getElementById('modal-title'),
-      modalHumanTime: document.getElementById('modal-human-time'),
-      modalAiTime: document.getElementById('modal-ai-time'),
-      canvas: document.getElementById('confetti-canvas')
-    };
+            <button id="btn-hint" onclick="useHint()" class="flex-1 h-12 bg-white border border-gray-200 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-blue-600 shadow-sm transition flex flex-col items-center justify-center">
+                <i class="fas fa-lightbulb text-sm mb-1"></i>
+                <span class="text-[10px] font-bold uppercase">Hint</span>
+            </button>
+             <button onclick="eraseCell()" class="flex-1 h-12 bg-white border border-gray-200 rounded-xl text-gray-600 hover:bg-red-50 hover:text-red-500 hover:border-red-100 shadow-sm transition flex flex-col items-center justify-center">
+                <i class="fas fa-eraser text-sm mb-1"></i>
+                <span class="text-[10px] font-bold uppercase">Erase</span>
+            </button>
+        </div>
 
-    // --- Maze Logic ---
-    function generateMaze() {
-      const size = CONFIG.gridSize;
-      const grid = Array.from({length: size}, () => Array(size).fill(1));
-      const dirs = [[0, -2], [0, 2], [-2, 0], [2, 0]];
-      const stack = [{r: 1, c: 1}];
-      grid[1][1] = 0;
+        <!-- Number Pad -->
+        <div id="numpad" class="grid grid-cols-9 gap-1 mb-6">
+            <button class="numpad-btn h-12 bg-blue-600 text-white rounded-lg text-xl font-bold shadow-md hover:bg-blue-700 active:scale-95 transition" data-num="1">1</button>
+            <button class="numpad-btn h-12 bg-blue-600 text-white rounded-lg text-xl font-bold shadow-md hover:bg-blue-700 active:scale-95 transition" data-num="2">2</button>
+            <button class="numpad-btn h-12 bg-blue-600 text-white rounded-lg text-xl font-bold shadow-md hover:bg-blue-700 active:scale-95 transition" data-num="3">3</button>
+            <button class="numpad-btn h-12 bg-blue-600 text-white rounded-lg text-xl font-bold shadow-md hover:bg-blue-700 active:scale-95 transition" data-num="4">4</button>
+            <button class="numpad-btn h-12 bg-blue-600 text-white rounded-lg text-xl font-bold shadow-md hover:bg-blue-700 active:scale-95 transition" data-num="5">5</button>
+            <button class="numpad-btn h-12 bg-blue-600 text-white rounded-lg text-xl font-bold shadow-md hover:bg-blue-700 active:scale-95 transition" data-num="6">6</button>
+            <button class="numpad-btn h-12 bg-blue-600 text-white rounded-lg text-xl font-bold shadow-md hover:bg-blue-700 active:scale-95 transition" data-num="7">7</button>
+            <button class="numpad-btn h-12 bg-blue-600 text-white rounded-lg text-xl font-bold shadow-md hover:bg-blue-700 active:scale-95 transition" data-num="8">8</button>
+            <button class="numpad-btn h-12 bg-blue-600 text-white rounded-lg text-xl font-bold shadow-md hover:bg-blue-700 active:scale-95 transition" data-num="9">9</button>
+        </div>
 
-      while (stack.length) {
-        const cur = stack[stack.length - 1];
-        const neighbors = [];
-        dirs.forEach(([dr, dc]) => {
-          const nr = cur.r + dr, nc = cur.c + dc;
-          if (nr > 0 && nr < size - 1 && nc > 0 && nc < size - 1 && grid[nr][nc] === 1) {
-            neighbors.push({r: nr, c: nc, mr: cur.r + dr/2, mc: cur.c + dc/2});
-          }
-        });
-        if (neighbors.length) {
-          const next = neighbors[Math.floor(Math.random() * neighbors.length)];
-          grid[next.mr][next.mc] = 0; 
-          grid[next.r][next.c] = 0;   
-          stack.push({r: next.r, c: next.c});
+        <div class="flex justify-center">
+            <button onclick="newGame()" class="text-gray-400 hover:text-gray-600 text-sm font-semibold underline decoration-2 underline-offset-4 transition">Start New Game</button>
+        </div>
+    </div>
+
+    <!-- Win/Loss Modal -->
+    <div id="game-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl transform transition-all">
+            <div id="modal-icon" class="text-5xl mb-4"></div>
+            <h2 id="modal-title" class="text-3xl font-bold text-gray-800 mb-2"></h2>
+            <p id="modal-msg" class="text-gray-600 mb-8 font-medium"></p>
+            <button onclick="closeModal()" class="w-full bg-blue-600 text-white py-3.5 rounded-xl font-bold shadow-lg hover:bg-blue-700 hover:shadow-xl transition transform hover:-translate-y-0.5">Play Again</button>
+        </div>
+    </div>
+
+<script>
+    // --- Game Configuration ---
+    let gridSize = 9;
+    let boxWidth = 3;
+    let boxHeight = 3;
+    let maxNum = 9;
+    const MAX_MISTAKES = 3;
+
+    // --- Game State ---
+    let solutionBoard = [];
+    let initialBoard = [];
+    let currentBoard = [];
+    let notesBoard = []; // 2D array of Sets
+    let history = []; 
+    let selectedCell = { r: -1, c: -1 };
+    let mistakes = 0;
+    let isNoteMode = false;
+    let isZenMode = false;
+    let timerInterval;
+    let secondsElapsed = 0;
+    let isGameActive = false;
+
+    // --- Initialization ---
+    document.addEventListener('DOMContentLoaded', () => {
+        setupInputs();
+        newGame();
+    });
+
+    // --- Mode Switching ---
+    const changeMode = () => {
+        const mode = parseInt(document.getElementById('game-mode').value);
+        if (mode === 6) {
+            gridSize = 6;
+            boxWidth = 3;
+            boxHeight = 2;
+            maxNum = 6;
         } else {
-          stack.pop();
+            gridSize = 9;
+            boxWidth = 3;
+            boxHeight = 3;
+            maxNum = 9;
         }
-      }
-      grid[size-2][size-2] = 0;
-      return grid;
-    }
-
-    function solveMaze(grid) {
-      const size = grid.length;
-      const q = [{r:1, c:1, path:[]}];
-      const visited = new Set(['1,1']);
-      while(q.length) {
-        const {r, c, path} = q.shift();
-        const newPath = [...path, {r, c}];
-        if(r === size-2 && c === size-2) return newPath;
-        [[0,1], [0,-1], [1,0], [-1,0]].forEach(([dr, dc]) => {
-          const nr = r + dr, nc = c + dc;
-          if(grid[nr][nc] === 0 && !visited.has(`${nr},${nc}`)) {
-            visited.add(`${nr},${nc}`);
-            q.push({r: nr, c: nc, path: newPath});
-          }
-        });
-      }
-      return [];
-    }
-
-    // --- Rendering ---
-    function drawMaze(el, grid) {
-      el.innerHTML = '';
-      el.style.gridTemplateColumns = `repeat(${CONFIG.gridSize}, 1fr)`;
-      grid.forEach((row, r) => {
-        row.forEach((cell, c) => {
-          const div = document.createElement('div');
-          div.className = `maze-cell ${cell === 1 ? 'wall' : ''}`;
-          div.id = `${el.id}-${r}-${c}`;
-          if(r===1 && c===1) div.classList.add('start');
-          if(r===CONFIG.gridSize-2 && c===CONFIG.gridSize-2) div.classList.add('finish');
-          el.appendChild(div);
-        });
-      });
-      const avatar = document.createElement('div');
-      avatar.className = `avatar ${el.id === 'human-maze' ? 'avatar-human' : 'avatar-ai'}`;
-      avatar.innerHTML = `<div class="avatar-body"><div class="eye"><div class="pupil"></div></div><div class="eye"><div class="pupil"></div></div></div>`;
-      el.appendChild(avatar);
-      updateAvatarPos(el.id, 1, 1);
-    }
-
-    function updateAvatarPos(mazeId, r, c, dr = 0, dc = 0, transitionDuration = null) {
-      const mazeEl = mazeId === 'human-maze' ? els.humanMaze : els.aiMaze;
-      const avatar = mazeEl.querySelector('.avatar');
-      
-      // Sync transition for AI
-      if (transitionDuration !== null) {
-        avatar.style.transition = `transform ${transitionDuration}ms linear`;
-      } else {
-        avatar.style.transition = `transform 0.08s linear`;
-      }
-
-      const x = c * 100; 
-      const y = r * 100; 
-      avatar.style.transform = `translate3d(${x}%, ${y}%, 0)`;
-      
-      // Eyes
-      if (dr !== 0 || dc !== 0) {
-        avatar.querySelectorAll('.pupil').forEach(p => p.style.transform = `translate(${dc*3}px, ${dr*3}px)`);
-      }
-      
-      // Trail
-      const cell = document.getElementById(`${mazeId}-${r}-${c}`);
-      if (cell) cell.classList.add(mazeId === 'human-maze' ? 'trail-human' : 'trail-ai');
-    }
-
-    // --- Game Loop ---
-    function update(time) {
-      if (!state.running) return;
-      const elapsed = (time - state.startTime) / 1000;
-      els.timer.textContent = elapsed.toFixed(2) + 's';
-
-      if (time - state.inputState.lastMoveTime > CONFIG.moveRepeatDelay) {
-        let dr = 0, dc = 0;
-        if (state.inputState.up) dr = -1;
-        else if (state.inputState.down) dr = 1;
-        else if (state.inputState.left) dc = -1;
-        else if (state.inputState.right) dc = 1;
-        if (dr !== 0 || dc !== 0) {
-          moveHuman(dr, dc);
-          state.inputState.lastMoveTime = time;
-        }
-      }
-      requestAnimationFrame(update);
-    }
-
-    function moveHuman(dr, dc) {
-      const nr = state.human.r + dr;
-      const nc = state.human.c + dc;
-      if (state.grid[nr] && state.grid[nr][nc] === 0) {
-        state.human = {r: nr, c: nc};
-        updateAvatarPos('human-maze', nr, nc, dr, dc);
-        if (nr === CONFIG.gridSize-2 && nc === CONFIG.gridSize-2) finishGame();
-      }
-    }
-
-    // --- Input ---
-    const setKey = (k, active) => {
-      if (k === 'ArrowUp') state.inputState.up = active;
-      if (k === 'ArrowDown') state.inputState.down = active;
-      if (k === 'ArrowLeft') state.inputState.left = active;
-      if (k === 'ArrowRight') state.inputState.right = active;
+        newGame();
     };
-    window.addEventListener('keydown', e => { if(e.key.startsWith('Arrow')) { e.preventDefault(); setKey(e.key, true); }});
-    window.addEventListener('keyup', e => { if(e.key.startsWith('Arrow')) setKey(e.key, false); });
+
+    // --- Logic: Board Generation ---
+    const createEmptyBoard = () => Array.from({ length: gridSize }, () => Array(gridSize).fill(0));
     
-    const handleTouch = (e, active) => {
-      if(e.cancelable && e.type === 'pointerdown') e.preventDefault();
-      const btn = e.target.closest('.control-btn');
-      if(btn) {
-        setKey(btn.dataset.key, active);
-        btn.classList.toggle('pressed', active);
-      }
+    const createNotesBoard = () => Array.from({ length: gridSize }, () => Array.from({ length: gridSize }, () => new Set()));
+
+    const isValid = (board, row, col, num) => {
+        // Row
+        for (let x = 0; x < gridSize; x++) if (board[row][x] === num) return false;
+        // Col
+        for (let x = 0; x < gridSize; x++) if (board[x][col] === num) return false;
+        // Box
+        let startRow = Math.floor(row / boxHeight) * boxHeight;
+        let startCol = Math.floor(col / boxWidth) * boxWidth;
+        for (let i = 0; i < boxHeight; i++) {
+            for (let j = 0; j < boxWidth; j++) {
+                if (board[i + startRow][j + startCol] === num) return false;
+            }
+        }
+        return true;
     };
-    els.dpad.addEventListener('pointerdown', e => handleTouch(e, true));
-    els.dpad.addEventListener('pointerup', e => handleTouch(e, false));
-    els.dpad.addEventListener('pointerleave', e => handleTouch(e, false));
-    window.addEventListener('contextmenu', e => e.preventDefault());
 
-    // --- Logic ---
-    function init() {
-      state.grid = generateMaze();
-      state.solution = solveMaze(state.grid);
-      state.human = {r:1, c:1};
-      state.running = false;
-      state.inputState = {up:false,down:false,left:false,right:false,lastMoveTime:0};
-      drawMaze(els.humanMaze, state.grid);
-      drawMaze(els.aiMaze, state.grid);
-      els.timer.textContent = "0.00s";
-      els.aiTimer.textContent = "0.00s";
-      els.aiMaze.classList.add('opacity-60', 'grayscale');
-      els.btnStart.classList.remove('hidden');
-      els.btnReset.classList.add('hidden');
-      hideModal();
-      els.overlay.classList.add('hidden');
-      els.overlay.classList.remove('active');
-    }
-
-    function startSequence() {
-      els.btnStart.classList.add('hidden');
-      els.overlay.classList.remove('hidden');
-      void els.overlay.offsetWidth; 
-      els.overlay.classList.add('active');
-      let count = 3;
-      els.overlay.textContent = count;
-      const int = setInterval(() => {
-        count--;
-        if(count > 0) els.overlay.textContent = count;
-        else {
-          clearInterval(int);
-          els.overlay.textContent = "GO!";
-          setTimeout(() => {
-            els.overlay.classList.remove('active');
-            els.overlay.classList.add('hidden');
-            state.running = true;
-            state.startTime = performance.now();
-            requestAnimationFrame(update);
-          }, 500);
+    const solveSudoku = (board) => {
+        for (let row = 0; row < gridSize; row++) {
+            for (let col = 0; col < gridSize; col++) {
+                if (board[row][col] === 0) {
+                    // Randomize 1..N for variety
+                    let nums = Array.from({length: gridSize}, (_, i) => i + 1).sort(() => Math.random() - 0.5);
+                    for (let num of nums) {
+                        if (isValid(board, row, col, num)) {
+                            board[row][col] = num;
+                            if (solveSudoku(board)) return true;
+                            board[row][col] = 0;
+                        }
+                    }
+                    return false;
+                }
+            }
         }
-      }, 800);
-    }
+        return true;
+    };
 
-    function finishGame() {
-      state.running = false;
-      state.finalTime = (performance.now() - state.startTime) / 1000;
-      els.timer.textContent = state.finalTime.toFixed(2) + 's';
-      confetti();
-      els.btnReset.classList.remove('hidden');
-      els.aiMaze.classList.remove('opacity-60', 'grayscale');
-      runAI();
-    }
-
-    function runAI() {
-      const path = state.solution;
-      const stepTime = Math.max(20, CONFIG.aiDuration / path.length); 
-      let i = 0;
-      const aiStart = performance.now();
-
-      function step() {
-        if(i >= path.length) {
-          const total = (performance.now() - aiStart)/1000;
-          els.aiTimer.textContent = total.toFixed(2) + 's';
-          showModal(total);
-          return;
-        }
-        const p = path[i];
-        let dr = 0, dc = 0;
-        if(i > 0) { dr = p.r - path[i-1].r; dc = p.c - path[i-1].c; }
+    const generatePuzzle = (difficulty) => {
+        let board = createEmptyBoard();
         
-        updateAvatarPos('ai-maze', p.r, p.c, dr, dc, stepTime);
-        els.aiTimer.textContent = ((performance.now() - aiStart)/1000).toFixed(2) + 's';
-        i++;
-        setTimeout(step, stepTime);
-      }
-      step();
-    }
+        // Optimization: Fill diagonal boxes first to speed up solver
+        fillBox(board, 0, 0);
+        if (gridSize === 9) {
+            fillBox(board, 3, 3);
+            fillBox(board, 6, 6);
+        } else {
+            fillBox(board, 2, 3); 
+        }
 
-    function showModal(aiTime) {
-      const speedup = (state.finalTime / Math.max(aiTime, 0.01)).toFixed(1);
-      els.modalTitle.innerHTML = `Synker is <span class="text-emerald-600">${speedup}x Faster</span>`;
-      els.modalHumanTime.textContent = state.finalTime.toFixed(2) + 's';
-      els.modalAiTime.textContent = aiTime.toFixed(2) + 's';
-      
-      els.modal.classList.remove('hidden');
-      // Small delay to allow CSS transition
-      requestAnimationFrame(() => {
-        els.modal.classList.remove('opacity-0');
-        els.modal.querySelector('div').classList.remove('scale-95');
-        els.modal.querySelector('div').classList.add('scale-100');
-      });
-      els.modal.classList.add('flex');
-    }
+        solveSudoku(board);
+        solutionBoard = JSON.parse(JSON.stringify(board));
 
-    function hideModal() {
-      els.modal.classList.add('opacity-0');
-      els.modal.querySelector('div').classList.add('scale-95');
-      setTimeout(() => {
-        els.modal.classList.add('hidden');
-        els.modal.classList.remove('flex');
-      }, 300);
-    }
+        // Clue removal based on difficulty
+        let totalCells = gridSize * gridSize;
+        let removeCount;
+        
+        if (gridSize === 9) {
+            removeCount = difficulty === 'easy' ? 40 : difficulty === 'medium' ? 50 : 58;
+        } else {
+            // 36 cells total
+            removeCount = difficulty === 'easy' ? 16 : difficulty === 'medium' ? 22 : 26;
+        }
+        
+        initialBoard = JSON.parse(JSON.stringify(solutionBoard));
+        
+        let attempts = removeCount;
+        while (attempts > 0) {
+            let row = Math.floor(Math.random() * gridSize);
+            let col = Math.floor(Math.random() * gridSize);
+            if (initialBoard[row][col] !== 0) {
+                initialBoard[row][col] = 0;
+                attempts--;
+            }
+        }
+        
+        currentBoard = JSON.parse(JSON.stringify(initialBoard));
+        notesBoard = createNotesBoard();
+        history = [];
+        mistakes = 0;
+        updateMistakes();
+    };
 
-    function confetti() {
-      const ctx = els.canvas.getContext('2d');
-      els.canvas.width = window.innerWidth;
-      els.canvas.height = window.innerHeight;
-      const p = Array.from({length:80}, () => ({
-        x: window.innerWidth/2, y: window.innerHeight/2,
-        vx: (Math.random()-0.5)*25, vy: (Math.random()-1)*25,
-        c: ['#f00','#0f0','#00f','#ff0'][Math.floor(Math.random()*4)],
-        s: Math.random()*6+3
-      }));
-      function tick() {
-        ctx.clearRect(0,0,els.canvas.width,els.canvas.height);
-        let active = false;
-        p.forEach(k => {
-          k.x+=k.vx; k.y+=k.vy; k.vy+=0.6; k.s*=0.95;
-          if(k.s>0.5) { active=true; ctx.fillStyle=k.c; ctx.fillRect(k.x,k.y,k.s,k.s); }
+    const fillBox = (board, row, col) => {
+        let num;
+        for (let i = 0; i < boxHeight; i++) {
+            for (let j = 0; j < boxWidth; j++) {
+                do {
+                    num = Math.floor(Math.random() * gridSize) + 1;
+                } while (!isSafeInBox(board, row, col, num));
+                board[row + i][col + j] = num;
+            }
+        }
+    };
+
+    const isSafeInBox = (board, row, col, num) => {
+        let startRow = Math.floor(row / boxHeight) * boxHeight;
+        let startCol = Math.floor(col / boxWidth) * boxWidth;
+        for (let i = 0; i < boxHeight; i++) {
+            for (let j = 0; j < boxWidth; j++) {
+                if (board[startRow + i][startCol + j] === num) return false;
+            }
+        }
+        return true;
+    };
+
+    // --- UI Rendering ---
+
+    const createGridHTML = () => {
+        const container = document.getElementById('grid-container');
+        container.innerHTML = '';
+        
+        // Adjust container size & grid classes based on mode
+        if (gridSize === 9) {
+            container.className = "bg-white border border-gray-300 grid grid-rows-9 w-[350px] h-[350px] sm:w-[420px] sm:h-[420px] overflow-hidden rounded-lg";
+        } else {
+            // 6x6 needs different dimensions to look proportional
+            container.className = "bg-white border border-gray-300 grid grid-rows-6 w-[300px] h-[300px] sm:w-[360px] sm:h-[360px] overflow-hidden rounded-lg";
+        }
+
+        for (let r = 0; r < gridSize; r++) {
+            const rowDiv = document.createElement('div');
+            // Use dynamic style for columns
+            rowDiv.style.display = 'grid';
+            rowDiv.style.gridTemplateColumns = `repeat(${gridSize}, minmax(0, 1fr))`;
+            rowDiv.className = 'sudoku-row h-full';
+
+            for (let c = 0; c < gridSize; c++) {
+                const cell = document.createElement('div');
+                
+                // Base classes
+                let classes = "sudoku-cell bg-white flex items-center justify-center cursor-pointer select-none relative border-r-normal border-b-normal";
+                
+                // Determine borders dynamically
+                // Right border thick if it's end of a box (but not the very last column)
+                if ((c + 1) % boxWidth === 0 && c !== gridSize - 1) {
+                    classes += " border-r-thick";
+                }
+                // Bottom border thick if it's end of a box (but not the very last row)
+                if ((r + 1) % boxHeight === 0 && r !== gridSize - 1) {
+                    classes += " border-b-thick";
+                }
+
+                cell.className = classes;
+                cell.dataset.r = r;
+                cell.dataset.c = c;
+                cell.onclick = () => selectCell(r, c);
+                rowDiv.appendChild(cell);
+            }
+            container.appendChild(rowDiv);
+        }
+        
+        // Update Numpad visibility
+        document.querySelectorAll('.numpad-btn').forEach(btn => {
+            const n = parseInt(btn.dataset.num);
+            if (n > gridSize) {
+                btn.classList.add('hidden');
+            } else {
+                btn.classList.remove('hidden');
+            }
         });
-        if(active) requestAnimationFrame(tick);
-      }
-      tick();
-    }
+        
+        // Update Numpad grid layout
+        const pad = document.getElementById('numpad');
+        if (gridSize === 6) {
+            pad.className = "grid grid-cols-6 gap-2 mb-6 w-full max-w-[360px] mx-auto";
+        } else {
+            pad.className = "grid grid-cols-9 gap-1 mb-6";
+        }
+    };
 
-    els.btnStart.addEventListener('click', startSequence);
-    els.btnReset.addEventListener('click', init);
-    document.getElementById('modal-close').addEventListener('click', init);
+    const renderBoard = () => {
+        const cells = document.querySelectorAll('.sudoku-cell');
+        const selectedVal = (selectedCell.r !== -1) ? currentBoard[selectedCell.r][selectedCell.c] : 0;
+
+        cells.forEach(cell => {
+            const r = parseInt(cell.dataset.r);
+            const c = parseInt(cell.dataset.c);
+            const val = currentBoard[r][c];
+            const isFixed = initialBoard[r][c] !== 0;
+            const isSelected = selectedCell.r === r && selectedCell.c === c;
+
+            cell.classList.remove('selected', 'highlighted', 'same-number', 'fixed-num', 'user-num', 'error-num');
+            cell.innerHTML = '';
+            
+            if (val !== 0) {
+                cell.textContent = val;
+                cell.classList.add(isFixed ? 'fixed-num' : 'user-num');
+                if (!isFixed && val !== solutionBoard[r][c]) {
+                    cell.classList.add('error-num');
+                }
+            } else {
+                // Render Notes
+                if (notesBoard[r][c].size > 0) {
+                    const noteGrid = document.createElement('div');
+                    noteGrid.className = `note-grid ${gridSize === 9 ? 'note-grid-9' : 'note-grid-6'}`;
+                    for (let i = 1; i <= gridSize; i++) {
+                        const noteSpan = document.createElement('span');
+                        noteSpan.className = 'note-num';
+                        if (notesBoard[r][c].has(i)) {
+                            noteSpan.textContent = i;
+                        }
+                        noteGrid.appendChild(noteSpan);
+                    }
+                    cell.appendChild(noteGrid);
+                }
+            }
+
+            // Highlighting
+            if (isSelected) {
+                cell.classList.add('selected');
+            } else if (selectedCell.r !== -1) {
+                const sameRow = r === selectedCell.r;
+                const sameCol = c === selectedCell.c;
+                const startR = Math.floor(selectedCell.r / boxHeight) * boxHeight;
+                const startC = Math.floor(selectedCell.c / boxWidth) * boxWidth;
+                const sameBox = r >= startR && r < startR + boxHeight && c >= startC && c < startC + boxWidth;
+                
+                if (sameRow || sameCol || sameBox) {
+                    cell.classList.add('highlighted');
+                }
+                if (val !== 0 && selectedVal === val) {
+                    cell.classList.add('same-number');
+                }
+            }
+        });
+    };
+
+    const selectCell = (r, c) => {
+        if (!isGameActive) return;
+        selectedCell = { r, c };
+        renderBoard();
+    };
+
+    // --- Interaction ---
+
+    const toggleNoteMode = () => {
+        isNoteMode = !isNoteMode;
+        const btn = document.getElementById('btn-note');
+        const ind = document.getElementById('note-indicator');
+        
+        if (isNoteMode) {
+            btn.classList.add('toggle-active');
+            ind.textContent = "ON";
+            ind.style.opacity = "1";
+        } else {
+            btn.classList.remove('toggle-active');
+            ind.textContent = "OFF";
+            ind.style.opacity = "0.5";
+        }
+    };
     
-    // Initialize
-    init();
-  </script>
+    const toggleZenMode = () => {
+        isZenMode = !isZenMode;
+        const btn = document.getElementById('btn-zen');
+        const mistakesEl = document.getElementById('mistakes');
+        const labelEl = document.getElementById('mistakes-label');
+
+        if (isZenMode) {
+            btn.classList.add('zen-active');
+            mistakesEl.innerHTML = '<i class="fas fa-infinity text-lg"></i>';
+            mistakesEl.className = 'text-sm font-bold text-emerald-500 flex items-center justify-center h-5';
+            labelEl.textContent = "Zen Mode";
+            labelEl.className = "text-[10px] text-emerald-600 uppercase font-bold block mb-1";
+        } else {
+            btn.classList.remove('zen-active');
+            labelEl.textContent = "Mistakes";
+            labelEl.className = "text-[10px] text-gray-400 uppercase font-bold block mb-1";
+            updateMistakes();
+        }
+    };
+
+    const setupInputs = () => {
+        document.querySelectorAll('.numpad-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                if (!isGameActive) return;
+                handleInput(parseInt(btn.dataset.num));
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!isGameActive) return;
+            const key = e.key;
+            
+            if (key === 'n' || key === 'N') {
+                toggleNoteMode();
+                return;
+            }
+
+            if (key >= '1' && key <= gridSize.toString()) {
+                handleInput(parseInt(key));
+                return;
+            }
+            if (key === 'Backspace' || key === 'Delete' || key === '0') {
+                eraseCell();
+                return;
+            }
+
+            if (selectedCell.r === -1) {
+                selectCell(0, 0);
+                return;
+            }
+            let { r, c } = selectedCell;
+            if (key === 'ArrowUp') r = Math.max(0, r - 1);
+            if (key === 'ArrowDown') r = Math.min(gridSize - 1, r + 1);
+            if (key === 'ArrowLeft') c = Math.max(0, c - 1);
+            if (key === 'ArrowRight') c = Math.min(gridSize - 1, c + 1);
+            
+            if (r !== selectedCell.r || c !== selectedCell.c) selectCell(r, c);
+        });
+    };
+
+    const saveState = () => {
+        if(history.length > 10) history.shift();
+        history.push({
+            board: JSON.parse(JSON.stringify(currentBoard)),
+            notes: JSON.parse(JSON.stringify(Array.from(notesBoard).map(row => row.map(set => Array.from(set)))))
+        });
+    };
+
+    const undo = () => {
+        if (history.length === 0 || !isGameActive) return;
+        const lastState = history.pop();
+        currentBoard = lastState.board;
+        notesBoard = lastState.notes.map(row => row.map(arr => new Set(arr)));
+        renderBoard();
+    };
+
+    const handleInput = (num) => {
+        if (selectedCell.r === -1) return;
+        const { r, c } = selectedCell;
+        if (initialBoard[r][c] !== 0) return; 
+
+        saveState();
+
+        if (isNoteMode) {
+            if (currentBoard[r][c] === 0) {
+                if (notesBoard[r][c].has(num)) {
+                    notesBoard[r][c].delete(num);
+                } else {
+                    notesBoard[r][c].add(num);
+                }
+                renderBoard();
+            }
+        } else {
+            if (currentBoard[r][c] === num) return;
+
+            currentBoard[r][c] = num;
+            notesBoard[r][c].clear();
+            
+            if (num !== solutionBoard[r][c]) {
+                // In Zen mode, we don't increment the fatal counter, but we still show the error
+                if (!isZenMode) {
+                    mistakes++;
+                    updateMistakes();
+                }
+                
+                showMessage(isZenMode ? "Try again" : "Mistake!", true);
+                
+                if (!isZenMode && mistakes >= MAX_MISTAKES) {
+                    gameOver();
+                }
+            } else {
+                cleanUpNotes(r, c, num);
+                checkWin();
+            }
+            renderBoard();
+        }
+    };
+
+    const cleanUpNotes = (row, col, num) => {
+        for(let i=0; i<gridSize; i++) {
+            notesBoard[row][i].delete(num);
+            notesBoard[i][col].delete(num);
+        }
+        let startRow = Math.floor(row / boxHeight) * boxHeight;
+        let startCol = Math.floor(col / boxWidth) * boxWidth;
+        for (let i = 0; i < boxHeight; i++) {
+            for (let j = 0; j < boxWidth; j++) {
+                notesBoard[startRow + i][startCol + j].delete(num);
+            }
+        }
+    };
+
+    const eraseCell = () => {
+        if (selectedCell.r === -1) return;
+        const {r, c} = selectedCell;
+        if (initialBoard[r][c] !== 0) return;
+
+        saveState();
+        currentBoard[r][c] = 0;
+        renderBoard();
+    };
+
+    const useHint = () => {
+        if (!isGameActive || selectedCell.r === -1) {
+            showMessage("Select a cell first!");
+            return;
+        }
+        const {r, c} = selectedCell;
+        if (currentBoard[r][c] !== 0) {
+            showMessage("Cell already filled");
+            return;
+        }
+
+        saveState();
+        currentBoard[r][c] = solutionBoard[r][c];
+        notesBoard[r][c].clear();
+        cleanUpNotes(r, c, currentBoard[r][c]);
+        renderBoard();
+        checkWin();
+    };
+
+    const checkWin = () => {
+        for (let r = 0; r < gridSize; r++) {
+            for (let c = 0; c < gridSize; c++) {
+                if (currentBoard[r][c] !== solutionBoard[r][c]) return;
+            }
+        }
+        endGame(true);
+    };
+
+    const updateMistakes = () => {
+        if (isZenMode) return; // Don't overwrite Zen UI
+        const el = document.getElementById('mistakes');
+        el.textContent = `${mistakes}/${MAX_MISTAKES}`;
+        el.className = `text-sm font-bold ${mistakes > 0 ? 'text-red-600' : 'text-gray-700'}`;
+    };
+
+    const showMessage = (msg, isError = false) => {
+        const el = document.getElementById('message-area');
+        el.textContent = msg;
+        el.className = `h-6 text-sm font-bold text-center transition-opacity duration-300 mb-2 ${isError ? 'text-red-500' : 'text-green-600'}`;
+        el.style.opacity = '1';
+        setTimeout(() => {
+            el.style.opacity = '0';
+        }, 2000);
+    };
+
+    // --- Game Flow ---
+
+    const startTimer = () => {
+        stopTimer();
+        secondsElapsed = 0;
+        updateTimerDisplay();
+        timerInterval = setInterval(() => {
+            secondsElapsed++;
+            updateTimerDisplay();
+        }, 1000);
+    };
+
+    const stopTimer = () => {
+        clearInterval(timerInterval);
+    };
+
+    const updateTimerDisplay = () => {
+        const min = Math.floor(secondsElapsed / 60).toString().padStart(2, '0');
+        const sec = (secondsElapsed % 60).toString().padStart(2, '0');
+        document.getElementById('timer').textContent = `${min}:${sec}`;
+    };
+
+    const newGame = () => {
+        const difficulty = document.getElementById('difficulty').value;
+        generatePuzzle(difficulty);
+        
+        createGridHTML(); 
+        renderBoard();
+
+        isGameActive = true;
+        selectedCell = { r: -1, c: -1 };
+        
+        // Reset States
+        isNoteMode = false;
+        document.getElementById('btn-note').classList.remove('toggle-active');
+        document.getElementById('note-indicator').textContent = "OFF";
+        document.getElementById('note-indicator').style.opacity = "0.5";
+        
+        // Reset Zen Mode logic (Keep button state if desired? Usually better to reset)
+        isZenMode = false;
+        document.getElementById('btn-zen').classList.remove('zen-active');
+        document.getElementById('mistakes-label').textContent = "Mistakes";
+        document.getElementById('mistakes-label').className = "text-[10px] text-gray-400 uppercase font-bold block mb-1";
+        updateMistakes();
+
+        startTimer();
+        document.getElementById('game-modal').classList.add('hidden');
+    };
+
+    const gameOver = () => {
+        endGame(false);
+    };
+
+    const endGame = (win) => {
+        isGameActive = false;
+        stopTimer();
+        
+        const modal = document.getElementById('game-modal');
+        const icon = document.getElementById('modal-icon');
+        const title = document.getElementById('modal-title');
+        const msg = document.getElementById('modal-msg');
+        
+        if (win) {
+            icon.innerHTML = '<i class="fas fa-trophy text-yellow-400"></i>';
+            title.textContent = "Solved!";
+            const min = Math.floor(secondsElapsed / 60).toString().padStart(2, '0');
+            const sec = (secondsElapsed % 60).toString().padStart(2, '0');
+            msg.textContent = `Perfect! You finished the puzzle in ${min}:${sec}.`;
+        } else {
+            icon.innerHTML = '<i class="fas fa-times-circle text-red-500"></i>';
+            title.textContent = "Game Over";
+            msg.textContent = "You made 3 mistakes. Better luck next time!";
+        }
+        
+        modal.classList.remove('hidden');
+    };
+
+    const closeModal = () => {
+        newGame(); 
+    };
+
+</script>
 </body>
 </html>
