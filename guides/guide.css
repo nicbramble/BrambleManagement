@@ -1,0 +1,38 @@
+.guide-shell { width: min(980px, calc(100% - 40px)); margin-inline: auto; }
+.guide-nav { width: 100%; }
+.guide-loading, .guide-error { min-height: 70vh; display: grid; place-items: center; color: var(--muted); }
+.guide-header { padding: 96px 0 64px; border-bottom: 1px solid var(--line); }
+.guide-header h1 { max-width: 900px; margin-bottom: 28px; font-size: clamp(3.6rem, 9vw, 7.8rem); }
+.guide-dek { max-width: 700px; margin-bottom: 0; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.65; }
+.guide-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; color: var(--accent); font: 600 .78rem/1 "Oswald", sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+.guide-meta i { width: 28px; height: 1px; background: currentColor; }
+.guide-content {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 72px 0 84px;
+  font-size: 1.05rem;
+  line-height: 1.78;
+}
+.guide-content p { margin-bottom: 1.45em; }
+.guide-content h2 { margin: 1.25em 0 .4em; font-size: clamp(2rem, 5vw, 3.55rem); }
+.guide-content h3 { margin: 2em 0 .6em; font: 600 1.35rem/1.25 "Oswald", sans-serif; text-transform: uppercase; }
+.guide-content ol, .guide-content ul { margin: 0 0 1.8em; padding-left: 1.4em; }
+.guide-content li { margin-bottom: .65em; padding-left: .3em; }
+.guide-content strong { color: var(--accent-dark); }
+.guide-cta { margin: 0 calc(50% - 50vw); padding: 78px max(20px, calc((100vw - 980px) / 2)); background: var(--accent); color: white; }
+.guide-cta-inner { display: grid; grid-template-columns: 1fr auto; gap: 44px; align-items: end; max-width: 980px; margin-inline: auto; }
+.guide-cta h2 { max-width: 660px; }
+.guide-cta p { max-width: 610px; margin: 22px 0 0; color: rgba(255,255,255,.78); line-height: 1.6; }
+.guide-cta .eyebrow { color: var(--ink); }
+.guide-footer { width: 100%; }
+.share-button { justify-self: end; padding: 0; border: 0; border-bottom: 1px solid currentColor; background: transparent; color: var(--muted); cursor: pointer; font-size: .75rem; }
+.share-button:hover { color: var(--accent); }
+@media (max-width: 700px) {
+  .guide-shell { width: min(100% - 28px, 980px); }
+  .guide-header { padding-block: 64px 42px; }
+  .guide-content { padding-block: 50px 64px; }
+  .guide-cta-inner { grid-template-columns: 1fr; }
+  .guide-cta .button { width: 100%; }
+  .guide-footer { grid-template-columns: 1fr auto; }
+  .guide-footer p { grid-column: 1 / -1; grid-row: 2; }
+}

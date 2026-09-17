@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171512">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Resource Admin — Nic Bramble</title>
+  <script>
+    if (sessionStorage.getItem("bramble-admin-unlocked") !== "true") {
+      window.location.replace("../#top");
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <script src="../site-config.js"></script>
+  <script type="module" src="admin.js?v=2"></script>
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div class="dashboard" id="dashboard-view">
+    <header class="dashboard-bar">
+      <a class="wordmark" href="../">NIC<span>.BUILDZ</span></a>
+      <div>
+        <a href="../" target="_blank" rel="noopener">View site ↗</a>
+        <button id="logout-button" type="button">Exit admin</button>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <aside class="resource-sidebar">
+        <div class="sidebar-heading">
+          <div><span>Content</span><h2>Resources</h2></div>
+          <button class="icon-button" id="new-button" type="button" aria-label="Create a new resource">+</button>
+        </div>
+        <div id="resource-list" class="resource-list"></div>
+      </aside>
+
+      <section class="editor-panel">
+        <div id="local-mode-notice" class="setup-notice" hidden>
+          Preview mode: changes are saved in this browser. Connect the shared resource database before publishing the site.
+        </div>
+        <div class="editor-heading">
+          <div><span id="editor-kicker">New resource</span><h2 id="editor-title">Untitled</h2></div>
+          <div class="editor-actions">
+            <a id="preview-link" class="text-button" href="#" target="_blank" hidden>Preview ↗</a>
+            <button id="delete-button" class="text-button danger" type="button" hidden>Delete</button>
+          </div>
+        </div>
+
+        <form id="resource-form" class="resource-form">
+          <input type="hidden" id="resource-id">
+          <div class="field-grid">
+            <label class="wide">Title<input id="title" required placeholder="The guide people asked for"></label>
+            <label>URL slug<input id="slug" required placeholder="lead-follow-up-guide" pattern="[a-z0-9-]+"></label>
+            <label>Category<input id="category" required placeholder="AI + Automation"></label>
+            <label class="wide">Short description<textarea id="description" rows="3" required placeholder="One clear sentence about what they will get."></textarea></label>
+            <label class="wide">Guide content <span class="hint">Use ## for headings, **bold**, and numbered lists.</span><textarea id="body" rows="16" required placeholder="Write the full resource here..."></textarea></label>
+            <label>Button text<input id="cta-label" value="Build this for my business"></label>
+            <label>Button destination<input id="cta-url" type="url" value="https://mtnautomations.com/start"></label>
+            <label>Cover image <span class="hint">Optional</span><input id="cover-image" type="file" accept="image/png,image/jpeg,image/webp"></label>
+            <label>Display order<input id="sort-order" type="number" value="100" min="0" step="1"></label>
+          </div>
+          <div class="switches">
+            <label><input id="published" type="checkbox" checked><span>Published</span></label>
+            <label><input id="featured" type="checkbox"><span>Featured card</span></label>
+          </div>
+          <button class="button primary save-button" type="submit">Save resource <span>→</span></button>
+          <p class="form-message" id="editor-message"></p>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

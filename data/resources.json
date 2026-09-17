@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "automation-opportunity-audit",
+    "title": "Find your best automation opportunity",
+    "category": "AI + Automation",
+    "description": "A quick audit to uncover the repetitive task that is costing your business the most time.",
+    "body": "Most businesses do not need more software. They need one annoying, repetitive process to stop eating the team's week.\n\n## The 15-minute audit\n\nWrite down every task you repeat weekly. For each task, score it from 1–5 on frequency, frustration, and business impact. Multiply the three numbers. Your highest score is usually the best place to begin.\n\n## What makes a strong first automation?\n\nLook for a process with a clear trigger, predictable steps, and a measurable finish line. Lead follow-up, intake, reporting, scheduling, and routine customer updates are often strong candidates.\n\n## Keep the first version small\n\nAutomate one outcome, run it for two weeks, then improve it using real feedback. A useful system today beats a perfect system next quarter.",
+    "cta_label": "Build this for my business",
+    "cta_url": "https://mtnautomations.com/start?utm_source=bramblemanagement&utm_medium=resource&utm_campaign=automation_audit",
+    "featured": true,
+    "published": true,
+    "sort_order": 10
+  },
+  {
+    "slug": "better-ai-prompts",
+    "title": "The four-part prompt that gets useful work",
+    "category": "AI + Automation",
+    "description": "A reusable framework for giving AI enough context to produce something you can actually use.",
+    "body": "A good prompt does not need to be long. It needs to remove ambiguity.\n\n## Use four parts\n\n1. **Role:** Who should the AI act like?\n2. **Context:** What does it need to know about your business and audience?\n3. **Task:** What exact outcome do you want?\n4. **Constraints:** What should the answer include, avoid, or sound like?\n\n## The template\n\nAct as [role]. Here is the relevant context: [context]. Create [specific deliverable]. The result must [constraints and quality bar].\n\nSave this structure and fill it in instead of starting every prompt from scratch.",
+    "cta_label": "Turn this into a workflow",
+    "cta_url": "https://mtnautomations.com/start?utm_source=bramblemanagement&utm_medium=resource&utm_campaign=prompt_framework",
+    "featured": false,
+    "published": true,
+    "sort_order": 20
+  }
+]
