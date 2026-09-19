@@ -7,6 +7,8 @@ create table if not exists public.resources (
   body text not null default '',
   cta_label text not null default 'Build this for my business',
   cta_url text not null default 'https://mtnautomations.com/start',
+  download_url text,
+  download_label text,
   image_url text,
   published boolean not null default false,
   featured boolean not null default false,
@@ -14,6 +16,9 @@ create table if not exists public.resources (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+alter table public.resources add column if not exists download_url text;
+alter table public.resources add column if not exists download_label text;
 
 alter table public.resources enable row level security;
 

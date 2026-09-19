@@ -211,6 +211,15 @@ h2 {
   transition: transform .25s ease;
 }
 .resource-card:hover::after { transform: translate(3px, -3px); }
+.resource-card-body { min-height: 100%; display: flex; flex: 1; flex-direction: column; }
+.resource-card.has-image { padding: 0; }
+.resource-card.has-image .resource-card-body { min-height: 250px; padding: 24px 26px 26px; }
+.resource-thumb { height: 240px; overflow: hidden; background: var(--ink); border-bottom: 1px solid rgba(255,255,255,.12); }
+.resource-thumb img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; transition: transform .35s ease; }
+.resource-card.featured.has-image { display: grid; grid-template-columns: 1fr 1fr; }
+.resource-card.featured.has-image .resource-thumb { height: 100%; min-height: 390px; border-right: 1px solid rgba(255,255,255,.12); border-bottom: 0; }
+.resource-card.featured.has-image .resource-card-body { min-height: 390px; }
+.resource-card:hover .resource-thumb img { transform: scale(1.025); }
 .resource-card .tag { color: var(--accent); font: 600 .72rem/1 "Oswald", sans-serif; letter-spacing: .1em; text-transform: uppercase; }
 .resource-card h3 { max-width: 84%; margin: auto 0 14px; font: 600 clamp(1.8rem, 3.1vw, 3rem)/1.04 "Oswald", sans-serif; text-transform: uppercase; }
 .resource-card p { margin-bottom: 0; color: var(--muted); line-height: 1.5; font-size: .92rem; }
@@ -262,6 +271,9 @@ footer p { margin: 0; }
   .hero-actions { justify-content: center; }
   .section-heading { grid-template-columns: 1fr; gap: 20px; }
   .resource-card, .resource-card.featured { grid-column: span 6; }
+  .resource-card.featured.has-image { display: flex; }
+  .resource-card.featured.has-image .resource-thumb { height: auto; min-height: 0; aspect-ratio: 1; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .resource-card.featured.has-image .resource-card-body { min-height: 250px; }
   .build-cta { grid-template-columns: 1fr; align-items: start; }
   .button-dark { justify-self: start; }
 }
@@ -277,6 +289,7 @@ footer p { margin: 0; }
   .manifesto { padding-block: 46px 50px; }
   .resources-section { padding-block: 80px 88px; }
   .resource-card, .resource-card.featured { grid-column: 1 / -1; min-height: 300px; }
+  .resource-thumb { height: auto; aspect-ratio: 1; }
   .build-cta { width: 100%; margin-bottom: 0; }
   .build-cta .button { justify-self: stretch; min-width: 0; }
   footer { min-height: 140px; grid-template-columns: 1fr auto; }

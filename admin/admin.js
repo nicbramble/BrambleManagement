@@ -21,10 +21,12 @@ function showToast(message) {
 
 async function getBrowserResources() {
   const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
-  if (saved) return JSON.parse(saved);
   const response = await fetch("../data/resources.json");
   if (!response.ok) throw new Error("Starter resources could not be loaded.");
-  const items = await response.json();
+  const starterItems = await response.json();
+  const merged = new Map(starterItems.map(item => [item.slug, item]));
+  if (saved) JSON.parse(saved).forEach(item => merged.set(item.slug, item));
+  const items = [...merged.values()].sort((a, b) => (a.sort_order ?? 100) - (b.sort_order ?? 100));
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items));
   return items;
 }
@@ -77,6 +79,8 @@ function clearEditor() {
   setField("#sort-order", 100);
   setField("#cta-label", "Build this for my business");
   setField("#cta-url", "https://mtnautomations.com/start");
+  setField("#download-url", "");
+  setField("#download-label", "");
   $("#published").checked = true;
   $("#editor-kicker").textContent = "New resource";
   $("#editor-title").textContent = "Untitled";
@@ -98,6 +102,8 @@ function editResource(item) {
   setField("#body", item.body);
   setField("#cta-label", item.cta_label);
   setField("#cta-url", item.cta_url);
+  setField("#download-url", item.download_url);
+  setField("#download-label", item.download_label);
   setField("#sort-order", item.sort_order ?? 100);
   $("#published").checked = Boolean(item.published);
   $("#featured").checked = Boolean(item.featured);
@@ -141,6 +147,8 @@ function getPayload(imageUrl) {
     body: $("#body").value.trim(),
     cta_label: $("#cta-label").value.trim(),
     cta_url: $("#cta-url").value.trim(),
+    download_url: $("#download-url").value.trim() || null,
+    download_label: $("#download-label").value.trim() || null,
     image_url: imageUrl,
     sort_order: Number($("#sort-order").value) || 100,
     published: $("#published").checked,

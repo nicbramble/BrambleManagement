@@ -17,11 +17,14 @@ async function getResources() {
       console.warn("Using local resources while the resource service is unavailable.", error);
     }
   }
-  const browserResources = localStorage.getItem("bramble_resources");
-  if (browserResources) return JSON.parse(browserResources).filter(item => item.published !== false);
   const response = await fetch(LOCAL_RESOURCE_URL);
   if (!response.ok) throw new Error("Resources could not be loaded.");
-  return response.json();
+  const starterResources = await response.json();
+  const browserResources = localStorage.getItem("bramble_resources");
+  if (!browserResources) return starterResources;
+  const merged = new Map(starterResources.map(item => [item.slug, item]));
+  JSON.parse(browserResources).forEach(item => merged.set(item.slug, item));
+  return [...merged.values()].filter(item => item.published !== false).sort((a, b) => (a.sort_order ?? 100) - (b.sort_order ?? 100));
 }
 
 function renderFilters(resources) {
@@ -48,10 +51,13 @@ function renderResources(resources, filter = "All") {
     return;
   }
   target.innerHTML = visible.map(item => `
-    <a class="resource-card${item.featured ? " featured" : ""}" href="guides/?slug=${encodeURIComponent(item.slug)}">
-      <span class="tag">${escapeHtml(item.category || "Guide")}</span>
-      <h3>${escapeHtml(item.title)}</h3>
-      <p>${escapeHtml(item.description)}</p>
+    <a class="resource-card${item.featured ? " featured" : ""}${item.image_url ? " has-image" : ""}" href="guides/?slug=${encodeURIComponent(item.slug)}">
+      ${item.image_url ? `<div class="resource-thumb"><img src="${escapeHtml(item.image_url)}" alt="" loading="lazy"></div>` : ""}
+      <div class="resource-card-body">
+        <span class="tag">${escapeHtml(item.category || "Guide")}</span>
+        <h3>${escapeHtml(item.title)}</h3>
+        <p>${escapeHtml(item.description)}</p>
+      </div>
     </a>
   `).join("");
 }

@@ -54,7 +54,8 @@ async function loadGuide(slug) {
   }
   const browserResources = localStorage.getItem("bramble_resources");
   if (browserResources) {
-    return JSON.parse(browserResources).find(item => item.slug === slug && item.published !== false);
+    const savedItem = JSON.parse(browserResources).find(item => item.slug === slug && item.published !== false);
+    if (savedItem) return savedItem;
   }
   const response = await fetch("../data/resources.json");
   const items = await response.json();
@@ -72,7 +73,11 @@ function renderGuide(item) {
         <h1>${guideEscape(item.title)}</h1>
         <p class="guide-dek">${guideEscape(item.description)}</p>
       </header>
-      <div class="guide-content">${renderBody(item.body)}</div>
+      ${item.image_url ? `<img class="guide-cover" src="${guideEscape(item.image_url)}" alt="${guideEscape(item.title)} thumbnail">` : ""}
+      <div class="guide-content">
+        ${renderBody(item.body)}
+        ${item.download_url ? `<a class="button button-primary guide-download" href="${guideEscape(item.download_url)}" target="_blank" rel="noopener">${guideEscape(item.download_label || "Download the resource")} <span aria-hidden="true">↓</span></a>` : ""}
+      </div>
     </article>
     <section class="guide-cta">
       <div class="guide-cta-inner">
