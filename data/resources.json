@@ -1,5 +1,20 @@
 [
   {
+    "slug": "chatgpt-image-codes",
+    "title": "Make your posts more interesting",
+    "category": "Free Prompt Pack",
+    "description": "20 reusable ChatGPT image-style shortcuts for turning ordinary ideas into scroll-stopping posts.",
+    "body": "Your next post does not need a bigger idea. It needs a stronger visual direction. This free six-page pack gives you 20 memorable style codes and the full prompts that make each one work.\n\n## What is inside\n\nUse /cinematic, /editorial, /product, /stopmotion, /polaroid, /bluehour, /goldenhour, /macro, /isometric, /flatlay, /retroprint, /neon, /minimal, /surreal, /luxury, /comic, /paperart, /tinyworld, /explodedview, and /beforeafter.\n\n## How to use the codes\n\nThese are creator-made prompt shortcuts, not built-in ChatGPT commands. Pick a code, replace the bracketed details in its expanded prompt, and paste the full prompt into ChatGPT. The guide also includes a simple formula for building your own styles.\n\n## Get a better image\n\nStart with a clear subject, purpose, and style. Add the framing, lighting, and constraints that matter. Once the core idea looks right, make one targeted revision at a time and say what should stay exactly the same.\n\n## Make it yours\n\nUse the examples as a starting point, then swap in your business, products, customers, colors, and story. A repeatable visual language makes your content recognizable before anyone reads the caption.",
+    "cta_label": "Build an AI content system with me",
+    "cta_url": "https://mtnautomations.com/start?utm_source=bramblemanagement&utm_medium=resource&utm_campaign=image_codes",
+    "download_url": "/downloads/chatgpt-image-codes.pdf",
+    "download_label": "Download the 20 image codes",
+    "image_url": "/assets/chatgpt-image-codes-thumbnail.jpg",
+    "featured": true,
+    "published": true,
+    "sort_order": 0
+  },
+  {
     "slug": "meta-avatar-prompt-pack",
     "title": "20 prompts to make your Meta avatar stand out",
     "category": "Free Prompt Pack",
