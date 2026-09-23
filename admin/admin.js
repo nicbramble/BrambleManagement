@@ -1,8 +1,8 @@
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-
 const config = window.BRAMBLE_CONFIG || {};
 const useSharedDatabase = Boolean(config.supabaseUrl && config.supabaseAnonKey);
-const supabase = useSharedDatabase ? createClient(config.supabaseUrl, config.supabaseAnonKey) : null;
+// Shared editing must use real authentication before it can be enabled.
+// The local preview needs no third-party JavaScript or credentials.
+const supabase = null;
 const LOCAL_STORAGE_KEY = "bramble_resources";
 let resources = [];
 let currentResource = null;
@@ -217,6 +217,11 @@ $("#logout-button").addEventListener("click", () => {
 });
 
 async function init() {
+  if (useSharedDatabase) {
+    $("#resource-form").querySelectorAll('input, textarea, button').forEach(field => { field.disabled = true; });
+    $("#new-button").disabled = true;
+    throw new Error('Shared editing requires authenticated access. Use GitHub for published changes.');
+  }
   $("#local-mode-notice").hidden = useSharedDatabase;
   await refreshResources();
   clearEditor();

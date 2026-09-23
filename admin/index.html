@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#171512">
   <meta name="robots" content="noindex, nofollow">
   <title>Resource Admin — Nic Bramble</title>
-  <script>
-    if (sessionStorage.getItem("bramble-admin-unlocked") !== "true") {
-      window.location.replace("../#top");
-    }
-  </script>
+  <script src="access.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
@@ -25,7 +23,7 @@
     <header class="dashboard-bar">
       <a class="wordmark" href="../">NIC<span>.BUILDZ</span></a>
       <div>
-        <a href="../" target="_blank" rel="noopener">View site ↗</a>
+        <a href="../" target="_blank" rel="noopener noreferrer">View site ↗</a>
         <button id="logout-button" type="button">Exit admin</button>
       </div>
     </header>
@@ -41,12 +39,12 @@
 
       <section class="editor-panel">
         <div id="local-mode-notice" class="setup-notice" hidden>
-          Preview mode: changes are saved in this browser. Connect the shared resource database before publishing the site.
+          Preview mode: changes are saved only in this browser. Publish resource changes through GitHub. Shared editing requires authenticated access.
         </div>
         <div class="editor-heading">
           <div><span id="editor-kicker">New resource</span><h2 id="editor-title">Untitled</h2></div>
           <div class="editor-actions">
-            <a id="preview-link" class="text-button" href="#" target="_blank" hidden>Preview ↗</a>
+            <a id="preview-link" class="text-button" href="#" target="_blank" rel="noopener noreferrer" hidden>Preview ↗</a>
             <button id="delete-button" class="text-button danger" type="button" hidden>Delete</button>
           </div>
         </div>

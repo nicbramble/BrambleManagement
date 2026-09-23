@@ -52,7 +52,7 @@ function renderResources(resources, filter = "All") {
   }
   target.innerHTML = visible.map(item => `
     <a class="resource-card${item.featured ? " featured" : ""}${item.image_url ? " has-image" : ""}" href="guides/?slug=${encodeURIComponent(item.slug)}">
-      ${item.image_url ? `<div class="resource-thumb"><img src="${escapeHtml(item.image_url)}" alt="" loading="lazy"></div>` : ""}
+      ${item.image_url ? `<div class="resource-thumb"><img src="${escapeHtml(window.brambleSafeUrl(item.image_url, {image: true, fallback: ''}))}" alt="" loading="lazy"></div>` : ""}
       <div class="resource-card-body">
         <span class="tag">${escapeHtml(item.category || "Guide")}</span>
         <h3>${escapeHtml(item.title)}</h3>

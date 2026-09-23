@@ -73,10 +73,10 @@ function renderGuide(item) {
         <h1>${guideEscape(item.title)}</h1>
         <p class="guide-dek">${guideEscape(item.description)}</p>
       </header>
-      ${item.image_url ? `<img class="guide-cover" src="${guideEscape(item.image_url)}" alt="${guideEscape(item.title)} thumbnail">` : ""}
+      ${item.image_url ? `<img class="guide-cover" src="${guideEscape(window.brambleSafeUrl(item.image_url, {image: true, fallback: ''}))}" alt="${guideEscape(item.title)} thumbnail">` : ""}
       <div class="guide-content">
         ${renderBody(item.body)}
-        ${item.download_url ? `<a class="button button-primary guide-download" href="${guideEscape(item.download_url)}" target="_blank" rel="noopener">${guideEscape(item.download_label || "Download the resource")} <span aria-hidden="true">↓</span></a>` : ""}
+        ${item.download_url ? `<a class="button button-primary guide-download" href="${guideEscape(window.brambleSafeUrl(item.download_url))}" target="_blank" rel="noopener noreferrer">${guideEscape(item.download_label || "Download the resource")} <span aria-hidden="true">↓</span></a>` : ""}
       </div>
     </article>
     <section class="guide-cta">
@@ -86,7 +86,7 @@ function renderGuide(item) {
           <h2>Let’s build it for your business.</h2>
           <p>Tell me where you’re stuck and what a win would look like. We’ll find the right system to build.</p>
         </div>
-        <a class="button button-dark" href="${guideEscape(item.cta_url || "https://mtnautomations.com/start")}" target="_blank" rel="noopener">${guideEscape(item.cta_label || "Start a project")} <span aria-hidden="true">↗</span></a>
+        <a class="button button-dark" href="${guideEscape(window.brambleSafeUrl(item.cta_url, {fallback: 'https://mtnautomations.com/start'}))}" target="_blank" rel="noopener noreferrer">${guideEscape(item.cta_label || "Start a project")} <span aria-hidden="true">↗</span></a>
       </div>
     </section>`;
 }

@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src https://script.google.com https://*.googleusercontent.com; form-action https://script.google.com https://*.googleusercontent.com; base-uri 'none'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4efe5">
   <meta name="description" content="Practical automations, apps, and AI systems for growing businesses—built by Nic Bramble.">
@@ -14,6 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="site-config.js" defer></script>
+  <script src="safe-url.js" defer></script>
+  <script src="newsletter.js" defer></script>
   <script src="app.js?v=2" defer></script>
 </head>
 <body>
@@ -21,7 +25,7 @@
     <header class="hero" id="top">
       <nav class="topbar" aria-label="Main navigation">
         <a class="wordmark" href="#top" aria-label="Nic Bramble home">NIC<span>.BUILDZ</span></a>
-        <a class="nav-cta" href="https://mtnautomations.com/start?utm_source=bramblemanagement&utm_medium=link_in_bio&utm_campaign=nic_buildz" target="_blank" rel="noopener">Hire me <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta" href="https://mtnautomations.com/start?utm_source=bramblemanagement&utm_medium=link_in_bio&utm_campaign=nic_buildz" target="_blank" rel="noopener noreferrer">Hire me <span aria-hidden="true">↗</span></a>
       </nav>
 
       <div class="hero-grid">
@@ -36,7 +40,7 @@
           <h1>I build systems that <em>move businesses forward.</em></h1>
           <p class="intro">Hire me to build the system your business needs—or grab the free resources and build it yourself.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="https://mtnautomations.com/start?utm_source=bramblemanagement&utm_medium=link_in_bio&utm_campaign=nic_buildz" target="_blank" rel="noopener">Hire me <span aria-hidden="true">→</span></a>
+            <a class="button button-primary" href="https://mtnautomations.com/start?utm_source=bramblemanagement&utm_medium=link_in_bio&utm_campaign=nic_buildz" target="_blank" rel="noopener noreferrer">Hire me <span aria-hidden="true">→</span></a>
             <a class="button button-quiet" href="#resources">Get the free stuff <span aria-hidden="true">↓</span></a>
           </div>
         </div>
@@ -45,6 +49,32 @@
 
     <main>
       <section class="resources-section" id="resources">
+        <section class="newsletter-card" aria-labelledby="newsletter-heading">
+          <div class="newsletter-copy">
+            <p class="eyebrow">The next chapter</p>
+            <h2 id="newsletter-heading">Keep Up With My Next Big Thing</h2>
+            <p id="newsletter-description">Drop your email below. The Bramble Management newsletter is coming in early 2027.</p>
+          </div>
+          <form id="newsletter-form" method="post" aria-describedby="newsletter-description" novalidate>
+            <label for="newsletter-email">Email address</label>
+            <input id="newsletter-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby="newsletter-status">
+            <label class="newsletter-consent" for="newsletter-consent">
+              <input id="newsletter-consent" name="consent" type="checkbox" value="yes" required>
+              <span>I agree to receive email updates from Bramble Management. Unsubscribe anytime.</span>
+            </label>
+            <div class="newsletter-trap" aria-hidden="true" inert>
+              <label for="newsletter-company">Company website (leave blank)</label>
+              <input id="newsletter-company" name="company" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <input name="consent_version" type="hidden" value="2026-09-v1">
+            <input name="started_at" type="hidden">
+            <input name="request_id" type="hidden">
+            <button class="button button-primary" id="newsletter-submit" type="submit" disabled>Keep Me Updated</button>
+            <p class="newsletter-privacy">Read our <a href="privacy.html">privacy policy</a>.</p>
+            <p id="newsletter-status" class="newsletter-status" role="status" aria-live="polite" aria-atomic="true">Signup is loading…</p>
+            <noscript><p>Please enable JavaScript to use the signup form.</p></noscript>
+          </form>
+        </section>
         <div class="section-heading">
           <div>
             <p class="eyebrow">The useful corner</p>
@@ -65,13 +95,13 @@
           <h2>Let’s turn it into a system.</h2>
           <p>Tell me what’s slowing your business down. I’ll help you find the simplest useful thing to build.</p>
         </div>
-        <a class="button button-dark" href="https://mtnautomations.com/start?utm_source=bramblemanagement&utm_medium=link_in_bio&utm_campaign=bottom_cta" target="_blank" rel="noopener">Tell me about your business <span aria-hidden="true">↗</span></a>
+        <a class="button button-dark" href="https://mtnautomations.com/start?utm_source=bramblemanagement&utm_medium=link_in_bio&utm_campaign=bottom_cta" target="_blank" rel="noopener noreferrer">Tell me about your business <span aria-hidden="true">↗</span></a>
       </section>
     </main>
 
     <footer>
       <a class="wordmark" href="#top">NIC<span>.BUILDZ</span></a>
-      <p>Built to be useful.</p>
+      <p>Built to be useful. <a href="privacy.html">Privacy</a></p>
       <button type="button" id="admin-trigger" class="admin-trigger" aria-label="Bramble Management copyright">© <span id="year"></span> Bramble Management.</button>
     </footer>
   </div>
