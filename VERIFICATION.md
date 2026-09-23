@@ -56,9 +56,8 @@ deployment. The website still deploys from main; the branch remains unmerged.
 
 ## Release requirements
 
-1. Replace the clearly labeled public contact-email placeholder in `privacy.html`.
-   No suitable public contact address was found in the repository. Do not publish
-   the placeholder or begin collection without a working removal contact.
+1. Resolved: the owner supplied office@nicbuilds.com as the public privacy and
+   removal contact; it is linked in `privacy.html`.
 2. Resolve GitHub Pages HTTPS enforcement. The HTTPS site loaded successfully,
    but Pages reported `https_enforced: false` and rejected enabling it with
    “The certificate does not exist yet.” Check custom-domain DNS/any proxy and
