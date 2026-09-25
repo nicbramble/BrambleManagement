@@ -12,13 +12,36 @@ function renderBody(markdown = "") {
   const lines = markdown.replace(/\r/g, "").split("\n");
   let html = "";
   let listType = null;
+  let promptLines = null;
+  let promptNumber = 0;
+  let sectionNumber = 0;
+  let sectionTitle = "Study setup";
   const closeList = () => {
     if (listType) html += `</${listType}>`;
     listType = null;
   };
+  const closePrompt = () => {
+    const id = `prompt-${++promptNumber}`;
+    html += `<section class="prompt-card" aria-label="Prompt: ${guideEscape(sectionTitle)}">
+      <div class="prompt-toolbar"><span>Copy, customize, practice</span><button class="copy-prompt" type="button" data-copy-prompt="${id}" aria-label="Copy prompt: ${guideEscape(sectionTitle)}">Copy prompt</button></div>
+      <pre class="prompt-text" id="${id}" tabindex="0">${guideEscape(promptLines.join("\n").trim())}</pre>
+      <p class="prompt-status" role="status" aria-live="polite"></p>
+    </section>`;
+    promptLines = null;
+  };
 
   for (const line of lines) {
     const trimmed = line.trim();
+    if (promptLines !== null) {
+      if (trimmed === "```") closePrompt();
+      else promptLines.push(line);
+      continue;
+    }
+    if (trimmed === "```prompt") {
+      closeList();
+      promptLines = [];
+      continue;
+    }
     if (!trimmed) { closeList(); continue; }
     const ordered = trimmed.match(/^\d+\.\s+(.+)/);
     const unordered = trimmed.match(/^[-*]\s+(.+)/);
@@ -30,11 +53,33 @@ function renderBody(markdown = "") {
     }
     closeList();
     if (trimmed.startsWith("### ")) html += `<h3>${renderInline(trimmed.slice(4))}</h3>`;
-    else if (trimmed.startsWith("## ")) html += `<h2>${renderInline(trimmed.slice(3))}</h2>`;
+    else if (trimmed.startsWith("## ")) {
+      sectionTitle = trimmed.slice(3);
+      html += `<h2 id="section-${++sectionNumber}" tabindex="-1">${renderInline(sectionTitle)}</h2>`;
+    }
     else html += `<p>${renderInline(trimmed)}</p>`;
   }
   closeList();
+  if (promptLines !== null) closePrompt();
   return html;
+}
+
+async function copyPrompt(button) {
+  const card = button.closest(".prompt-card");
+  const prompt = card.querySelector(".prompt-text");
+  const status = card.querySelector(".prompt-status");
+  try {
+    await navigator.clipboard.writeText(prompt.textContent);
+    status.textContent = "Prompt copied. Replace the [brackets] before you send it.";
+  } catch (error) {
+    const range = document.createRange();
+    range.selectNodeContents(prompt);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    prompt.focus();
+    status.textContent = "Copy unavailable. The prompt is selected; use your device’s Copy command.";
+  }
 }
 
 async function loadGuide(slug) {
@@ -65,30 +110,41 @@ async function loadGuide(slug) {
 function renderGuide(item) {
   document.title = `${item.title} — Nic Bramble`;
   const root = document.querySelector("#guide-root");
-  root.className = "";
+  const hasPrompts = /^```prompt\s*$/m.test(item.body || "");
+  root.className = hasPrompts ? "prompt-guide" : "";
   root.innerHTML = `
     <article>
       <header class="guide-header">
         <div class="guide-meta"><span>${guideEscape(item.category || "Guide")}</span><i></i><span>Free resource</span></div>
         <h1>${guideEscape(item.title)}</h1>
         <p class="guide-dek">${guideEscape(item.description)}</p>
+        ${hasPrompts && item.download_url ? `<a class="guide-save" href="${guideEscape(window.brambleSafeUrl(item.download_url))}" download>${guideEscape(item.download_label || "Save this guide")} <span aria-hidden="true">↓</span></a>` : ""}
       </header>
+      ${hasPrompts ? '<nav class="guide-toc" aria-labelledby="toc-title"><h2 id="toc-title">Choose your study session</h2><p>Start with the setup, then jump to the skill you want to practice.</p><div class="guide-toc-links"></div></nav>' : ""}
       ${item.image_url ? `<img class="guide-cover" src="${guideEscape(window.brambleSafeUrl(item.image_url, {image: true, fallback: ''}))}" alt="${guideEscape(item.title)} thumbnail">` : ""}
       <div class="guide-content">
         ${renderBody(item.body)}
-        ${item.download_url ? `<a class="button button-primary guide-download" href="${guideEscape(window.brambleSafeUrl(item.download_url))}" target="_blank" rel="noopener noreferrer">${guideEscape(item.download_label || "Download the resource")} <span aria-hidden="true">↓</span></a>` : ""}
+        ${item.sources?.length ? `<aside class="guide-sources" aria-label="Product references"><h3>Product references</h3><p>These prompts and study routines are Nic.Buildz templates. For ChatGPT features and usage, see the official OpenAI documentation:</p><ul>${item.sources.map(source => `<li><a href="${guideEscape(window.brambleSafeUrl(source.url))}" target="_blank" rel="noopener noreferrer">${guideEscape(source.label)}</a></li>`).join("")}</ul></aside>` : ""}
+        ${item.download_url ? `<a class="button button-primary guide-download" href="${guideEscape(window.brambleSafeUrl(item.download_url))}" ${hasPrompts ? "download" : 'target="_blank" rel="noopener noreferrer"'}>${guideEscape(item.download_label || "Download the resource")} <span aria-hidden="true">↓</span></a>` : ""}
       </div>
     </article>
     <section class="guide-cta">
       <div class="guide-cta-inner">
         <div>
-          <p class="eyebrow">Want the done-for-you version?</p>
-          <h2>Let’s build it for your business.</h2>
-          <p>Tell me where you’re stuck and what a win would look like. We’ll find the right system to build.</p>
+          <p class="eyebrow">${guideEscape(item.cta_eyebrow || "Want the done-for-you version?")}</p>
+          <h2>${guideEscape(item.cta_heading || "Let’s build it for your business.")}</h2>
+          <p>${guideEscape(item.cta_description || "Tell me where you’re stuck and what a win would look like. We’ll find the right system to build.")}</p>
         </div>
         <a class="button button-dark" href="${guideEscape(window.brambleSafeUrl(item.cta_url, {fallback: 'https://mtnautomations.com/start'}))}" target="_blank" rel="noopener noreferrer">${guideEscape(item.cta_label || "Start a project")} <span aria-hidden="true">↗</span></a>
       </div>
     </section>`;
+  if (hasPrompts) {
+    const headings = root.querySelectorAll(".guide-content h2");
+    root.querySelector(".guide-toc-links").innerHTML = Array.from(headings, heading => `<a href="#${heading.id}">${guideEscape(heading.textContent)}</a>`).join("");
+    // Headings are inserted after loading the resource, so restore direct section links.
+    const anchor = document.getElementById(window.location.hash.slice(1));
+    if (anchor && root.contains(anchor)) anchor.scrollIntoView();
+  }
 }
 
 async function initGuide() {
@@ -111,12 +167,17 @@ async function initGuide() {
 
 document.addEventListener("DOMContentLoaded", () => {
   initGuide();
+  document.querySelector("#guide-root")?.addEventListener("click", event => {
+    const button = event.target.closest("button[data-copy-prompt]");
+    if (button) copyPrompt(button);
+  });
   document.querySelector("#share-button")?.addEventListener("click", async event => {
+    const button = event.currentTarget;
     try {
       await navigator.clipboard.writeText(window.location.href);
-      event.currentTarget.textContent = "Link copied";
+      button.textContent = "Link copied";
     } catch (error) {
-      event.currentTarget.textContent = "Copy the URL above";
+      button.textContent = "Copy the URL above";
     }
   });
 });

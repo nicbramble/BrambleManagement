@@ -29,6 +29,27 @@
 .guide-footer { width: 100%; }
 .share-button { justify-self: end; padding: 0; border: 0; border-bottom: 1px solid currentColor; background: transparent; color: var(--muted); cursor: pointer; font-size: .75rem; }
 .share-button:hover { color: var(--accent); }
+.guide-save { display: inline-flex; gap: 16px; align-items: center; min-height: 48px; margin-top: 24px; color: var(--accent-dark); font-weight: 700; text-underline-offset: 5px; }
+.guide-toc { margin-top: 40px; padding: clamp(22px, 4vw, 38px); border: 1px solid var(--line); border-top: 4px solid var(--accent); background: var(--paper); }
+.guide-toc h2 { font-size: clamp(1.65rem, 4vw, 2.4rem); line-height: 1.15; }
+.guide-toc > p { margin: 12px 0 24px; color: var(--muted); line-height: 1.6; }
+.guide-toc-links { display: grid; grid-template-columns: 1fr 1fr; column-gap: 30px; }
+.guide-toc-links a { display: flex; align-items: center; min-height: 48px; padding: 12px 0; border-top: 1px solid var(--line); font-size: .9rem; font-weight: 600; line-height: 1.5; text-decoration: none; }
+.guide-toc-links a:hover { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 4px; }
+.prompt-guide .guide-content > p:first-child { padding-left: 22px; border-left: 4px solid var(--accent); color: var(--ink); font-size: clamp(1.4rem, 3vw, 1.8rem); line-height: 1.4; font-weight: 700; }
+.prompt-guide .guide-content h2 { margin-top: 72px; padding-top: 32px; border-top: 1px solid var(--line); line-height: 1.08; scroll-margin-top: 24px; }
+.prompt-card { margin: 28px 0 32px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--paper); }
+.prompt-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 20px; background: var(--ink); color: var(--cream); }
+.prompt-toolbar > span { font: 500 .8rem/1.4 "Oswald", sans-serif; text-transform: uppercase; letter-spacing: .06em; }
+.copy-prompt { flex-shrink: 0; min-height: 44px; padding: 10px 14px; border: 1px solid rgba(255,255,255,.35); border-radius: 4px; background: transparent; color: white; font-size: .85rem; font-weight: 700; cursor: pointer; }
+.copy-prompt:hover { background: var(--accent-dark); }
+.copy-prompt:focus-visible { outline-color: white; }
+.prompt-text { margin: 0; padding: clamp(18px, 4vw, 28px); white-space: pre-wrap; overflow-wrap: anywhere; font: 400 .95rem/1.75 "DM Sans", sans-serif; color: var(--ink); }
+.prompt-text:focus-visible { outline-offset: -4px; }
+.guide-content .prompt-status { margin: 0; padding: 0 24px; color: var(--accent-dark); font-size: .85rem; line-height: 1.5; }
+.guide-content .prompt-status:not(:empty) { padding-bottom: 20px; }
+.guide-sources { margin-top: 56px; padding-top: 12px; border-top: 1px solid var(--line); font-size: .9rem; color: var(--muted); }
+.guide-sources a { color: var(--accent-dark); text-underline-offset: 3px; }
 @media (max-width: 700px) {
   .guide-shell { width: min(100% - 28px, 980px); }
   .guide-header { padding-block: 64px 42px; }
@@ -38,4 +59,7 @@
   .guide-cta .button { width: 100%; }
   .guide-footer { grid-template-columns: 1fr auto; }
   .guide-footer p { grid-column: 1 / -1; grid-row: 2; }
+  .guide-toc-links { grid-template-columns: 1fr; }
+  .prompt-toolbar { padding: 12px 16px; }
+  .prompt-guide .guide-header h1 { font-size: clamp(3.2rem, 12vw, 5.5rem); }
 }

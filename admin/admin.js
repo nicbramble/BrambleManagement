@@ -168,7 +168,7 @@ async function saveResource(event) {
     const payload = getPayload(imageUrl);
     if (!useSharedDatabase) {
       const existingIndex = resources.findIndex(item => item.id === payload.id || item.slug === payload.slug);
-      if (existingIndex >= 0) resources[existingIndex] = payload;
+      if (existingIndex >= 0) resources[existingIndex] = { ...resources[existingIndex], ...payload };
       else resources.push(payload);
       resources.sort((a, b) => (a.sort_order ?? 100) - (b.sort_order ?? 100));
       saveBrowserResources(resources);

@@ -1,0 +1,215 @@
+Stop using ChatGPT to give you answers. Use it to force you to learn.
+
+An explanation can feel obvious while it is on the screen. The real test is what you can explain, solve, or defend after you close it. This guide turns eight study ideas into reusable practice sessions, with a setup prompt, practical examples, and a review routine you can start today.
+
+## Start here: set up your study partner
+
+Pick one topic and one outcome: explain a mechanism, solve a problem, compare two theories, or defend an argument. Replace the [brackets] in the prompts. Paste the setup below once, then choose a technique in the same conversation. The prompts are instructions you give ChatGPT, not built-in commands.
+
+Give it your course level, topic list, exam format, and any rubric or sample questions you are allowed to share. Paste a relevant excerpt or attach readable notes if file uploads are available. Ask it to confirm which materials it can actually read before it starts. If a diagram or equation is missing, provide that portion separately.
+
+```prompt
+Act as my study coach for [course and level]. I am studying [topic] for [exam or learning goal]. I have [time available]. The assessment format is [format], and the relevant rubric or example questions are [paste, attach, or say unavailable].
+
+Use only the course materials I provide for subject-matter questions and grading. First list the materials and topics you can read. Flag missing, unreadable, or contradictory information; do not invent it. If there are no materials, ask me to provide an excerpt before starting.
+
+During tutoring, ask one question per turn and wait for my committed answer and confidence from 1–5. Do not reveal the solution in the question. If I am stuck, offer one small hint, then let me try again. Explain the answer only after my attempt or when I explicitly ask to move on.
+
+After each answer, evaluate accuracy and reasoning separately. Identify the exact gap in my explanation, support corrections with a real heading, page, or short excerpt from my materials, and give me a fresh question on the same concept. Never invent source locations. Mark anything you cannot verify as uncertain.
+
+Keep an error log: topic, my answer, confidence, type of mistake, correction, and whether I needed help. Treat a correct answer after a hint as assisted. A later correct answer to a new question is better evidence of progress.
+
+These are tutoring defaults. When I request an exam, hold all answers and grading until I submit it. Start by asking what I want to practice first.
+```
+
+**Make the setup specific:** “Intro biology; membrane transport; short-answer test; 25 minutes; use my lecture 4 notes” gives the session a useful boundary. “Teach me biology” leaves too many decisions open.
+
+**Check the feedback:** Asking for sources does not guarantee accurate grading. Compare disputed corrections with your notes, textbook, or instructor. Keep assessed work within your course’s rules, and remove personal information from anything you share.
+
+## 1. The oral examiner
+
+**Use it when:** You recognize the material but go blank when someone asks you to explain it. Good for definitions, mechanisms, comparisons, and “why” questions. Start with a 10-minute round.
+
+```prompt
+Quiz me orally, or in a text conversation, on [topic] using the study materials in this chat. Ask one question per turn and wait for my answer and confidence from 1–5. Begin with a foundational question, then progress to explanation, application, and comparison as my answers support it.
+
+Do not include hints or the answer in the question. After I commit, judge my answer as correct, partially correct, or incorrect. Quote the part of my answer that reveals a gap, if there is one. Ask one targeted follow-up before explaining the correction. If I say “hint,” give only the smallest useful clue.
+
+For a correct answer, test the reasoning with a new situation instead of simply praising me. For an incorrect answer, explain the first incorrect assumption or step, then ask a different question that checks the same idea.
+
+Stop after six main questions, or when I say “stop.” Show my unassisted and assisted results separately, the two most important gaps, and one question to revisit next session. Ask question one now.
+```
+
+**Example:** You say osmosis is “water moving toward more water.” A useful follow-up asks which side has more dissolved particles and what can cross the membrane. You should have to repair your explanation before moving to a new cell scenario.
+
+**You are making progress when:** You can answer a fresh application question and explain why the tempting alternative is wrong. Repeating the correction word for word is not enough evidence yet.
+
+## 2. The Feynman test
+
+**Use it when:** You can repeat the textbook definition but cannot explain the idea simply. Bring your own explanation first. Ask for feedback before asking for a polished rewrite.
+
+```prompt
+I will explain [concept] as if I am teaching a curious 10-year-old. Evaluate my explanation against the course materials in this chat.
+
+Find factual mistakes, undefined jargon, missing causal steps, vague claims, and analogies that break down. Quote each problematic phrase and explain what it fails to establish. Distinguish an actual error from a reasonable simplification for the audience. Do not penalize me just for using plain language.
+
+Do not rewrite the explanation for me yet. Ask one clarifying question about the biggest gap and wait. Let me revise it myself. Repeat for up to three gaps, then ask me to give one original example and one non-example.
+
+Finish by checking my revised explanation for accuracy, clarity, and the limits of its analogy. List anything still unsupported by the materials. Here is my explanation: [write your explanation from memory].
+```
+
+**Example:** “An enzyme is a key that makes reactions happen” needs more precision. What does the key represent? What changes about the reaction? Is the enzyme consumed? A good analogy helps you answer those questions and makes its limitations clear.
+
+**Make it harder:** Explain the same idea to a beginner in three sentences, then to your instructor using the correct technical terms. Both versions should describe the same mechanism.
+
+## 3. A personalized practice exam
+
+**Use it when:** You need to test several topics under exam-like conditions. Provide the topic weights, permitted tools, and a sample question or rubric if you have one. Without those, the difficulty is only an approximation.
+
+```prompt
+Create a 20-question practice exam using ONLY the readable course materials in this chat. My course level is [level], exam format is [format], allowed tools are [tools], and topic weights are [weights or unknown]. Use [rubric/sample questions or none] to calibrate difficulty.
+
+First propose a brief blueprint showing question types, topic coverage, points, and a suggested time limit. If I do not have a format or weights, suggest a balanced mix and label those choices as assumptions. Wait for my approval before generating the exam.
+
+Then present all 20 questions with point values. Include recall, explanation, and unfamiliar applications that can be solved from the supplied materials. Do not use outside facts. Make questions self-contained, avoid questions that reveal another question’s answer, and ensure any multiple-choice question has one defensible best answer.
+
+Show no answer key, solutions, hints, or grading until I submit my answers or say “grade my attempt.” If the materials are too limited for 20 distinct questions, tell me and propose a smaller exam.
+
+After submission, grade using the supplied rubric or clearly stated criteria. Show points earned, a justified answer, and a verifiable source location for each item. Identify ambiguous questions and remove them from the scored denominator. End with results by topic and a short revision plan. Treat the result as practice feedback, not a prediction of my real exam grade.
+```
+
+**Run it properly:** Set your own timer, close your notes if the real exam is closed-book, and write your answers before reopening the chat. Record unfinished items as unfinished. Do not request mid-exam hints and then count the result as independent performance.
+
+**Useful follow-up:** Ask for a second version with the same blueprint and new problems. Changing only the numbers in a memorized example may not test whether you can choose the right method.
+
+## 4. Attack your weak spots
+
+**Use it when:** You have actual mistakes to analyze. Give it the questions, your answers, and verified corrections. A low score alone cannot show whether the problem was recall, method selection, reasoning, arithmetic, or reading the question.
+
+```prompt
+Analyze the attempted questions, my answers, and the verified corrections in this chat. Identify up to three recurring concepts or skills behind my mistakes. Support each pattern with specific question numbers and evidence from my answers. Do not force three patterns if there is not enough evidence.
+
+Separate missing knowledge, choosing the wrong method, faulty reasoning, calculation errors, and misreading instructions. If the cause is unclear, ask a diagnostic question instead of guessing. Prioritize repeated mistakes and high-confidence wrong answers; distinguish course topic weights from assumptions about importance.
+
+Drill the highest-priority gap first. Ask one short diagnostic question and wait. If needed, offer a small hint, then explain the missing step after I try. Follow with a fresh application and later a mixed question where I must decide which method applies.
+
+Track whether each answer was independent, hinted, or explained. Use two new unassisted answers as a provisional checkpoint, not proof of permanent mastery. Stop after three drill questions per gap and give me a next-session retest list.
+```
+
+**Example:** Three wrong derivatives might share a chain-rule problem, or they might be unrelated algebra errors. The drill should ask you to identify the inner and outer functions before assigning ten more full derivatives.
+
+**Save this:** For each mistake, write one sentence: “I chose ___ because ___; next time I will check ___.” That sentence is more actionable than “study chapter 5 again.”
+
+## 5. Voice as a study partner
+
+**Use it when:** You want to practice speaking an explanation or answering follow-ups away from your keyboard. Use a quiet place or a safe, distraction-free walk. Save focused quizzing for when you are not driving.
+
+If live Voice is available in your app, start a conversation and use the prompt below. Voice availability depends on your app, account, and settings. Dictation turns speech into prompt text; it is different from a live voice conversation. If Voice is unavailable, say your answer aloud, then type or dictate it.
+
+```prompt
+Run a short spoken study session on [topic] using the material available in this conversation. First confirm which notes you can access; if none, ask me for a short topic excerpt.
+
+Ask one brief question at a time. Wait until I say “that is my answer” before evaluating it. Keep each feedback turn to two or three sentences, then ask one follow-up that tests my reasoning. If you mishear a technical term, ask me to repeat or spell it before treating it as a mistake.
+
+Avoid tables, long lists, and questions that require seeing a diagram or doing lengthy written calculations. Ask me to explain causes, compare cases, or give examples. If my answer is vague, ask for a concrete example instead of accepting it.
+
+After five main questions, or when I say “wrap up,” provide a short written recap: concepts practiced, corrections to verify, and three questions for my next session. Do not assume an unavailable file was read.
+```
+
+**Example:** For history, explain two causes of an event, distinguish long-term conditions from the immediate trigger, then defend which cause your evidence supports most strongly. For quantitative subjects, explain why a method applies and save detailed calculations for paper.
+
+**If it interrupts:** Say, “Let me finish my explanation before you respond.” If a transcription changed the meaning, correct it before accepting the score.
+
+## 6. Build a confusion map
+
+**Use it when:** Your topic list feels overwhelming and you need to decide what to study next. A useful map is based on demonstrated answers. Uploading notes alone does not show what you personally understand.
+
+```prompt
+Build a confusion map for [unit] from my topic list, attempted questions, explanations, and error log in this chat.
+
+Create a table with: concept, prerequisite, evidence from my attempt, current status, confidence mismatch, and next action. Use these statuses: demonstrated independently, partly understood or assisted, not yet understood, and not yet tested. Do not mark a concept understood just because it appears in my notes.
+
+For every judgment, refer to an actual answer or say “insufficient evidence.” Flag high-confidence errors and correct answers that may have been guesses. Show prerequisite relationships only when the materials support them.
+
+Recommend the next three actions in a sensible prerequisite order, with one short diagnostic question per action. Ask the first question and wait. Update only the relevant part of the map after my answer. Preserve untested topics instead of guessing my ability.
+```
+
+**Example:** Trouble interpreting a confidence interval may come from confusion about sampling variability. The next action should check that prerequisite before assigning another interpretation exercise. A topic you have never attempted belongs in “not yet tested,” even if you feel comfortable with it.
+
+**Keep it useful:** Limit the first map to one unit and about ten concepts. A huge color-coded dashboard is less helpful than knowing the next question you need to answer.
+
+## 7. Make it challenge your argument
+
+**Use it when:** You are preparing for an essay, seminar, presentation, or case discussion. Especially useful in history, business, and philosophy, where the quality of the reasoning matters alongside the conclusion.
+
+```prompt
+Act as a rigorous but fair discussion partner for [topic]. My claim is [claim], and my supporting evidence is [evidence]. Use the readings and rubric in this chat.
+
+First restate my position accurately and ask whether you have understood it. After I confirm, give the strongest reasonable objection supported by the readings. Challenge one assumption, causal claim, or use of evidence at a time and wait for my response.
+
+Distinguish factual disagreement, disagreement about values, and uncertainty. Do not fabricate quotations, evidence, or an opposing position just to be contrary. If the evidence strongly favors a claim, acknowledge that and examine its scope or limits instead.
+
+After three exchanges, assess the clarity of my claim, relevance of evidence, reasoning, and response to objections. Identify my strongest point and the most important unresolved weakness. Ask me to revise my thesis myself and name what evidence would change my mind.
+```
+
+**Example:** “Remote work always increases productivity” invites questions about which jobs, how productivity is measured, and what else changed. A more defensible thesis specifies the conditions and acknowledges evidence that would weaken it.
+
+**Success looks like:** You can explain the strongest objection fairly and respond with relevant evidence. Getting ChatGPT to concede is not the objective.
+
+## 8. Predict likely mistakes, then test them
+
+**Use it when:** You want to stress-test a topic before the exam. These are plausible traps inferred from your materials, not predictions of the actual exam or proof of what students usually miss.
+
+```prompt
+Using only the materials for [unit] in this chat, identify up to ten plausible mistakes a learner could make: confusing similar terms, missing exceptions, using a rule outside its conditions, reversing cause and effect, or overlooking units and assumptions.
+
+Treat these as hypotheses, not known exam questions or claims about actual student error rates. Base each trap on a distinction present in the materials. If ten would require repetition or unsupported content, use fewer.
+
+Do not show the trap list or corrections yet. Quiz me one question at a time, without naming the misconception being tested. Ask for my answer, a brief justification, and confidence from 1–5. Wait before giving feedback.
+
+After each committed answer, explain the trap, why a tempting wrong answer fails, and what rule or condition resolves it. Point to the supporting material and ask one fresh transfer question. At the end, show the traps I actually fell for separately from the ones I handled correctly.
+```
+
+**Example:** If your notes distinguish correlation from causation, the question should give you a scenario and ask what conclusion is justified. Labeling it “the correlation trap” before you answer gives away the skill you need to select.
+
+**Best next step:** Move the mistakes you actually made into the weak-spot drill. You do not need equal practice on every hypothetical trap.
+
+## Put it together: a 30-minute session
+
+**Minutes 0–3 — Set the target.** Choose one learning outcome, provide the relevant materials, and paste the setup. Pick something observable: “Explain how changing this variable affects the result.”
+
+**Minutes 3–10 — Retrieve.** Use the oral examiner for three questions with your notes closed. Commit to each answer and confidence level before feedback. Log hints honestly.
+
+**Minutes 10–20 — Repair.** Choose the biggest demonstrated gap. Use the Feynman test for an explanation gap or the weak-spot drill for a procedural mistake. Finish with a fresh application.
+
+**Minutes 20–27 — Mix.** Try three new questions from different concepts without being told which method each one needs. Use your course’s permitted tools and check the corrections against your source.
+
+**Minutes 27–30 — Save the next step.** Update your confusion map. Record one corrected misconception and three questions to revisit. Set your own reminder for the next session.
+
+```prompt
+Summarize this session as a compact study log I can paste into my next chat. Include the source materials used, topics tested, my unassisted versus assisted results, confidence mismatches, unresolved corrections, and three new retrieval questions WITHOUT answers.
+
+Suggest a review plan for tomorrow, three days from now, and a week from now, adjusted to my exam date of [date]. Label the timing as a starting plan to adjust after each retest. Include what I should attempt from memory before reopening notes. Do not claim that reminders have been scheduled.
+```
+
+**At the next session:** Attempt the saved questions before reading the previous explanations. If a concept is still difficult, review the relevant source, repair the specific gap, and try a different question. If it is consistently easy without help, spend more time on weaker topics.
+
+## Make the prompts fit your subject
+
+- **Math and science:** Ask it to check assumptions, units, diagrams, and the first incorrect line in your own working. Request a problem where you must choose the method before calculating.
+- **History and social science:** Separate evidence from interpretation, compare competing explanations, and practice answering with a claim, support, and a limitation.
+- **Business:** Supply a case and constraints. Defend a recommendation, test the tradeoffs, and explain what new information would change your decision.
+- **Languages:** Give your level and target structure. Ask one question in the target language, finish your reply, then get a correction and an immediate chance to reuse it in a new sentence.
+- **Programming:** Predict an output or propose a fix before running code. Ask for a counterexample to your solution and test it yourself. A confident explanation from ChatGPT does not establish that code works.
+
+## When the session goes off track
+
+**It gives away the answer:** Stop that question. Ask for a new equivalent question with no clues. The revealed one no longer measures independent recall.
+
+**It agrees with everything:** Ask, “Which exact part of my answer satisfies each criterion, and which part is unsupported?” Request a counterexample, then verify it against your materials.
+
+**It invents a source or contradicts your notes:** Paste the exact passage and ask it to compare the two. Leave the point unresolved until you can verify it. Do not memorize a correction just because it sounds confident.
+
+**The questions are too easy:** Ask for an unfamiliar application, a comparison between similar concepts, or a case where the usual rule does not apply. Add a representative instructor-provided example if you have one.
+
+**You are collecting prompts instead of practicing:** Pick one technique. Answer the first question. A useful study session ends with something you can do independently and a specific gap to work on next.

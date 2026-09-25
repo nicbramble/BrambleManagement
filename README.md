@@ -16,6 +16,14 @@ Every published resource has a stable link in this form:
 
 `/guides/?slug=resource-slug`
 
+The featured **Study Smarter** guide is at `/guides/?slug=chatgpt-study-prompts`.
+Its body lives in `data/resources.json`; keep `downloads/chatgpt-study-prompts.txt`
+in sync when editing it. A test checks that the downloadable copy matches.
+Guide bodies support fenced `prompt` blocks, which display as copyable prompt
+cards. Guides with these blocks automatically get section navigation. Optional
+`sources`, `cta_eyebrow`, `cta_heading`, and `cta_description` fields supply
+references and resource-specific footer copy.
+
 ## Newsletter
 
 The signup card sits at the top of the free-resources section. It posts to a Google
