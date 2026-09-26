@@ -1,5 +1,51 @@
 [
   {
+    "slug": "google-flight-deals",
+    "title": "Find your next trip with Google Flight Deals",
+    "category": "Travel Smarter",
+    "description": "Turn a travel idea into a flight shortlist. A step-by-step guide with four copy-ready searches, price alerts, and the checks to make before you book.",
+    "body": "A cheap flight is only a win if it gets you on a trip you actually want to take.\n\nGoogle’s AI-powered Flight Deals helps you turn a loose travel idea into flight options. This guide walks you from a first search to a shortlist, a price alert, and a booking you have checked carefully.\n\n**Feature check: September 26, 2026.** Flight Deals is still experimental. Use the official Google references below for current details.\n\n## 1. Open Flight Deals\n\nUse the **Open Google Flight Deals** button above, or open Google Flights and choose **Flight Deals** from its menu. Confirm your departure airport before searching.\n\nDescribe the kind of trip you want, when you can travel, and how long you want to stay. Flexible dates or destinations give the tool more room to find options. If Flight Deals is unavailable in your browser or region, use regular Google Flights and its Explore view instead.\n\n## 2. Give it a useful starting point\n\nMy search formula: **departure airport + trip length + travel window + trip style + one must-have.**\n\nStart with the things you really care about. If your schedule is flexible, describe a month or season instead of one exact weekend. Treat a budget in your query as a target to check against the returned fares.\n\n### The fill-in template\n\n```prompt\nFind a [number]-day round-trip getaway from [departure city or airport] in [month or date window]. I want [beach / food / outdoors / city exploring]. My airfare target is [amount and currency] per person. [Nonstop only / up to one stop]. My destination is flexible.\n```\n\n### A quick long weekend\n\n```prompt\nFind a 3- or 4-day round-trip city break from Denver in November 2026. I want good food and neighborhoods to explore on foot. My destination is flexible. Nonstop flights only.\n```\n\n### A flexible beach trip\n\n```prompt\nFind a 6- to 8-day round-trip beach getaway from Chicago between January and March 2027. Show me different destinations. My airfare target is USD 500 per person, with no more than one stop.\n```\n\n### Start with the experience\n\n```prompt\nFind a 5-day round-trip getaway from Atlanta in spring 2027 for someone who loves museums, local food, and exploring a city. I am flexible on destination and dates. Nonstop flights only.\n```\n\nThese are Nic.Buildz example searches, not live offers or promises that matching flights exist. Replace the airports, dates, and budget with your own. Check weather, local transport, and activity availability separately before deciding on a destination.\n\n## 3. Read the deal, not just the discount\n\nGoogle’s **“% less than usual”** badge identifies a fare at least 20% below its typical-price benchmark for a similar trip. The comparison uses historical fares and factors such as season, trip length, and cabin. It is not a coupon or a guaranteed future saving.\n\nResults without a savings badge can still be low-priced flights. Badged results are ranked by percentage savings first, so the biggest discount does not necessarily mean the lowest total cost.\n\n**My rule:** shortlist two or three trips you would actually enjoy, then compare the amount you would pay. A large discount on an expensive route can still cost more than a modest fare elsewhere.\n\n## 4. Refine one thing at a time\n\nIf the results miss the mark, adjust one constraint and search again: broaden the travel window, allow another trip length, or try a different departure airport you can realistically reach.\n\nFlight Deals may not support multi-city itineraries, groups larger than four, particular passenger types such as infants, or specific layover requests. Use regular Google Flights for those searches.\n\n**Keep a small shortlist:** note the destination, departure and return dates, total airfare, arrival time, and your main concern. For example: “Great fare, but the late arrival adds a hotel night.” That makes the trade-off easier to see.\n\n## 5. Check the itinerary in Google Flights\n\nOpen a promising result and confirm the passenger count, cabin, exact airports, and dates. Use the calendar, **date grid**, or **price graph** to compare nearby dates and trip lengths.\n\nCompare **Best** and **Cheapest**. Best balances cost and convenience; Cheapest can surface lower prices with trade-offs such as self-transfers or different airports. Read the actual itinerary before deciding.\n\nWhere available, price insights help put a fare in context. Forecasts can be wrong, so use them as one input alongside your schedule and budget.\n\n**Try this:** compare your preferred dates with one day earlier and one day later. Then check whether any airfare saving is cancelled out by another hotel night, a longer transfer, or time away from work.\n\n## 6. Turn on price tracking\n\nIf you are not ready to book, sign in to Google and turn on **Track prices** for the route and dates in regular Google Flights. If you can travel flexibly, look for **Any dates**. You can also track a specific itinerary after selecting flights.\n\nGoogle can email you about significant price changes. Manage or remove alerts under **Tracked flights**. An alert does not hold a seat or lock in a fare; reopen the result and confirm availability.\n\n**Set your own decision point:** choose the total price you would be happy to pay and the latest date you need to decide. This helps you act when a suitable option appears.\n\n## 7. Check the real cost before booking\n\nCompare the same flight and fare type on the airline or booking site. Google Flights generally sends you to a partner to complete the purchase.\n\nBefore paying, check:\n\n- **Bags:** which personal item, carry-on, or checked bag is included.\n- **Seats and fare rules:** seat-selection charges, change conditions, and cancellation terms.\n- **Connections:** layover length, terminal or airport changes, and whether the journey uses separate tickets.\n- **Transfers and timing:** transport costs, overnight stops, and the local arrival date.\n- **Whole-trip cost:** accommodation and transport for those exact dates, plus the airfare.\n- **Final checkout:** passenger names, dates, airports, currency, and the final total.\n\nFor a self-transfer or separate tickets, read who is responsible if a delay causes a missed connection. A small airfare saving may not justify the extra complexity for your trip.\n\n## The 10-minute routine\n\n1. **Minutes 0–2:** choose your departure airport, travel window, and one must-have.\n2. **Minutes 2–5:** run a search and shortlist two or three workable trips.\n3. **Minutes 5–8:** compare dates, flight times, bags, and the whole-trip cost.\n4. **Minutes 8–10:** book a suitable option after checking the terms, or turn on tracking and save your shortlist.\n\nThe goal is a trip that fits your life at a price you are happy to pay. Let the tool expand your options, then make the decision with the full itinerary in front of you.",
+    "image_url": "/assets/google-flight-deals-guide.jpg",
+    "image_alt": "Travel-planning desk with a map, model airplane, and phone showing flight options",
+    "action_url": "https://www.google.com/travel/flights/deals",
+    "action_label": "Open Google Flight Deals",
+    "toc_title": "Find a trip worth booking",
+    "toc_description": "Start with a search, then check the price, timing, and total cost.",
+    "prompt_toolbar": "Copy, customize, search",
+    "prompt_copy_success": "Search copied. Replace the [brackets] and dates, then paste it into Google Flight Deals.",
+    "sources_intro": "Feature details checked against Google’s official guidance on September 26, 2026. The search templates and planning routine are Nic.Buildz examples.",
+    "sources": [
+      {
+        "label": "Google: how AI-powered Flight Deals works",
+        "url": "https://support.google.com/travel/answer/16497283?hl=en"
+      },
+      {
+        "label": "Google: getting started with Flight Deals",
+        "url": "https://blog.google/products-and-platforms/products/search/google-flights-ai-flight-deals/"
+      },
+      {
+        "label": "Google: compare fares, dates, and price insights",
+        "url": "https://support.google.com/travel/answer/7664728?hl=en"
+      },
+      {
+        "label": "Google: track flights and prices",
+        "url": "https://support.google.com/travel/answer/6235879?hl=en"
+      },
+      {
+        "label": "Google: find tickets and booking options",
+        "url": "https://support.google.com/travel/answer/2475306?hl=en"
+      }
+    ],
+    "cta_label": "Explore more free resources",
+    "cta_url": "/#resources",
+    "cta_eyebrow": "Keep building your toolkit",
+    "cta_heading": "More useful tools. Less guesswork.",
+    "cta_description": "Explore practical guides, prompts, and systems from Nic.Buildz.",
+    "featured": true,
+    "published": true,
+    "sort_order": -2
+  },
+  {
     "slug": "chatgpt-study-prompts",
     "title": "The best study prompts for ChatGPT",
     "category": "Study Smarter",

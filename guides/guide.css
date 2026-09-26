@@ -4,6 +4,7 @@
 .guide-header { padding: 96px 0 64px; border-bottom: 1px solid var(--line); }
 .guide-header h1 { max-width: 900px; margin-bottom: 28px; font-size: clamp(3.6rem, 9vw, 7.8rem); }
 .guide-dek { max-width: 700px; margin-bottom: 0; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.65; }
+.guide-action { margin-top: 28px; }
 .guide-cover { width: min(740px, 100%); aspect-ratio: 1; display: block; margin: 64px auto 0; object-fit: cover; box-shadow: var(--shadow); }
 .guide-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; color: var(--accent); font: 600 .78rem/1 "Oswald", sans-serif; letter-spacing: .12em; text-transform: uppercase; }
 .guide-meta i { width: 28px; height: 1px; background: currentColor; }

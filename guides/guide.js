@@ -8,7 +8,7 @@ function renderInline(value) {
     .replace(/\*(.+?)\*/g, "<em>$1</em>");
 }
 
-function renderBody(markdown = "") {
+function renderBody(markdown = "", options = {}) {
   const lines = markdown.replace(/\r/g, "").split("\n");
   let html = "";
   let listType = null;
@@ -23,7 +23,7 @@ function renderBody(markdown = "") {
   const closePrompt = () => {
     const id = `prompt-${++promptNumber}`;
     html += `<section class="prompt-card" aria-label="Prompt: ${guideEscape(sectionTitle)}">
-      <div class="prompt-toolbar"><span>Copy, customize, practice</span><button class="copy-prompt" type="button" data-copy-prompt="${id}" aria-label="Copy prompt: ${guideEscape(sectionTitle)}">Copy prompt</button></div>
+      <div class="prompt-toolbar"><span>${guideEscape(options.prompt_toolbar || "Copy, customize, practice")}</span><button class="copy-prompt" type="button" data-copy-prompt="${id}" data-copy-success="${guideEscape(options.prompt_copy_success || '')}" aria-label="Copy prompt: ${guideEscape(sectionTitle)}">Copy prompt</button></div>
       <pre class="prompt-text" id="${id}" tabindex="0">${guideEscape(promptLines.join("\n").trim())}</pre>
       <p class="prompt-status" role="status" aria-live="polite"></p>
     </section>`;
@@ -70,7 +70,7 @@ async function copyPrompt(button) {
   const status = card.querySelector(".prompt-status");
   try {
     await navigator.clipboard.writeText(prompt.textContent);
-    status.textContent = "Prompt copied. Replace the [brackets] before you send it.";
+    status.textContent = button.dataset?.copySuccess || "Prompt copied. Replace the [brackets] before you send it.";
   } catch (error) {
     const range = document.createRange();
     range.selectNodeContents(prompt);
@@ -118,13 +118,14 @@ function renderGuide(item) {
         <div class="guide-meta"><span>${guideEscape(item.category || "Guide")}</span><i></i><span>Free resource</span></div>
         <h1>${guideEscape(item.title)}</h1>
         <p class="guide-dek">${guideEscape(item.description)}</p>
+        ${item.action_url ? `<a class="button button-primary guide-action" href="${guideEscape(window.brambleSafeUrl(item.action_url))}" target="_blank" rel="noopener noreferrer">${guideEscape(item.action_label || 'Open the tool')} <span aria-hidden="true">↗</span></a>` : ""}
         ${hasPrompts && item.download_url ? `<a class="guide-save" href="${guideEscape(window.brambleSafeUrl(item.download_url))}" download>${guideEscape(item.download_label || "Save this guide")} <span aria-hidden="true">↓</span></a>` : ""}
       </header>
-      ${hasPrompts ? '<nav class="guide-toc" aria-labelledby="toc-title"><h2 id="toc-title">Choose your study session</h2><p>Start with the setup, then jump to the skill you want to practice.</p><div class="guide-toc-links"></div></nav>' : ""}
-      ${item.image_url ? `<img class="guide-cover" src="${guideEscape(window.brambleSafeUrl(item.image_url, {image: true, fallback: ''}))}" alt="${guideEscape(item.title)} thumbnail">` : ""}
+      ${hasPrompts ? `<nav class="guide-toc" aria-labelledby="toc-title"><h2 id="toc-title">${guideEscape(item.toc_title || 'Choose your study session')}</h2><p>${guideEscape(item.toc_description || 'Start with the setup, then jump to the skill you want to practice.')}</p><div class="guide-toc-links"></div></nav>` : ""}
+      ${item.image_url ? `<img class="guide-cover" src="${guideEscape(window.brambleSafeUrl(item.image_url, {image: true, fallback: ''}))}" alt="${guideEscape(item.image_alt || `${item.title} thumbnail`)}" loading="lazy">` : ""}
       <div class="guide-content">
-        ${renderBody(item.body)}
-        ${item.sources?.length ? `<aside class="guide-sources" aria-label="Product references"><h3>Product references</h3><p>These prompts and study routines are Nic.Buildz templates. For ChatGPT features and usage, see the official OpenAI documentation:</p><ul>${item.sources.map(source => `<li><a href="${guideEscape(window.brambleSafeUrl(source.url))}" target="_blank" rel="noopener noreferrer">${guideEscape(source.label)}</a></li>`).join("")}</ul></aside>` : ""}
+        ${renderBody(item.body, item)}
+        ${item.sources?.length ? `<aside class="guide-sources" aria-label="Product references"><h3>Product references</h3><p>${guideEscape(item.sources_intro || 'These prompts and study routines are Nic.Buildz templates. For ChatGPT features and usage, see the official OpenAI documentation:')}</p><ul>${item.sources.map(source => `<li><a href="${guideEscape(window.brambleSafeUrl(source.url))}" target="_blank" rel="noopener noreferrer">${guideEscape(source.label)}</a></li>`).join("")}</ul></aside>` : ""}
         ${item.download_url ? `<a class="button button-primary guide-download" href="${guideEscape(window.brambleSafeUrl(item.download_url))}" ${hasPrompts ? "download" : 'target="_blank" rel="noopener noreferrer"'}>${guideEscape(item.download_label || "Download the resource")} <span aria-hidden="true">↓</span></a>` : ""}
       </div>
     </article>
