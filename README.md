@@ -1,6 +1,6 @@
 # Bramble Management / nic.buildz
 
-The link-in-bio hub for Nic Bramble. It provides a clear path to start a project with MTN Automations and a library of individually shareable resources.
+A mobile-first resource hub for Nic Bramble: newsletter, Latest Reel, resource library, and a quiet secondary work link.
 
 ## Local preview
 
@@ -8,13 +8,15 @@ Serve the repository with any static web server, then open the root page. The si
 
 ## Content admin
 
-Click the footer copyright ten consecutive times to open the browser-local preview editor. It does not publish to a shared database. See `ADMIN_SETUP.md` for the security requirements before connecting shared editing.
+Open `/admin/` directly for AI import, editing, exact public previews, asset checks and JSON export. It saves locally and cannot deploy. See `ADMIN_SETUP.md` for the full publishing workflow, `AI_RESOURCE_PROMPT.md` for the creation prompt, and `RESOURCE_SCHEMA.md` for the contract.
+
+After replacing `data/resources.json`, run `node scripts/build-resources.cjs` to build crawler-readable guide pages and the sitemap. No homepage code changes are needed.
 
 ## Resource links
 
 Every published resource has a stable link in this form:
 
-`/guides/?slug=resource-slug`
+`/guides/resource-slug/` (legacy `/guides/?slug=resource-slug` links still work)
 
 The featured **Study Smarter** guide is at `/guides/?slug=chatgpt-study-prompts`.
 Its body lives in `data/resources.json`; keep `downloads/chatgpt-study-prompts.txt`
@@ -26,7 +28,7 @@ references and resource-specific footer copy.
 
 ## Newsletter
 
-The signup card sits at the top of the free-resources section. It posts to a Google
+The canonical signup form sits in the compact homepage hero at `#newsletter`. The collection has its own `#resources` anchor. It posts to a Google
 Apps Script web app, which validates the request and writes to a restricted Google
 Sheet. There are no Google credentials or subscriber records in this repository.
 
@@ -112,7 +114,7 @@ hosting subscription, email sender, or paid third-party script added.
 Do not use Apps Script or Gmail for bulk marketing. Unsubscribe and bounce fields
 are manual until an email provider is connected. Use Beehiiv, Brevo, or another
 provider for confirmation, authenticated delivery, unsubscribe links and bounce
-suppression before the early-2027 launch.
+suppression before sending newsletters.
 
 To export only active records, create a PRIVATE temporary export Sheet and copy
 only rows whose status is exactly `active`. Check every exported row’s status,

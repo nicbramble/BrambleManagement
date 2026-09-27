@@ -9,7 +9,7 @@
   const endpoint = window.BRAMBLE_CONFIG?.newsletterEndpoint || '';
   let pending = null;
   const messages = {
-    success: 'You’re on the list! Look out for the newsletter in early 2027.',
+    success: 'You’re in. The next useful thing is headed your way.',
     duplicate: 'You’re already on the list. Thanks for keeping up!',
     invalid: 'Please enter a valid email address and agree to receive updates.',
     rejected: 'We couldn’t accept that submission. Please wait a moment and try again.',
@@ -46,10 +46,10 @@
     current.frame.remove();
     form.removeAttribute('aria-busy');
     button.disabled = false;
-    button.textContent = 'Keep Me Updated';
+    button.textContent = 'Send me the useful stuff';
     const saved = status === 'success' || status === 'duplicate';
     announce(messages[status] || messages.error, !saved);
-    if (saved) form.reset();
+    if (saved) { form.reset(); window.Bramble?.track('newsletter_success', {status}); }
     form.elements.started_at.value = String(Date.now());
   }
 

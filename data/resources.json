@@ -43,7 +43,9 @@
     "cta_description": "Explore practical guides, prompts, and systems from Nic.Buildz.",
     "featured": true,
     "published": true,
-    "sort_order": -2
+    "sort_order": -2,
+    "format": "Guide",
+    "is_latest_reel": false
   },
   {
     "slug": "chatgpt-study-prompts",
@@ -70,7 +72,9 @@
     ],
     "featured": true,
     "published": true,
-    "sort_order": -1
+    "sort_order": -1,
+    "format": "Prompt pack",
+    "is_latest_reel": false
   },
   {
     "slug": "chatgpt-image-codes",
@@ -85,7 +89,9 @@
     "image_url": "/assets/chatgpt-image-codes-thumbnail.jpg",
     "featured": true,
     "published": true,
-    "sort_order": 0
+    "sort_order": 0,
+    "format": "Prompt pack",
+    "is_latest_reel": false
   },
   {
     "slug": "meta-avatar-prompt-pack",
@@ -100,19 +106,24 @@
     "image_url": "/assets/meta-avatar-prompt-pack-thumbnail.jpg",
     "featured": true,
     "published": true,
-    "sort_order": 1
+    "sort_order": 1,
+    "format": "Prompt pack",
+    "is_latest_reel": false
   },
   {
     "slug": "automation-opportunity-audit",
     "title": "Find your best automation opportunity",
     "category": "AI + Automation",
-    "description": "A quick audit to uncover the repetitive task that is costing your business the most time.",
-    "body": "Most businesses do not need more software. They need one annoying, repetitive process to stop eating the team's week.\n\n## The 15-minute audit\n\nWrite down every task you repeat weekly. For each task, score it from 1–5 on frequency, frustration, and business impact. Multiply the three numbers. Your highest score is usually the best place to begin.\n\n## What makes a strong first automation?\n\nLook for a process with a clear trigger, predictable steps, and a measurable finish line. Lead follow-up, intake, reporting, scheduling, and routine customer updates are often strong candidates.\n\n## Keep the first version small\n\nAutomate one outcome, run it for two weeks, then improve it using real feedback. A useful system today beats a perfect system next quarter.",
+    "description": "Score your repetitive tasks by frequency, frustration, and business impact. Leave with one clear place to start.",
+    "body": "## Name the repetitive work\nWrite down three tasks you do again and again. Be specific: “copy new leads into the CRM” is more useful than “admin.”\n\n## Score each task\nUse the scorecard above. For each named task, multiply frequency × frustration × business impact. Use the same 1–5 scale for every task.\n\n## Choose the first opportunity\nStart with the highest-scoring task. If tasks tie, choose the one with clear inputs, predictable steps, and fewer exceptions.\n\n## Check before you build\n- What starts the task?\n- Where does the information come from?\n- What should the finished result look like?\n- Which exceptions need a person?\n- How will you notice a failure?\n\n## Run one small experiment\nWrite the steps down. Automate one repeatable step, test it with sample data, and compare the time it takes with your current process. Keep a person reviewing the result until it is reliable.",
     "cta_label": "Build this for my business",
     "cta_url": "https://mtnautomations.com/start?utm_source=bramblemanagement&utm_medium=resource&utm_campaign=automation_audit",
     "featured": true,
     "published": true,
-    "sort_order": 10
+    "sort_order": 10,
+    "format": "Interactive scorecard",
+    "is_latest_reel": false,
+    "read_time": "5 min"
   },
   {
     "slug": "better-ai-prompts",
@@ -124,6 +135,8 @@
     "cta_url": "https://mtnautomations.com/start?utm_source=bramblemanagement&utm_medium=resource&utm_campaign=prompt_framework",
     "featured": false,
     "published": true,
-    "sort_order": 20
+    "sort_order": 20,
+    "format": "Prompt pack",
+    "is_latest_reel": false
   }
 ]

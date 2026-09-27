@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NIC.BUILDZ Resource",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "title",
+    "category",
+    "description",
+    "body"
+  ],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 100,
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "body": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100000
+    },
+    "badge": {
+      "type": "string"
+    },
+    "is_latest_reel": {
+      "type": "boolean"
+    },
+    "published_at": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string"
+    },
+    "read_time": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "image_alt": {
+      "type": "string"
+    },
+    "download_url": {
+      "type": "string"
+    },
+    "download_label": {
+      "type": "string"
+    },
+    "action_url": {
+      "type": "string"
+    },
+    "action_label": {
+      "type": "string"
+    },
+    "cta_label": {
+      "type": "string"
+    },
+    "cta_url": {
+      "type": "string"
+    },
+    "cta_eyebrow": {
+      "type": "string"
+    },
+    "cta_heading": {
+      "type": "string"
+    },
+    "cta_description": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "required": [
+          "label",
+          "url"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "published": {
+      "type": "boolean",
+      "default": false
+    },
+    "sort_order": {
+      "type": "integer"
+    },
+    "id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "toc_title": {
+      "type": "string"
+    },
+    "toc_description": {
+      "type": "string"
+    },
+    "prompt_toolbar": {
+      "type": "string"
+    },
+    "prompt_copy_success": {
+      "type": "string"
+    },
+    "sources_intro": {
+      "type": "string"
+    }
+  }
+}

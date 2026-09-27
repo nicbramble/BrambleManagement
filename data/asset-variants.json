@@ -1,0 +1,58 @@
+{
+  "/assets/chatgpt-image-codes-thumbnail.jpg": [
+    {
+      "url": "/assets/optimized/chatgpt-image-codes-thumbnail-160.webp",
+      "width": 160
+    },
+    {
+      "url": "/assets/optimized/chatgpt-image-codes-thumbnail-400.webp",
+      "width": 400
+    },
+    {
+      "url": "/assets/optimized/chatgpt-image-codes-thumbnail-800.webp",
+      "width": 800
+    }
+  ],
+  "/assets/google-flight-deals-guide.jpg": [
+    {
+      "url": "/assets/optimized/google-flight-deals-guide-160.webp",
+      "width": 160
+    },
+    {
+      "url": "/assets/optimized/google-flight-deals-guide-400.webp",
+      "width": 400
+    },
+    {
+      "url": "/assets/optimized/google-flight-deals-guide-800.webp",
+      "width": 800
+    }
+  ],
+  "/assets/meta-avatar-prompt-pack-thumbnail.jpg": [
+    {
+      "url": "/assets/optimized/meta-avatar-prompt-pack-thumbnail-160.webp",
+      "width": 160
+    },
+    {
+      "url": "/assets/optimized/meta-avatar-prompt-pack-thumbnail-400.webp",
+      "width": 400
+    },
+    {
+      "url": "/assets/optimized/meta-avatar-prompt-pack-thumbnail-800.webp",
+      "width": 800
+    }
+  ],
+  "/assets/nic-bramble.jpg": [
+    {
+      "url": "/assets/optimized/nic-bramble-160.webp",
+      "width": 160
+    },
+    {
+      "url": "/assets/optimized/nic-bramble-400.webp",
+      "width": 400
+    },
+    {
+      "url": "/assets/optimized/nic-bramble-800.webp",
+      "width": 800
+    }
+  ]
+}

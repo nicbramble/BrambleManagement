@@ -62,3 +62,24 @@ drop policy if exists "Browser admin can delete resource images" on storage.obje
 
 -- No browser write policy. Publish through GitHub or an authenticated owner-only
 -- backend with explicit authorization. Never grant writes to anon or every user.
+
+-- Optional metadata migration; not executed by the site or local studio.
+alter table public.resources add column if not exists badge text;
+alter table public.resources add column if not exists is_latest_reel boolean not null default false;
+alter table public.resources add column if not exists published_at timestamptz;
+alter table public.resources add column if not exists format text;
+alter table public.resources add column if not exists read_time text;
+alter table public.resources add column if not exists image_alt text;
+alter table public.resources add column if not exists action_url text;
+alter table public.resources add column if not exists action_label text;
+alter table public.resources add column if not exists cta_eyebrow text;
+alter table public.resources add column if not exists cta_heading text;
+alter table public.resources add column if not exists cta_description text;
+alter table public.resources add column if not exists sources jsonb not null default '[]'::jsonb;
+alter table public.resources add column if not exists sources_intro text;
+alter table public.resources add column if not exists toc_title text;
+alter table public.resources add column if not exists toc_description text;
+alter table public.resources add column if not exists prompt_toolbar text;
+alter table public.resources add column if not exists prompt_copy_success text;
+create unique index if not exists resources_one_published_latest_reel
+on public.resources ((is_latest_reel)) where published = true and is_latest_reel = true;
