@@ -138,5 +138,23 @@
     "sort_order": 20,
     "format": "Prompt pack",
     "is_latest_reel": false
+  },
+  {
+    "slug": "meal-prep-with-chatgpt",
+    "title": "Meal prep with ChatGPT in 20 minutes",
+    "category": "Lifestyle",
+    "description": "Turn the food you already have into a realistic meal plan, shopping list, and prep session you can actually finish.",
+    "body": "Meal prep works better when it starts with your real kitchen, your real schedule, and food you actually want to eat. ChatGPT can help you turn that messy starting point into a simple plan.\n\n## Start with a photo of your food\n\nTake a clear photo of the ingredients in your fridge, freezer, and pantry. Include labels when they matter, and take a second photo of anything hidden behind other items. Upload the photo to ChatGPT and say what it cannot identify or what you want to use first. A photo gives you a faster inventory than trying to remember every jar and leftover.\n\n## Use this meal-planning prompt\n\n```prompt\nHelp me meal prep for [number of people] for [number of days]. Use the food in the attached photo as the starting inventory. I also have [dietary needs, allergies, dislikes, and foods I want to use first]. I have [minutes] minutes to prep on [day] and access to [oven, stovetop, air fryer, slow cooker, or no-cook tools].\n\nCreate: 1) a short meal plan with breakfast, lunch, dinner, and flexible leftovers; 2) a grocery list grouped by store section; 3) a prep order that fits my time; and 4) storage and food-safety notes. Ask me about anything in the photo that you cannot identify. Keep the plan realistic: reuse ingredients, avoid more than [number] new recipes, and do not assume I have ingredients that are not visible or listed.\n```\n\n## Make the plan fit your week\n\nTell ChatGPT which days are busy and which meals need to travel. Ask it to turn one cooked ingredient into two different meals, such as roasted vegetables for grain bowls and wraps. Keep one no-cook backup for the day when prep does not go to plan.\n\n## Prep in the right order\n\nAsk for a timed checklist, then start with the longest cooking step. While it cooks, wash produce, portion snacks, and label containers. Save sauces and crunchy toppings separately so leftovers still feel fresh.\n\n## Check before you store\n\nReview the plan for allergies, portions, refrigerator space, and use-by dates. Let hot food cool safely before storing it, and follow local food-safety guidance for leftovers. If ChatGPT cannot tell what is in the photo, verify it yourself before adding it to a recipe.\n\n## Keep the next week easier\n\nAfter the last meal, tell ChatGPT what you enjoyed, what went untouched, and how long prep really took. Ask it to adjust next week’s plan instead of starting over.",
+    "cta_label": "Browse more lifestyle resources",
+    "cta_url": "/#resources",
+    "cta_eyebrow": "Keep building useful habits",
+    "cta_heading": "Make the next week easier.",
+    "cta_description": "Explore more practical prompts, playbooks, and systems from Nic.Buildz.",
+    "published": true,
+    "featured": false,
+    "sort_order": 30,
+    "format": "Guide",
+    "read_time": "6 min",
+    "is_latest_reel": false
   }
 ]
