@@ -1,5 +1,53 @@
 [
   {
+    "slug": "meta-muse-marketplace",
+    "title": "Negotiate on Marketplace with Meta’s Muse",
+    "category": "AI + Automation",
+    "description": "Buy or sell with a clear plan. Build your Muse prompt, set your price limits, and practice a counteroffer before the real conversation.",
+    "body": "Let Muse handle the back-and-forth. Give it a clear price limit and a clear point to hand the decision back to you.\n\nMeta’s Muse can find Marketplace listings, make offers, negotiate, and help sell items. The builder above turns your numbers into a starting prompt. These are Nic.Buildz example workflows, not a promise of a discount or a completed sale.\n\n**Checked October 1, 2026.** Meta describes Muse as available in the US and Canada. Access, permissions and screens can vary. This guide is for the Muse agent at muse.ai, not simply a Meta AI chat inside Facebook. Official references are linked below.\n\n## 1. Open Muse and bring one listing\n\nOpen Muse with the button above and sign in. Copy your finished prompt from the builder, paste it into a new conversation, and add the Marketplace listing link. Starting with one item keeps the first negotiation easy to follow.\n\n- **Buying:** include the exact model, condition, accessories and listed price. Tell Muse what you need to verify before buying.\n- **Selling:** include honest photos, condition, known flaws, included accessories and your asking price. If you want a new listing, ask for a draft to review before posting.\n- **Still searching?** Tell Muse the item, city or general area, search radius and budget. Ask for three comparable listings with links before contacting anyone.\n\nAsk Muse to open the listing. If it requests Facebook access, review the access request and use the sign-in flow it provides. Connect only what this task needs. If it cannot access a listing or conversation, paste the relevant text and use draft messages instead.\n\n## 2. Set the numbers before the conversation\n\n**Buying:** choose an opening offer and a maximum total you can comfortably pay. Include delivery or other costs in that maximum.\n\n**Selling:** choose an asking price, a target price and the minimum you want to receive after any costs. Keep the minimum private.\n\nUse comparable items in similar condition to ground the offer. An active listing shows what someone is asking; it does not prove what buyers actually paid. There is no magic discount percentage that works on every item.\n\n**Example:** a desk is listed for $200. You open at $150 and cap your total at $180. A $190 counteroffer is still above your limit, even though it is below the asking price. These are practice numbers, not a valuation.\n\n## 3. Choose drafts or a bounded negotiation\n\n**Draft messages for me to send:** Muse writes the next message. You review it and send it yourself in Marketplace. This is a useful way to learn the flow.\n\n**Negotiate after I approve the plan:** Muse first shows you the item, person, opening message and proposed approach. After you approve the plan and the access it needs, the prompt allows up to two counteroffer rounds with that person. Then Muse pauses with a summary.\n\nRead the actual permission request before approving it. Prefer an approval limited to this task when offered. The instructions in a prompt are not a replacement for permission controls or checking what Muse has done.\n\nBefore approving a plan, confirm these four things:\n\n- It names the right listing and person.\n- It uses the right currency and your exact price limits.\n- It describes the condition truthfully and keeps messages polite.\n- It asks you before a final commitment, payment or pickup arrangement.\n\n## 4. Review the reply and make one next move\n\nWhen an offer comes back, ask Muse to summarize the current price, unresolved questions and next proposed reply. Decide whether to counter, accept after checking the details, or walk away.\n\n```prompt\nPause and summarize this Marketplace conversation. Show the latest offer, total cost or net proceeds, any unanswered condition questions, and how the offer compares with my private price limit. Recommend one next step and draft the exact reply. Do not send it or change my limits until I approve.\n```\n\nA short, specific message usually gives the other person more to respond to than “lowest price?” Ask about condition, propose a real number, and mention pickup flexibility only if it is true. If they decline, respect the answer.\n\n## 5. Confirm the whole deal yourself\n\nBefore you commit, confirm the exact item, agreed price, condition, included parts and any delivery cost. Inspect or test the item as appropriate before paying. For local pickup, choose a suitable public meeting place when practical and agree on a time you can actually make.\n\nKeep your home address and private contact details out of the negotiation prompt. Review any information Muse proposes sharing. Never send a verification code to a buyer or seller, and treat pressure to pay an advance deposit or move to a suspicious payment link as a reason to pause.\n\n```prompt\nStop negotiating and give me the final proposal: item and listing link, agreed or proposed price, fees or delivery costs, condition and included accessories, open questions, and proposed pickup arrangements. Clearly distinguish confirmed facts from suggestions. Do not accept, pay, share my address, confirm pickup or mark anything sold until I explicitly approve each relevant action.\n```\n\n**Done with this item?** Tell Muse to stop the task and any related monitoring. Review its activity and remove access you no longer need. A successful negotiation ends with a deal you understand and actually want.",
+    "published": true,
+    "featured": false,
+    "is_latest_reel": false,
+    "published_at": "2026-10-01",
+    "sort_order": -4,
+    "badge": "Interactive",
+    "format": "Guide",
+    "read_time": "6 min read",
+    "action_url": "https://muse.ai/",
+    "action_label": "Open Muse",
+    "toc_title": "The five-step walkthrough",
+    "toc_description": "From your first listing to a deal you have checked.",
+    "prompt_toolbar": "Copy, review, paste into Muse",
+    "prompt_copy_success": "Prompt copied. Paste it into your Muse conversation and review its response.",
+    "sources_intro": "Official product information checked October 1, 2026. The prompt builder, practice prices and negotiation examples are original Nic.Buildz guidance. This guide is independent of Meta.",
+    "sources": [
+      {
+        "label": "Meta: Muse for Shopping — Marketplace buying, selling and negotiation",
+        "url": "https://ai.meta.com/muse/shopping/"
+      },
+      {
+        "label": "Meta: Introducing Muse — getting started and access controls",
+        "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+      },
+      {
+        "label": "Meta: Muse for Small Business — US and Canada availability",
+        "url": "https://about.fb.com/news/2026/09/introducing-muse-small-business/"
+      },
+      {
+        "label": "Meta: How We Built Safety Into Muse — permissions and limitations",
+        "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"
+      },
+      {
+        "label": "Facebook Help Center: Tips for Shopping Safely",
+        "url": "https://www.facebook.com/help/123884166448529/"
+      }
+    ],
+    "cta_label": "Explore more AI guides",
+    "cta_url": "/#resources",
+    "cta_heading": "Put AI to work on the next thing.",
+    "cta_description": "More practical guides and prompts from Nic.Buildz."
+  },
+  {
     "slug": "general-conference-activity-workbook",
     "title": "Free General Conference activity workbook",
     "category": "Free Printable",

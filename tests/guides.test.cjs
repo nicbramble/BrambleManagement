@@ -67,3 +67,44 @@ test('the complete downloadable study guide matches the published resource body'
   assert.equal((html.match(/class="copy-prompt"/g) || []).length, 10);
   assert.equal(new Set([...html.matchAll(/id="([^"]+)"/g)].map(match => match[1])).size, 22);
 });
+
+test('Marketplace prompts preserve buyer and seller boundaries in both modes', () => {
+  const context = harness();
+  const buyer = context.musePlan({...context.museDefaults(), currency: 'CAD', opening: '150.25', limit: '180.50'});
+  assert.match(buyer.prompt, /CAD 150\.25/);
+  assert.match(buyer.prompt, /CAD 180\.5 total/);
+  assert.match(buyer.prompt, /Draft only/);
+  assert.match(buyer.prompt, /Do not contact anyone/);
+  const seller = context.musePlan({...context.museDefaults('sell'), mode: 'negotiate'});
+  assert.match(seller.prompt, /minimum is USD 170 net/);
+  assert.match(seller.prompt, /Wait for my explicit approval/);
+  assert.match(seller.prompt, /at most two counteroffer rounds/);
+  for (const plan of [buyer, seller]) {
+    assert.match(plan.prompt, /never.*reveal it/);
+    assert.match(plan.prompt, /Ask me before accepting or committing/);
+    assert.match(plan.prompt, /confirming any pickup place or time/);
+  }
+});
+
+test('Marketplace builder rejects missing, nonfinite and inconsistent limits', () => {
+  const context = harness();
+  for (const changes of [{item:''}, {listed:''}, {opening:'-1'}, {limit:'NaN'}, {limit:'Infinity'}, {limit:'1000001'}, {opening:'1.001'}, {opening:'190'}, {opening:'201',limit:'220'}, {role:'sell',opening:'180',limit:'190'}]) {
+    const plan = context.musePlan({...context.museDefaults(), ...changes});
+    assert.ok(plan.error, JSON.stringify(changes));
+    assert.equal(plan.prompt, undefined);
+  }
+  assert.ok(context.musePlan({...context.museDefaults(), opening:'180',limit:'180'}).prompt);
+});
+
+test('Marketplace guide is available without JavaScript and does not affect other guides', () => {
+  const context = harness({Bramble: require('../resource-core.js')});
+  const resources = JSON.parse(fs.readFileSync(path.join(root, 'data/resources.json'), 'utf8'));
+  const item = resources.find(r => r.slug === 'meta-muse-marketplace');
+  const html = context.guideMarkup(item);
+  assert.match(html, /id="muse-builder"/);
+  assert.match(html, /id="muse-practice"/);
+  assert.match(html, /Draft only/);
+  assert.ok(!context.guideMarkup(resources.find(r => r.slug === 'google-flight-deals')).includes('id="muse-builder"'));
+  const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
+  assert.equal(new Set(ids).size, ids.length);
+});
