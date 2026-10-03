@@ -1,5 +1,70 @@
 [
   {
+    "slug": "open-source-subscription-swaps",
+    "title": "8 subscriptions you can replace with open-source tools",
+    "category": "Creator Tools",
+    "description": "Wispr Flow to FreeFlow, Photoshop to GIMP, and six more practical swaps—with GitHub links, setup steps, and the costs to check before cancelling.",
+    "body": "You probably do not need another monthly app bill. You need the job it does: dictate a message, edit a thumbnail, record a tutorial, or move data between apps.\n\nThese eight projects on GitHub can replace common paid workflows. Start with one you actually use. **Free software does not always mean a free setup:** AI usage, storage, hosting, and your time can still cost money. Some projects offer a free open-source core alongside paid features.\n\n**Quick picks:** FreeFlow for Mac dictation, GIMP for image editing, OBS for recording, and Joplin for personal notes. Activepieces and Nextcloud take more setup. The numbered GitHub links at the end match the eight swaps below.\n\n## 1. Wispr Flow → FreeFlow\n\n**For:** Mac users who want to talk instead of type. The paid app’s name is Wispr Flow, sometimes written as “WhisperFlow.”\n\nFreeFlow turns speech into text in your current app, cleans up the transcript, and can edit selected text from a spoken instruction. It is a free Mac app with MIT-licensed source code.\n\n### Get started\n\n1. Open the FreeFlow GitHub link below and download the app using its README’s download link.\n2. Install it and grant the requested Mac permissions.\n3. Create a Groq API key and enter it in the app’s settings.\n4. Hold Fn, speak a short message, and release to paste the result. Add names or jargon to the custom vocabulary.\n\n**The catch:** The default setup sends audio and cleanup requests to your configured AI provider. Groq has a free tier with limits; other providers can charge for usage. Local providers are supported but require a compatible transcription backend as well as a cleanup model, and can be slower. This is a Mac replacement, not a replacement for every Wispr Flow platform.\n\n**Try before switching:** Dictate the same paragraph in both apps and compare punctuation, names, and speed.\n\n## 2. Photoshop → GIMP\n\n**For:** Creators making thumbnails, editing photos, or working with layered images.\n\nGIMP is a free image editor with layers, selections, masks, retouching tools, and plugins. Its GitHub repository mirrors the project’s source; the official GIMP website provides ready-to-install releases.\n\n### Get started\n\n1. Follow the download link in the repository README to GIMP’s official website. Choose a stable release for your computer.\n2. Open a copy of an image and try a crop, color adjustment, and text layer.\n3. Save the editable project as XCF and export a JPG or PNG for posting.\n\n**The catch:** The interface and shortcuts differ from Photoshop. Photoshop-specific plugins, AI features, and complex PSD files may not transfer cleanly. Keep original files and test a representative project first.\n\n**Try before switching:** Recreate one real thumbnail, including the layers you normally edit later.\n\n## 3. Loom → OBS Studio\n\n**For:** People paying mainly to record screen walkthroughs, lessons, or demos.\n\nOBS is free, open-source software for screen recording and streaming. You can combine a screen, webcam, and microphone in one recording on Windows, macOS, or Linux.\n\n### Get started\n\n1. Download OBS through the official website linked in its repository.\n2. Run the Auto-Configuration Wizard for recording.\n3. Add a screen-capture source and, if needed, a webcam source. Check your microphone in the audio mixer.\n4. Record a one-minute test, play it back, then share the file through storage you already use.\n\n**The catch:** OBS replaces the recording part of Loom. It does not provide Loom’s hosted video library, instant sharing pages, viewer comments, or AI summaries. Large recordings also need storage and upload time.\n\n**Try before switching:** Record and deliver a tutorial to someone using your existing file-sharing setup.\n\n## 4. Evernote → Joplin\n\n**For:** Personal notes, research, checklists, and saved web pages.\n\nJoplin is a free, open-source notes app for desktop and mobile. Notes remain available offline. It supports notebooks, search, attachments, a browser web clipper, and imports from Evernote’s ENEX exports.\n\n### Get started\n\n1. Install Joplin using the official links in its repository.\n2. Export one Evernote notebook as ENEX and import it into Joplin on desktop.\n3. Check formatting, attachments, tags, and a few searches.\n4. If you need multiple devices, choose a supported sync destination and test a note in both directions.\n\n**The catch:** Joplin Cloud is an optional paid service. Using another sync destination can avoid that subscription, but its storage limits or costs still apply. Shared team workflows may differ from Evernote. Export and check your notes before cancelling.\n\n**Try before switching:** Use one imported notebook for a week and confirm you can find its attachments on your phone.\n\n## 5. Adobe Acrobat / Smallpdf → Stirling PDF\n\n**For:** Everyday PDF jobs such as merging, splitting, compressing, converting, and OCR.\n\nStirling PDF brings many PDF tools into one interface. You can run it on your own machine or server rather than relying on a paid online PDF service for routine processing.\n\n### Get started\n\n1. Open the repository and follow its installation documentation for a local setup or self-hosted server.\n2. Start with a copy of a non-sensitive PDF.\n3. Merge two files, extract pages, and compress the result. Open the output to check readability.\n\n**The catch:** Stirling PDF is open-core: parts of the project use separate licenses, and some capabilities require paid plans. Check the edition and features you need. It is not a promise of complete Acrobat editing compatibility. Self-hosting adds maintenance and potential server costs; the data path depends on the deployment you choose.\n\n**Try before switching:** Run your three most common PDF tasks and inspect every output.\n\n## 6. Zapier → Activepieces Community Edition\n\n**For:** Automating repetitive handoffs between apps.\n\nActivepieces has a visual builder for triggers and actions. Its Community Edition is MIT-licensed and can be self-hosted. A useful first workflow: when a form submission arrives, add a row to a spreadsheet.\n\n### Get started\n\n1. Use the repository’s deployment documentation to install Community Edition on a machine or server you control.\n2. Check that your exact apps and actions have supported integrations, called pieces.\n3. Connect a test form and spreadsheet, build one flow, and send sample submissions.\n4. Check the run history and confirm each submission creates one correct row before moving a live workflow.\n\n**The catch:** Enterprise features use a commercial license. Hosting, connected services, and AI APIs can still cost money. Integration coverage may differ from Zapier, and you maintain the self-hosted service. Test failures and retries as well as the happy path.\n\n**Try before switching:** Move one low-risk workflow and compare its results for a week.\n\n## 7. Dropbox → Nextcloud\n\n**For:** People who want file sync and sharing on storage they control.\n\nNextcloud is an open-source server for storing, syncing, and sharing files. Desktop and mobile clients connect to your instance. It makes the most sense if you already have suitable hardware or want to manage your own storage.\n\n### Get started\n\n1. Follow the repository’s official server-installation links. Decide where it will run and where backups will live.\n2. Create your account and connect a desktop or mobile client.\n3. Sync a small test folder and try a share link.\n4. Test restoring a file from a separate backup before moving important data.\n\n**The catch:** Free server software does not give you free disks, unlimited storage, backups, or hosting. Updates and availability become your responsibility, unless you pay a provider to manage them. Sync alone is not a backup.\n\n**Try before switching:** Confirm your test folder syncs across devices and that a deleted file can be recovered.\n\n## 8. TeamViewer → RustDesk\n\n**For:** Basic remote access to your own computers or helping someone with their permission.\n\nRustDesk is an open-source remote desktop app. You can use its public connection infrastructure or run the open-source ID and relay server yourself for more control.\n\n### Get started\n\n1. Install a stable RustDesk release on both computers from the repository’s download link.\n2. Start a session with the remote computer’s ID and the owner’s approval.\n3. Test screen control and file transfer for the work you actually do.\n4. If you need your own infrastructure, follow the separate Server OSS instructions and configure both clients to use it.\n\n**The catch:** RustDesk Server Pro adds paid administration features. Running your own server adds setup and hosting costs. A basic remote session is not the same as replacing a company’s full device-management system.\n\n**Try before switching:** Complete a real support session across two different networks.\n\n## Pick the subscription worth replacing\n\nStart with a job you do often and can test easily. FreeFlow, GIMP, OBS, or Joplin are good first trials. Take more time with a server you need to keep running, such as Activepieces or Nextcloud.\n\n1. Write down the features you actually use in the paid app.\n2. Try the replacement on one real task and keep your original files.\n3. Check export, sharing, sync, or recovery—whichever your workflow depends on.\n4. Compare the bill you can remove with new API, storage, hosting, and maintenance costs.\n5. Cancel only after the replacement does the job reliably and your data is accessible.\n\n**Your potential annual savings:** 12 × the monthly subscriptions you actually cancel, minus annual replacement costs. For annual plans, use the actual renewal amount. Do not count all eight as savings unless you currently pay for all eight.\n\n### Get help setting up your first swap\n\nPaste this into an AI assistant and fill in the brackets:\n\n```prompt\nHelp me replace [paid app] with [open-source project].\nMy device and operating system: [details].\nThe features I actually use: [list].\nMy comfort with installing apps or managing a server: [level].\n\nRead the project's current official GitHub README and installation docs.\nTell me which of my features are supported, which need paid services,\nand what data will leave my device. Do not assume that a GitHub project\nis fully open source or that self-hosting costs nothing.\nGive me a short setup plan, one realistic test, and an export or backup\nstep before I cancel. Ask about missing details before choosing a setup.\n```\n\nProject documentation checked October 3, 2026. Features, free tiers, and licenses can change; use the official links below for the current setup.",
+    "badge": "8 swaps",
+    "format": "Guide",
+    "published": true,
+    "published_at": "2026-10-03",
+    "is_latest_reel": false,
+    "sort_order": -6,
+    "action_url": "https://github.com/zachlatta/freeflow",
+    "action_label": "Get FreeFlow on GitHub",
+    "cta_label": "Browse more guides",
+    "cta_url": "/#resources",
+    "cta_heading": "Make your tools work for you.",
+    "toc_title": "Jump to a subscription swap",
+    "toc_description": "Compare the eight replacements, then choose your first trial.",
+    "prompt_toolbar": "Customize your setup plan",
+    "prompt_copy_success": "Setup prompt copied. Fill in your app, device, and must-have features.",
+    "sources_intro": "Numbered repositories match the swaps above. Their READMEs link to official downloads and installation instructions. These are alternatives for the workflows described, not claims of complete feature parity.",
+    "sources": [
+      {
+        "label": "1. Wispr Flow → FreeFlow — GitHub, download & setup",
+        "url": "https://github.com/zachlatta/freeflow"
+      },
+      {
+        "label": "2. Photoshop → GIMP — GitHub source mirror & official links",
+        "url": "https://github.com/GNOME/gimp"
+      },
+      {
+        "label": "3. Loom → OBS Studio — GitHub & official downloads",
+        "url": "https://github.com/obsproject/obs-studio"
+      },
+      {
+        "label": "4. Evernote → Joplin — GitHub, import & sync documentation",
+        "url": "https://github.com/laurent22/joplin"
+      },
+      {
+        "label": "5. Acrobat / Smallpdf → Stirling PDF — GitHub & installation",
+        "url": "https://github.com/Stirling-Tools/Stirling-PDF"
+      },
+      {
+        "label": "6. Zapier → Activepieces Community Edition — GitHub & deployment",
+        "url": "https://github.com/activepieces/activepieces"
+      },
+      {
+        "label": "7. Dropbox → Nextcloud — GitHub & server installation",
+        "url": "https://github.com/nextcloud/server"
+      },
+      {
+        "label": "8. TeamViewer → RustDesk — GitHub & downloads",
+        "url": "https://github.com/rustdesk/rustdesk"
+      },
+      {
+        "label": "RustDesk Server OSS vs. Pro — official self-hosting documentation",
+        "url": "https://rustdesk.com/docs/en/self-host/"
+      },
+      {
+        "label": "Stirling PDF — open-core license and excluded directories",
+        "url": "https://github.com/Stirling-Tools/Stirling-PDF/blob/main/LICENSE"
+      }
+    ]
+  },
+  {
     "slug": "tree-quote-agent",
     "title": "Build an AI tree quote agent",
     "category": "AI + Automation",
