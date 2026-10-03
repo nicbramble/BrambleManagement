@@ -1,6 +1,6 @@
 # Publish an AI-generated resource
 
-Open **https://www.bramblemanagement.com/admin/** after this update is deployed, or **http://127.0.0.1:8765/admin/** in the local preview. There is no public admin link and no hidden copyright-button gesture. This is a browser-local editor, not authentication or a server publisher. Newsletter records and secrets are never available here.
+Open **https://nicbuilds.com/admin/** after this update is deployed, or **http://127.0.0.1:8765/admin/** in the local preview. There is no public admin link and no hidden copyright-button gesture. This is a browser-local editor, not authentication or a server publisher. Newsletter records and secrets are never available here.
 
 1. Click **Copy AI creation prompt**. Add your brief and give it to your AI. Ask for JSON using the supplied schema.
 2. Click **Import AI Resource / backup**, paste the result (or select its JSON file), and choose **Validate and review**. Imports default to draft. Arrays open as a review queue: save each item, then choose **Next imported resource**.

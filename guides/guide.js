@@ -119,7 +119,7 @@ function guideMarkup(item) {
 }
 function updateGuideMetadata(item) {
   document.title = `${item.title} — Nic Bramble`;
-  const values = {'description':item.description,'og:title':document.title,'og:description':item.description,'og:url':`https://www.bramblemanagement.com${Bramble.publicPath(item)}`,'og:image':document.querySelector('meta[property="og:image"]')?.content || 'https://www.bramblemanagement.com/assets/social-preview.jpg'};
+  const values = {'description':item.description,'og:title':document.title,'og:description':item.description,'og:url':`https://nicbuilds.com${Bramble.publicPath(item)}`,'og:image':document.querySelector('meta[property="og:image"]')?.content || 'https://nicbuilds.com/assets/social-preview.jpg'};
   for (const [key,value] of Object.entries(values)) {
     const attr = key.startsWith('og:') ? 'property' : 'name';
     let tag = document.querySelector(`meta[${attr}="${key}"]`);

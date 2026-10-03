@@ -15,11 +15,11 @@ vm.runInContext(fs.readFileSync(path.join(root,'guides/guide.js'),'utf8'),ctx);
 const template=fs.readFileSync(path.join(root,'guides/index.html'),'utf8');
 const generated=[];
 for(const item of published){
- const url='https://www.bramblemanagement.com/guides/'+item.slug+'/';
+ const url='https://nicbuilds.com/guides/'+item.slug+'/';
  const title=item.title+' — Nic Bramble';
  const image=fs.existsSync(path.join(root,`assets/social/${item.slug}.jpg`))?`/assets/social/${item.slug}.jpg`:'/assets/social-preview.jpg';
  const e=B.escape;
- const metadata=`<meta name="description" content="${e(item.description)}"><link rel="canonical" href="${url}"><meta property="og:title" content="${e(title)}"><meta property="og:description" content="${e(item.description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="https://www.bramblemanagement.com${image}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:type" content="article"><meta name="twitter:card" content="summary_large_image">`;
+ const metadata=`<meta name="description" content="${e(item.description)}"><link rel="canonical" href="${url}"><meta property="og:title" content="${e(title)}"><meta property="og:description" content="${e(item.description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="https://nicbuilds.com${image}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:type" content="article"><meta name="twitter:card" content="summary_large_image">`;
  const html=template.replace('<title>Guide — Nic Bramble</title>',`<title>${e(title)}</title>`).replace('</head>',metadata+'\n</head>').replace(/<main id="guide-root"[\s\S]*?<\/main>/,`<main id="guide-root" data-prerendered="true" tabindex="-1" class="${/^```prompt\s*$/m.test(item.body)?'prompt-guide':''}">${ctx.guideMarkup(item)}</main>`);
  const rel=`guides/${item.slug}/index.html`;fs.mkdirSync(path.dirname(path.join(root,rel)),{recursive:true});fs.writeFileSync(path.join(root,rel),html);generated.push(rel);
 }
@@ -27,6 +27,6 @@ for(const item of published){
 const manifest=path.join(root,'data/generated-pages.json');
 if(fs.existsSync(manifest))for(const old of JSON.parse(fs.readFileSync(manifest,'utf8')))if(/^guides\/[a-z0-9-]+\/index\.html$/.test(old)&&!generated.includes(old)&&fs.existsSync(path.join(root,old)))fs.unlinkSync(path.join(root,old));
 fs.writeFileSync(manifest,JSON.stringify(generated,null,2)+'\n');
-const urls=['https://www.bramblemanagement.com/',...published.map(r=>'https://www.bramblemanagement.com/guides/'+r.slug+'/')];
+const urls=['https://nicbuilds.com/',...published.map(r=>'https://nicbuilds.com/guides/'+r.slug+'/')];
 fs.writeFileSync(path.join(root,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.map(u=>`  <url><loc>${u}</loc></url>`).join('\n')+'\n</urlset>\n');
 console.log(`Validated ${all.length} resources; built ${generated.length} public guide pages and sitemap.`);

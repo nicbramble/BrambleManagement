@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /qa/
-Sitemap: https://www.bramblemanagement.com/sitemap.xml
+Sitemap: https://nicbuilds.com/sitemap.xml

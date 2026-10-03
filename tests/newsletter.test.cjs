@@ -113,21 +113,21 @@ test('responses expose only status and request correlation, not subscriber data'
   const h = harness();
   const result = h.submit();
   assert.ok(!result.response.includes('qa.test') && !result.response.includes('SPREADSHEET_ID'));
-  assert.ok(result.response.includes('https://www.bramblemanagement.com'));
+  assert.ok(result.response.includes('https://nicbuilds.com'));
   assert.equal(h.ctx.doGet(), 'Newsletter signup service is running.');
   const forged = h.ctx.doPost({parameter: {request_id: '</script><script>alert(1)</script>'}, postData: {length: 100}});
   assert.ok(!forged.html.includes('alert(1)'));
 });
 
 test('resource URLs reject executable schemes, credentials and unsafe image data', () => {
-  const ctx = vm.createContext({URL, window: {location: {href: 'https://www.bramblemanagement.com/guides/', origin: 'https://www.bramblemanagement.com'}}});
+  const ctx = vm.createContext({URL, window: {location: {href: 'https://nicbuilds.com/guides/', origin: 'https://nicbuilds.com'}}});
   vm.runInContext(fs.readFileSync(path.join(root, 'safe-url.js'), 'utf8'), ctx);
   const safe = ctx.window.brambleSafeUrl;
   assert.equal(safe('javascript:alert(1)'), '#');
   assert.equal(safe('https://user:pass@example.com'), '#');
   assert.equal(safe('http://external.example'), '#');
   assert.equal(safe('data:image/svg+xml,<svg onload="alert(1)"/>', {image: true}), '#');
-  assert.equal(safe('/downloads/chatgpt-image-codes.pdf'), 'https://www.bramblemanagement.com/downloads/chatgpt-image-codes.pdf');
+  assert.equal(safe('/downloads/chatgpt-image-codes.pdf'), 'https://nicbuilds.com/downloads/chatgpt-image-codes.pdf');
 });
 
 test('local HTML and resource references resolve', () => {

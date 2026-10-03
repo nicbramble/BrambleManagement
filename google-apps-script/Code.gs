@@ -1,6 +1,6 @@
 /* Newsletter intake only. Never deploy subscriber-reading functions. */
 const NEWSLETTER = Object.freeze({
-  origin: 'https://www.bramblemanagement.com',
+  origin: 'https://nicbuilds.com',
   consentVersion: '2026-09-v1',
   headers: ['email', 'subscribed_at', 'source', 'consent_version', 'status', 'unsubscribed_at', 'bounce_type']
 });

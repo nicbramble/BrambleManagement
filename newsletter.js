@@ -22,8 +22,8 @@
     feedback.classList.toggle('is-error', error);
   };
   form.elements.started_at.value = String(Date.now());
-  if (location.hostname === 'www.bramblemanagement.com' && location.protocol !== 'https:') {
-    announce('Please open https://www.bramblemanagement.com to sign up securely.', true);
+  if (location.hostname === 'nicbuilds.com' && location.protocol !== 'https:') {
+    announce('Please open https://nicbuilds.com to sign up securely.', true);
     return;
   }
   if (!/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(endpoint)) {

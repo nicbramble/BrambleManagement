@@ -12,7 +12,7 @@
   };
   const required = ['slug','title','category','description','body'];
   const escape = (value = '') => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-  const origin = () => global.location?.origin || 'https://www.bramblemanagement.com';
+  const origin = () => global.location?.origin || 'https://nicbuilds.com';
   const url = value => global.brambleSafeUrl ? global.brambleSafeUrl(value, {fallback:''}) : safeURL(value);
   function safeURL(value) {
     if (typeof value !== 'string' || !value.trim()) return '';
@@ -23,7 +23,7 @@
     if (!safe) return '';
     const u = new URL(safe);
     const allowed = global.BRAMBLE_CONFIG?.allowedAssetOrigins || [];
-    if (u.origin !== origin() && u.origin !== 'https://www.bramblemanagement.com' && !allowed.includes(u.origin)) return '';
+    if (u.origin !== origin() && u.origin !== 'https://nicbuilds.com' && !allowed.includes(u.origin)) return '';
     const ext = kind === 'image' ? /\.(png|jpe?g|webp|avif)$/i : /\.(pdf|txt|csv|json|zip)$/i;
     if (!ext.test(u.pathname)) return '';
     return u.href;

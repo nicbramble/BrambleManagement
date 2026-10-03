@@ -35,13 +35,13 @@ test('full backup round-trip preserves content while defaulting to draft',()=>{
 });
 test('public library ignores local drafts; local studio retains them, sort order zero is valid',async()=>{
  const items=[{...base,sort_order:0},{...base,slug:'hidden',published:false}];
- const context=vm.createContext({URL,URLSearchParams,fetch:async()=>({ok:true,json:async()=>items}),window:{location:{origin:'https://www.bramblemanagement.com'},localStorage:{getItem:()=>JSON.stringify([{...base,slug:'private-draft',published:false}])}}});
+ const context=vm.createContext({URL,URLSearchParams,fetch:async()=>({ok:true,json:async()=>items}),window:{location:{origin:'https://nicbuilds.com'},localStorage:{getItem:()=>JSON.stringify([{...base,slug:'private-draft',published:false}])}}});
  vm.runInContext(fs.readFileSync(path.join(root,'resource-core.js'),'utf8'),context);
  assert.equal((await context.window.Bramble.load()).length,1);assert.equal((await context.window.Bramble.load({local:true}))[0].slug,'private-draft');assert.equal(B.validate(items[0]).item.sort_order,0);
 });
 test('optional Supabase errors fall back to JSON and drafts stay hidden',async()=>{
  for(const online of [true,false]){
-  const context=vm.createContext({URL,URLSearchParams,fetch:async url=>{if(url.startsWith('https://db.example')){if(!online)throw Error('offline');return {ok:true,json:async()=>[base,{...base,slug:'draft',published:false}]};}return {ok:true,json:async()=>[base]};},window:{BRAMBLE_CONFIG:{supabaseUrl:'https://db.example',supabaseAnonKey:'public'},location:{origin:'https://www.bramblemanagement.com'}}});
+  const context=vm.createContext({URL,URLSearchParams,fetch:async url=>{if(url.startsWith('https://db.example')){if(!online)throw Error('offline');return {ok:true,json:async()=>[base,{...base,slug:'draft',published:false}]};}return {ok:true,json:async()=>[base]};},window:{BRAMBLE_CONFIG:{supabaseUrl:'https://db.example',supabaseAnonKey:'public'},location:{origin:'https://nicbuilds.com'}}});
   vm.runInContext(fs.readFileSync(path.join(root,'resource-core.js'),'utf8'),context);assert.equal((await context.window.Bramble.load()).length,1);
  }
 });
