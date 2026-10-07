@@ -6,3 +6,10 @@
 
 .start-section{padding:0 0 24px;scroll-margin-top:16px}.start-grid{display:grid;gap:10px;padding-top:16px}.start-card{display:flex;gap:14px;padding:18px 16px;background:var(--paper);border:1px solid var(--line);text-decoration:none;transition:background .2s,border-color .2s}.start-card:hover{background:#fffdf8;border-color:var(--accent-dark)}.start-number{flex:0 0 30px;color:var(--accent-dark);font:500 1rem/1.3 "Oswald",sans-serif;padding-top:3px}.start-card-body{display:flex;flex-direction:column;flex:1;min-width:0}.start-card h3{font-size:1.3rem;line-height:1.15;margin:0 0 7px}.start-card p{font-size:.82rem;line-height:1.45;color:var(--muted);margin-bottom:12px}.start-detail{display:flex;justify-content:space-between;gap:12px;margin-top:auto;color:var(--muted);font-size:.7rem}.start-detail>span{font-size:1rem;color:var(--accent-dark);line-height:1}.start-browse{margin:8px 0 0}.newsletter-section{margin-bottom:32px}
 @media(min-width:700px){.start-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.start-card{flex-direction:column;padding:22px}.start-card h3{font-size:1.55rem}.start-number{flex-basis:auto;margin-bottom:2px}.start-section{padding-bottom:32px}.newsletter-section{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;margin-bottom:40px}.newsletter-section .newsletter-copy>p:last-child{margin-bottom:0}}
+
+/* Cover artwork keeps its entire landscape composition at every card size. */
+.resource-thumb{width:100px;flex-basis:100px;height:auto;aspect-ratio:1200/630;align-self:center}.resource-thumb img{object-fit:contain}.latest-card .resource-thumb{height:auto;aspect-ratio:1200/630}
+@media(min-width:700px){.resource-thumb{width:130px;flex-basis:130px;height:auto}.latest-card .resource-thumb{height:auto}}
+@media(min-width:1050px){.resource-card:not(.latest-card) .resource-thumb{height:auto;aspect-ratio:1200/630;align-self:stretch}}
+
+#hero-heading em{display:block}

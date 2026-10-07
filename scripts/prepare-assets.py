@@ -22,7 +22,13 @@ for rel in sorted(set(['/assets/nic-bramble.jpg']+[r['image_url'] for r in resou
 (ROOT/'data/asset-variants.json').write_text(json.dumps(manifest,indent=2)+'\n')
 (ROOT/'asset-variants.js').write_text('window.BRAMBLE_ASSET_VARIANTS = '+json.dumps(manifest)+';\n')
 # Original artwork is reused without changing its meaning. Cards use native text.
-for item in [{'slug':'home','title':'Useful systems. Free resources.','category':'PROMPTS · PLAYBOOKS · PRACTICAL BREAKDOWNS'}]+resources:
+for item in [{'slug':'home','title':'Better prompts. Less busywork.','category':'PROMPTS · PLAYBOOKS · PRACTICAL BREAKDOWNS'}]+resources:
+    if item.get('image_url','').startswith('/assets/thumbnails/'):
+        # Covers are already finished social artwork; do not crop them into another template.
+        src=ROOT/item['image_url'].lstrip('/')
+        if src.exists():
+            Image.open(src).convert('RGB').resize((1200,630)).save(assets/'social'/f"{item['slug']}.jpg",quality=90,optimize=True)
+            continue
     card=Image.new('RGB',(1200,630),'#f4efe5');d=ImageDraw.Draw(card);d.rectangle((0,0,16,630),fill='#e75836')
     d.text((58,48),'NIC.BUILDZ',font=font(33),fill='#171512');d.text((58,125),item['category'].upper(),font=font(21),fill='#b7351e')
     words=item['title'].split();lines=[];line=''

@@ -1,0 +1,6 @@
+interface:
+  display_name: "NIC.BUILDZ Guides"
+  short_description: "Write practical guides with examples and prompts"
+  default_prompt: "Use $nicbuildz-guides to create a practical NIC.BUILDZ guide from this brief."
+policy:
+  allow_implicit_invocation: true

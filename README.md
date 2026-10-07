@@ -10,7 +10,7 @@ Serve the repository with any static web server, then open the root page. The si
 
 Open `/admin/` directly for AI import, editing, exact public previews, asset checks and JSON export. It saves locally and cannot deploy. See `ADMIN_SETUP.md` for the full publishing workflow, `AI_RESOURCE_PROMPT.md` for the creation prompt, and `RESOURCE_SCHEMA.md` for the contract.
 
-After replacing `data/resources.json`, run `node scripts/build-resources.cjs` to build crawler-readable guide pages and the sitemap. No homepage code changes are needed.
+After replacing `data/resources.json`, run `node scripts/build-library.cjs` to generate consistent resource covers, responsive variants, social artwork, crawler-readable guide pages and the sitemap. This uses Python with Pillow; set `NICBUILDZ_PYTHON` to its executable if needed. Cover direction lives in `data/thumbnail-specs.json`; follow `skills/nicbuildz-guides/SKILL.md` for writing and `skills/nicbuildz-thumbnails/SKILL.md` for artwork when creating a guide. No homepage code changes are needed.
 
 ## Resource links
 

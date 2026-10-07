@@ -104,13 +104,15 @@ function scorecardMarkup() {
 function guideMarkup(item) {
   const e = guideEscape;
   const hasPrompts = /^```prompt\s*$/m.test(item.body || '');
-  const image = Bramble.assetURL(item.image_url,'image');
+  const original = typeof window === 'object' ? window.BRAMBLE_ORIGINAL_ARTWORK?.[item.slug] : null;
+  const artwork = original || item;
+  const image = Bramble.assetURL(artwork.image_url,'image');
   // Work links live in the footer. Resource-specific educational CTAs stay compact.
   const educationalCTA = item.cta_url && !/mtnautomations\.com/.test(item.cta_url);
   return `<article><header class="guide-header"><div class="guide-meta"><span>${e(Bramble.category(item.category))}</span>${item.is_latest_reel ? '<span class="badge">From the latest Reel</span>' : ''}${item.badge ? `<span class="badge">${e(item.badge)}</span>` : ''}<span>${e(item.format || 'Guide')} · ${e(Bramble.reading(item))}</span></div><h1>${e(item.title)}</h1><p class="guide-dek">${e(item.description)}</p>${guideActions(item,hasPrompts,'top-action')}<div class="share-controls"><button class="share-button" type="button" data-share>Share ↗</button><button class="share-button" type="button" data-copy-link>Copy link</button><span class="share-status" role="status"></span></div></header>
   ${item.slug === 'automation-opportunity-audit' ? scorecardMarkup() : ''}${item.slug === 'meta-muse-marketplace' ? museBuilderMarkup() : ''}
   ${hasPrompts ? `<details class="guide-toc"><summary>${e(item.toc_title || 'Jump to a section')}</summary><p>${e(item.toc_description || 'Choose a prompt and make it yours.')}</p><nav class="guide-toc-links" aria-label="Guide sections">${[...(item.body || '').matchAll(/^## (.+)$/gm)].map((m,i)=>`<a href="#section-${i+1}">${e(m[1])}</a>`).join('')}</nav></details>` : ''}
-  ${image ? `<details class="guide-artwork"><summary>View resource artwork</summary><img class="guide-cover" src="${e(image)}" alt="${e(item.image_alt || '')}" loading="lazy" width="740" height="740"></details>` : ''}
+  ${image ? `<details class="guide-artwork"><summary>View resource artwork</summary><img class="guide-cover" src="${e(image)}" alt="${e(artwork.image_alt || '')}" loading="lazy" width="740" height="740"></details>` : ''}
   <div class="guide-content" id="guide-content">${renderBody(item.body,item)}${item.slug === 'meta-muse-marketplace' ? musePracticeMarkup() : ''}
   ${item.sources?.length ? `<aside class="guide-sources" aria-label="Sources"><h3>Sources & further reading</h3><p>${e(item.sources_intro || 'References and further reading for this resource.')}</p><ul>${item.sources.map(source=>`<li><a href="${e(Bramble.url(source.url))}" target="_blank" rel="noopener noreferrer">${e(source.label)}</a></li>`).join('')}</ul></aside>` : ''}
   ${guideActions(item,hasPrompts,'bottom-action')}

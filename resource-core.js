@@ -106,12 +106,13 @@
   }
   function imageAttributes(path) {
     const variants = global.BRAMBLE_ASSET_VARIANTS?.[path];
-    return variants?.length ? `srcset="${variants.map(v=>`${escape(v.url)} ${v.width}w`).join(', ')}" sizes="(max-width: 699px) 88px, (max-width: 1049px) 160px, 360px"` : '';
+    return variants?.length ? `srcset="${variants.map(v=>`${escape(v.url)} ${v.width}w`).join(', ')}" sizes="(max-width: 699px) 100px, (max-width: 1049px) 130px, 360px"` : '';
   }
   function card(item,{latest = false} = {}) {
-    const image = assetURL(item.image_url,'image');
+    const imagePath = item.image_url || '/assets/thumbnails/default-v1.webp';
+    const image = assetURL(imagePath,'image');
     return `<a class="resource-card${latest ? ' latest-card' : ''}${image ? ' has-image' : ''}" href="${escape(attributed(publicPath(item)))}" data-event="${latest ? 'latest_reel_click' : 'resource_click'}" data-slug="${escape(item.slug)}">
-      ${image ? `<div class="resource-thumb"><img src="${escape(image)}" alt="" ${imageAttributes(item.image_url)} loading="lazy" width="160" height="160"></div>` : `<div class="resource-symbol" aria-hidden="true">${category(item.category) === 'AI + Automation' ? '↗' : '✳'}</div>`}
+      ${image ? `<div class="resource-thumb"><img src="${escape(image)}" alt="" ${imageAttributes(imagePath)} loading="lazy" width="160" height="160"></div>` : `<div class="resource-symbol" aria-hidden="true">${category(item.category) === 'AI + Automation' ? '↗' : '✳'}</div>`}
       <div class="resource-card-body"><div class="card-labels"><span class="tag">${escape(category(item.category))}</span>${latest || item.is_latest_reel ? '<span class="badge">From the latest Reel</span>' : ''}${item.badge ? `<span class="badge secondary-badge">${escape(item.badge)}</span>` : ''}</div><h3>${escape(item.title)}</h3><p>${escape(item.description)}</p><span class="resource-detail">${escape(item.format || 'Guide')} · ${escape(reading(item))} <span aria-hidden="true">↗</span></span></div></a>`;
   }
   async function load({local = false} = {}) {

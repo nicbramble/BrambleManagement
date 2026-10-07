@@ -1,0 +1,6 @@
+interface:
+  display_name: "NIC.BUILDZ Thumbnails"
+  short_description: "Create matching covers for NIC.BUILDZ guides"
+  default_prompt: "Use $nicbuildz-thumbnails to create a consistent cover for this NIC.BUILDZ guide."
+policy:
+  allow_implicit_invocation: true

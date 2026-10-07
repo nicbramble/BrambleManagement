@@ -1,0 +1,22 @@
+{
+  "tree-quote-agent": {
+    "image_url": "/assets/tree-quote-agent-board.png",
+    "image_alt": "Oakline Tree Service agent board: photo intake, pricing comparison, owner approval, and the approved estimate."
+  },
+  "general-conference-activity-workbook": {
+    "image_url": "/assets/general-conference-activity-workbook-thumbnail.jpg",
+    "image_alt": "Cover of the My General Conference Activity Book printable workbook"
+  },
+  "google-flight-deals": {
+    "image_url": "/assets/google-flight-deals-guide.jpg",
+    "image_alt": "Travel-planning desk with a map, model airplane, and phone showing flight options"
+  },
+  "chatgpt-image-codes": {
+    "image_url": "/assets/chatgpt-image-codes-thumbnail.jpg",
+    "image_alt": ""
+  },
+  "meta-avatar-prompt-pack": {
+    "image_url": "/assets/meta-avatar-prompt-pack-thumbnail.jpg",
+    "image_alt": ""
+  }
+}

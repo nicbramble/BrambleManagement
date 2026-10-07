@@ -73,3 +73,16 @@ test('builder adds a new guide without editing homepage, removes generated draft
   fs.writeFileSync(data,JSON.stringify([{...base,image_url:'/assets/missing.jpg'}]));assert.throws(()=>cp.execFileSync(process.execPath,[path.join(tmp,'scripts/build-resources.cjs')],{stdio:'pipe'}),/Missing asset/);
  }finally{fs.rmSync(tmp,{recursive:true,force:true});}
 });
+test('cards imported without artwork use a real branded cover',()=>{
+ const html=B.card({...base,image_url:undefined});
+ assert.match(html,/\/assets\/thumbnails\/default-v1\.webp/);
+ assert.ok(!html.includes('resource-symbol'));
+ assert.ok(fs.existsSync(path.join(root,'assets/thumbnails/default-v1.webp')));
+});
+test('consistent covers preserve original artwork in generated guides',()=>{
+ const originals=JSON.parse(fs.readFileSync(path.join(root,'data/original-resource-artwork.json'),'utf8'));
+ for(const [slug,artwork] of Object.entries(originals)){
+  assert.ok(fs.existsSync(path.join(root,artwork.image_url)),`Original artwork missing for ${slug}`);
+  assert.ok(fs.readFileSync(path.join(root,`guides/${slug}/index.html`),'utf8').includes(artwork.image_url),`Guide lost original artwork for ${slug}`);
+ }
+});
