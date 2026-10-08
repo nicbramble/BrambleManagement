@@ -19,6 +19,8 @@ Artwork occupies x=650..1110 and y=160..533. Text stays in the left 530-pixel sa
 
 `prompts`: four stacked context cards. `planner`: a weekly calendar. `automation`: a task/result loop. `video`: a video player and timeline. `domains`: .AI/.SI name cards. `learning`: video input to reusable skill. `swaps`: two tool stacks exchanging arrows. `tree`: tree to quote. `marketplace`: example offer conversation. `workbook`: notes and pencil. `travel`: paper plane and route. `study`: question cards. `styles`: four distinct visual treatments. `avatar`: framed illustrated portrait. `meal`: meal plate. `resource`: useful-notes sheet.
 
+`email-savings`: a receipt, review checkmark, and envelope linked by a recurring review loop.
+
 Avoid using the same generic star or arrow as the entire illustration. Small spark accents may appear within a meaningful scene. Add a new motif only when the existing vocabulary cannot communicate the guide's topic.
 
 ## Authoring data

@@ -17,7 +17,7 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[1]
 WIDTH, HEIGHT, SCALE = 1200, 630, 2
 CREAM, PAPER, INK, RUST, SAND, LINE = '#f4efe5', '#fbf8f1', '#171512', '#b7351e', '#e5dac8', '#c9bead'
-MOTIFS = ('prompts', 'planner', 'automation', 'video', 'domains', 'learning', 'swaps', 'tree', 'marketplace', 'workbook', 'travel', 'study', 'styles', 'avatar', 'meal', 'resource')
+MOTIFS = ('prompts', 'planner', 'automation', 'email-savings', 'video', 'domains', 'learning', 'swaps', 'tree', 'marketplace', 'workbook', 'travel', 'study', 'styles', 'avatar', 'meal', 'resource')
 CATEGORY_ALIASES = {'Travel Smarter':'Travel', 'Study Smarter':'Study', 'Free Prompt Pack':'Creator Tools'}
 CATEGORY_MOTIFS = {'AI + Automation':'automation', 'Creator Tools':'styles', 'Online Business':'domains', 'Free Printable':'workbook', 'Travel':'travel', 'Study':'study', 'Lifestyle':'meal'}
 
@@ -101,6 +101,21 @@ def draw_motif(c, motif):
         c.arrow((858,251),(995,251));c.arrow((995,251),(995,331))
         c.arrow((895,410),(770,410));c.arrow((770,410),(770,327))
         c.spark(894,171,19)
+    elif motif == 'email-savings':
+        # Receipt and inbox loop: recurring email review, not a product screenshot.
+        paper(c,727,174,251,254)
+        c.text((748,199),'RECEIPT',27,display=True)
+        bars(c,750,252,195,3)
+        c.line([(750,327),(946,327)],LINE,2)
+        c.text((750,347),'$',52,RUST,display=True)
+        c.check(904,359,31)
+        c.box((842,387,1090,487),fill=RUST,radius=8)
+        c.line([(848,392),(966,452),(1084,392)],PAPER,4)
+        c.line([(848,481),(923,438)],PAPER,3)
+        c.line([(1084,481),(1009,438)],PAPER,3)
+        c.arrow((1073,305),(1073,366))
+        c.arrow((819,462),(697,462))
+        c.arrow((697,462),(697,323))
     elif motif == 'video':
         paper(c,701,185,336,269)
         c.box((720,205,1017,385),fill=INK,stroke=None,radius=6)

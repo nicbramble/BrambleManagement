@@ -298,5 +298,25 @@
       }
     ],
     "social": "plan-your-week-with-chatgpt-bec22cf298-social.jpg"
+  },
+  {
+    "slug": "chatgpt-email-savings-monitor",
+    "image_url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c.webp",
+    "image_alt": "Illustrated cover for Find subscription savings in your email with ChatGPT",
+    "variants": [
+      {
+        "url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c-160.webp",
+        "width": 160
+      },
+      {
+        "url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c-400.webp",
+        "width": 400
+      },
+      {
+        "url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c-800.webp",
+        "width": 800
+      }
+    ],
+    "social": "chatgpt-email-savings-monitor-4949b2c31c-social.jpg"
   }
 ]

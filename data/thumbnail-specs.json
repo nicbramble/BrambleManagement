@@ -13,5 +13,6 @@
   "automation-opportunity-audit": {"headline": "FIND YOUR\nFIRST AUTOMATION", "motif": "automation"},
   "better-ai-prompts": {"headline": "BETTER\nAI PROMPTS", "motif": "prompts"},
   "meal-prep-with-chatgpt": {"headline": "MAKE A PLAN.\nMAKE A MEAL.", "motif": "meal"},
-  "plan-your-week-with-chatgpt": {"headline": "MAKE ROOM\nFOR YOUR WEEK", "motif": "planner"}
+  "plan-your-week-with-chatgpt": {"headline": "MAKE ROOM\nFOR YOUR WEEK", "motif": "planner"},
+  "chatgpt-email-savings-monitor": {"headline": "FIND YOUR\nMONEY LEAKS", "motif": "email-savings"}
 }

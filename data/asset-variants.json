@@ -278,5 +278,19 @@
       "url": "/assets/thumbnails/default-v1-800.webp",
       "width": 800
     }
+  ],
+  "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c.webp": [
+    {
+      "url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c-160.webp",
+      "width": 160
+    },
+    {
+      "url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c-400.webp",
+      "width": 400
+    },
+    {
+      "url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c-800.webp",
+      "width": 800
+    }
   ]
 }
