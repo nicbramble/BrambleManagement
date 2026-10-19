@@ -318,5 +318,25 @@
       }
     ],
     "social": "chatgpt-email-savings-monitor-4949b2c31c-social.jpg"
+  },
+  {
+    "slug": "ai-for-parents-three-easy-ways",
+    "image_url": "/assets/thumbnails/ai-for-parents-three-easy-ways-959e9ed985.webp",
+    "image_alt": "Illustrated cover for 3 easy ways AI can help you as a parent",
+    "variants": [
+      {
+        "url": "/assets/thumbnails/ai-for-parents-three-easy-ways-959e9ed985-160.webp",
+        "width": 160
+      },
+      {
+        "url": "/assets/thumbnails/ai-for-parents-three-easy-ways-959e9ed985-400.webp",
+        "width": 400
+      },
+      {
+        "url": "/assets/thumbnails/ai-for-parents-three-easy-ways-959e9ed985-800.webp",
+        "width": 800
+      }
+    ],
+    "social": "ai-for-parents-three-easy-ways-959e9ed985-social.jpg"
   }
 ]

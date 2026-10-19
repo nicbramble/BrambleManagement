@@ -292,5 +292,19 @@
       "url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c-800.webp",
       "width": 800
     }
+  ],
+  "/assets/thumbnails/ai-for-parents-three-easy-ways-959e9ed985.webp": [
+    {
+      "url": "/assets/thumbnails/ai-for-parents-three-easy-ways-959e9ed985-160.webp",
+      "width": 160
+    },
+    {
+      "url": "/assets/thumbnails/ai-for-parents-three-easy-ways-959e9ed985-400.webp",
+      "width": 400
+    },
+    {
+      "url": "/assets/thumbnails/ai-for-parents-three-easy-ways-959e9ed985-800.webp",
+      "width": 800
+    }
   ]
 }

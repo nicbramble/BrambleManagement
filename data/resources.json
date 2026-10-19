@@ -626,5 +626,59 @@
     ],
     "image_url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c.webp",
     "image_alt": "Illustrated cover for Find subscription savings in your email with ChatGPT"
+  },
+  {
+    "slug": "ai-for-parents-three-easy-ways",
+    "title": "3 easy ways AI can help you as a parent",
+    "category": "Lifestyle",
+    "description": "Make a story with ChatGPT, help your child study with NotebookLM, and plan dinner with Gemini. Three easy prompts to copy and try.",
+    "body": "Make a bedtime story, help with studying, and sort out dinner. These three simple prompts give you a place to start. Pick the one you need today.\n\n**How to use this guide:** Open the named tool, copy its prompt, and replace the [brackets]. A prompt is just a message telling the AI what you want.\n\nUse your own adult account and work alongside your child. You'll need access to ChatGPT and a Google account for NotebookLM; sign in to Gemini if asked. Keep names, school details, and other private information out of your prompts and study files.\n\n## 1. ChatGPT: make a bedtime story\n\n**You'll get:** A short story built around something your child loves.\n\n1. Open **chatgpt.com** and start a new chat.\n2. Ask your child to pick an animal, a place, and a small adventure.\n3. Paste this prompt, fill in the brackets, and send it.\n\n```prompt\nWrite a gentle bedtime story for a child aged [age]. The main character is a [favorite animal] who visits [place] and learns about [kindness, sharing, or another theme].\n\nUse simple words, a little gentle humor, and a calm, happy ending. Keep it around 400 words with nothing scary. Give it a fun title.\n```\n\n**Example:** For a six-year-old, try a fox who visits the moon and learns about sharing. Read the story yourself first, then enjoy it together.\n\n**Quick fix:** Too long or too tricky? Reply: “Make it half as long and use easier words.”\n\n## 2. NotebookLM: help your child study\n\n**You'll get:** A short explanation and practice questions based on their actual class material.\n\n1. Open **notebooklm.google.com**, sign in, and create a notebook. Google's current help pages also call this **Gemini Notebook**.\n2. Choose **Add sources**. Upload a class handout PDF you have permission to use, or add copied text from their notes. Start with one topic.\n3. Once the source is ready, paste this into the notebook's chat.\n\n```prompt\nHelp me study [topic] with my child, who is in [grade/year]. Use only the class material I added. If something is missing, tell us.\n\nExplain the three main ideas in short, simple sentences. Include source citations so we can check them. Then ask five practice questions, one at a time. Wait for our answer before giving a hint or explaining the answer. Keep the tone encouraging.\n```\n\n**Example:** Add their water-cycle notes and ask about evaporation, condensation, and precipitation. Let your child try each answer before asking for help. Open a citation to check an explanation against the notes.\n\n**Quick fix:** Can't read the file? Add a clear text PDF or paste the relevant notes as a source. Explanation still confusing? Ask: “Explain that one idea more simply.”\n\n## 3. Gemini: plan a family meal\n\n**You'll get:** One dinner idea, easy cooking steps, and a short shopping list.\n\n1. Open **gemini.google.com** and start a chat.\n2. List what you have, how many people are eating, and any allergies or dislikes.\n3. Paste this prompt and send it.\n\n```prompt\nPlan one easy dinner for [number of adults] adults and [number of children] children. I have [ingredients and amounts]. I can cook with [stovetop, oven, or other equipment] and have [minutes] minutes total.\n\nAvoid [allergies, dietary restrictions, and disliked foods; write “none” if none]. Suggest one meal with ingredient quantities, simple numbered cooking steps, and a shopping list containing only what I still need. Keep the meal mild and offer one easy change for a picky eater. Ask if an important detail is missing.\n```\n\n**Example:** Try two adults, two children, 30 minutes, a stovetop, and pasta, canned tomatoes, and frozen peas. Add your household's actual food needs before sending.\n\nCheck the recipe's ingredients and any allergy labels yourself before cooking.\n\n**Quick fix:** Too much shopping? Reply: “Use more of what I already have and no more than two extra ingredients.”\n\n## Try one today\n\nChoose one prompt and replace the brackets. You're done when you have a story ready to read, a few study questions to try together, or a dinner plan you can cook.",
+    "format": "Guide + prompts",
+    "read_time": "4 min read",
+    "published": true,
+    "published_at": "2026-10-18",
+    "is_latest_reel": false,
+    "featured": false,
+    "sort_order": -12,
+    "action_url": "https://chatgpt.com/",
+    "action_label": "Open ChatGPT to make a story",
+    "cta_label": "Browse more easy guides",
+    "cta_url": "/#resources",
+    "cta_eyebrow": "A little help with everyday life",
+    "cta_heading": "Try another useful prompt.",
+    "cta_description": "Explore more simple guides from NIC.BUILDZ.",
+    "prompt_toolbar": "Copy and replace the brackets",
+    "prompt_copy_success": "Copied! Replace the brackets before sending.",
+    "toc_title": "Three ways to try AI",
+    "toc_description": "Story time, study time, and dinner time.",
+    "sources_intro": "Steps checked against official product documentation on October 18, 2026. These prompts and examples are starting points, not recorded product tests. Account access, limits, and button names can vary. Google’s current documentation uses the name Gemini Notebook for NotebookLM.",
+    "sources": [
+      {
+        "label": "Open NotebookLM / Gemini Notebook",
+        "url": "https://notebooklm.google.com/"
+      },
+      {
+        "label": "Open Gemini to plan dinner",
+        "url": "https://gemini.google.com/"
+      },
+      {
+        "label": "OpenAI: Writing useful prompts",
+        "url": "https://learn.chatgpt.com/docs/prompting"
+      },
+      {
+        "label": "Google: Add sources to your notebook",
+        "url": "https://support.google.com/notebooklm/answer/16215270?hl=en"
+      },
+      {
+        "label": "Google: Chat with your sources and check citations",
+        "url": "https://support.google.com/notebooklm/answer/16179559?hl=en"
+      },
+      {
+        "label": "Google: Start a chat in Gemini",
+        "url": "https://support.google.com/gemini/answer/13275745?hl=en"
+      }
+    ],
+    "image_url": "/assets/thumbnails/ai-for-parents-three-easy-ways-959e9ed985.webp",
+    "image_alt": "Illustrated cover for 3 easy ways AI can help you as a parent"
   }
 ]
