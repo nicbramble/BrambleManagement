@@ -1,5 +1,25 @@
 [
   {
+    "slug": "use-meta-muse-effectively",
+    "image_url": "/assets/thumbnails/use-meta-muse-effectively-c371deca69.webp",
+    "image_alt": "Illustrated cover for How to use Meta Muse effectively",
+    "variants": [
+      {
+        "url": "/assets/thumbnails/use-meta-muse-effectively-c371deca69-160.webp",
+        "width": 160
+      },
+      {
+        "url": "/assets/thumbnails/use-meta-muse-effectively-c371deca69-400.webp",
+        "width": 400
+      },
+      {
+        "url": "/assets/thumbnails/use-meta-muse-effectively-c371deca69-800.webp",
+        "width": 800
+      }
+    ],
+    "social": "use-meta-muse-effectively-c371deca69-social.jpg"
+  },
+  {
     "slug": "higgsfield-ai-clips-for-reels",
     "image_url": "/assets/thumbnails/higgsfield-ai-clips-for-reels-3b24a27833.webp",
     "image_alt": "Illustrated cover for How to make a viral video with Higgsfield + ChatGPT",
