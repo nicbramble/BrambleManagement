@@ -1,5 +1,57 @@
 [
   {
+    "slug": "set-up-noop-whoop",
+    "title": "How to set up NOOP with your WHOOP strap",
+    "category": "Creator Tools",
+    "description": "Install NOOP on iPhone, Android, or Mac, connect a WHOOP strap, and check your first live reading.",
+    "body": "Set up NOOP on your phone or Mac, connect a WHOOP strap you own, and check that the app receives live data. Choose one device for the first connection; you can explore historical imports later.\n\nNOOP is an independent, unofficial WHOOP companion. The project describes its code as **source-available** under the PolyForm Noncommercial license, which does not grant commercial use. It is not affiliated with WHOOP. Its health scores are estimates, not medical measurements or advice.\n\n## Before you start\n\n- A charged WHOOP 4.0 is the project's tested path. WHOOP 5.0 / MG support is experimental: live heart rate works, but deeper sleep, recovery and other readings remain incomplete. Check the project's current strap support before relying on a feature.\n- Turn on Bluetooth and keep the strap close. For live pairing you need the physical strap; a WHOOP or Apple Health export can also be used to explore historical data.\n- Choose an iPhone, Android phone, or Mac. Installation is outside the usual app stores and involves trusting software distributed by the project. Review the repository and release before deciding to install.\n- NOOP says strap collection and analytics run locally without a WHOOP account. The automatic release check is on by default; optional features may send data elsewhere. See the privacy reference below before enabling them.\n\n## 1. Install NOOP on your device\n\nOpen **Get NOOP releases** above. Download only from the project's GitHub release page, expand **Assets** if needed, and follow the path for your device.\n\n### iPhone: install through AltStore or SideStore\n\n1. Set up AltStore or SideStore using that tool's official installation instructions. The initial setup uses a computer and your Apple ID. Links to both are in the sources below.\n2. On your iPhone, open your sideloader. In its Browse or Sources section, add the NOOP source URL shown below. This is a source address for the sideloader, not a prompt.\n\n```prompt\nhttps://raw.githubusercontent.com/ryanbr/noop/main/altstore-source.json\n```\n\n3. Find NOOP in the added source and install it. If requested, follow the sideloader's instructions to trust your developer identity in Settings → General → VPN & Device Management and enable any required device settings.\n4. Open NOOP. With a free Apple ID, the signature expires after seven days. Keep the sideloader configured for refresh and verify that NOOP refreshes before it expires. iOS support is newer and live Bluetooth pairing is still being validated according to the project.\n\nAlternatively, download the versioned iOS IPA from Releases and open it with your sideloader. See the project's iOS guide for signing, refresh and troubleshooting details.\n\n### Android: install the APK\n\n1. On the release page, download **NOOP-full.apk** to an Android 8 or newer device.\n2. Open the downloaded file. If Android blocks installs from your browser or file manager, review the prompt and, if you trust the file, allow installs from that source in Settings → Apps → Special app access → Install unknown apps. Names can vary by device.\n3. Complete installation and open NOOP. If Play Protect warns or blocks the app, review the warning and the project's Android instructions before deciding whether to proceed. Revoke the source's install permission afterward if you no longer need it.\n\n### Mac: install the app\n\n1. Download the macOS app from the release page, open the downloaded archive if needed, and move NOOP.app to Applications. The project lists macOS 13 or newer.\n2. Open NOOP. The release is not notarized by Apple, so macOS may block it. If you have reviewed the source and trust the release, open System Settings → Privacy & Security and look for **Open Anyway** after the blocked launch. Follow the system prompts. Alternatively, the project's build instructions explain how to build from source.\n3. Open the app and allow Bluetooth access when asked.\n\n## 2. Connect the strap\n\n1. Charge and wear your strap, keep it nearby, and turn on Bluetooth on the device running NOOP. Allow the app's requested Bluetooth or nearby-device permission so scanning can work.\n2. Open NOOP's onboarding or **Live** screen, select your strap model when prompted, and scan for it. Select your own strap and follow the connection prompts.\n3. For WHOOP 5.0 / MG, the project says to fully quit the official WHOOP app or turn off Bluetooth on the other phone, then tap the strap's sensor repeatedly until its LEDs flash blue. In NOOP choose **Live → WHOOP 5.0 / MG → Scan & Connect**. The strap log should show a link-established message. You may need more than one attempt.\n4. Check for a live heart-rate reading and connection status. For 5.0 / MG, a heart-rate reading alone does not prove the encrypted bond needed for deeper features. Pairing NOOP may require you to re-pair with the official WHOOP app later.\n\n## 3. Check your first result\n\nKeep the strap nearby and give the app time to collect data. Check the live reading first. Historical charts, sleep and recovery may need a history offload or additional wear time, and availability depends on the strap and firmware. Do not expect NOOP's estimates to match WHOOP's proprietary scores.\n\nWant to bring in older data? NOOP documents imports for WHOOP CSV exports and Apple Health exports. Keep your original export in a safe place and follow the current in-app import flow; check the imported dates before assuming your history is complete.\n\n## If something does not work\n\n- **The strap is missing from the scan:** confirm it is charged, nearby, in pairing mode and Bluetooth permission is enabled. Close the official WHOOP app and disconnect competing devices, then retry.\n- **5.0 / MG shows heart rate but history or controls fail:** the project's documentation says the encrypted bond may not be established. Free the strap from the other connection, enter pairing mode and retry; check the strap log for a link-established message.\n- **The iPhone app stops opening:** check the sideloader's refresh status and seven-day signing window. Follow its refresh instructions and the linked iOS guide.\n- **No sleep or recovery appears:** confirm your model's supported features and let the app collect or import enough data. For 5.0 / MG, deeper data is experimental and may be unavailable even when heart rate works.\n- **You plan to reinstall:** local data may be lost. Export or back up what you need first; do not assume there is a cloud copy.\n\n## Finish check\n\nYou can open NOOP, see your device's connection status and a live reading, and understand the limits of your strap model. Review Settings → About if you want to disable automatic release checks, and review the privacy inventory before using optional network features.",
+    "published": true,
+    "is_latest_reel": false,
+    "featured": false,
+    "sort_order": 100,
+    "badge": "NOOP setup",
+    "format": "Setup guide",
+    "read_time": "7 min read",
+    "action_url": "https://github.com/ryanbr/noop/releases/latest",
+    "action_label": "Get NOOP releases",
+    "cta_label": "Browse more resources",
+    "cta_url": "/#resources",
+    "sources_intro": "Project documentation checked October 28, 2026. Setup steps are based on documentation, not a hands-on device test. Interfaces and support may change.",
+    "sources": [
+      {
+        "label": "NOOP: project and platform support",
+        "url": "https://github.com/ryanbr/noop"
+      },
+      {
+        "label": "NOOP: latest releases",
+        "url": "https://github.com/ryanbr/noop/releases/latest"
+      },
+      {
+        "label": "NOOP: iOS installation guide",
+        "url": "https://github.com/ryanbr/noop/blob/main/docs/IOS.md"
+      },
+      {
+        "label": "NOOP: privacy and network inventory",
+        "url": "https://github.com/ryanbr/noop/blob/main/docs/PRIVACY_SECURITY.md"
+      },
+      {
+        "label": "NOOP: license",
+        "url": "https://github.com/ryanbr/noop/blob/main/LICENSE"
+      },
+      {
+        "label": "AltStore: installation",
+        "url": "https://altstore.io/"
+      },
+      {
+        "label": "SideStore: installation",
+        "url": "https://sidestore.io/"
+      }
+    ],
+    "image_url": "/assets/thumbnails/set-up-noop-whoop-440b6d02c4.webp",
+    "image_alt": "Illustrated cover for How to set up NOOP with your WHOOP strap",
+    "published_at": "2026-10-28"
+  },
+  {
     "slug": "use-meta-muse-effectively",
     "title": "How to use Meta Muse effectively",
     "category": "AI + Automation",

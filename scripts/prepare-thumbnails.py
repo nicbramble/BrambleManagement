@@ -17,7 +17,7 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[1]
 WIDTH, HEIGHT, SCALE = 1200, 630, 2
 CREAM, PAPER, INK, RUST, SAND, LINE = '#f4efe5', '#fbf8f1', '#171512', '#b7351e', '#e5dac8', '#c9bead'
-MOTIFS = ('prompts', 'planner', 'automation', 'email-savings', 'video', 'domains', 'learning', 'swaps', 'tree', 'marketplace', 'workbook', 'travel', 'study', 'styles', 'avatar', 'meal', 'resource')
+MOTIFS = ('prompts', 'planner', 'automation', 'email-savings', 'video', 'domains', 'learning', 'swaps', 'tree', 'marketplace', 'workbook', 'travel', 'study', 'styles', 'avatar', 'meal', 'resource', 'wearable')
 CATEGORY_ALIASES = {'Travel Smarter':'Travel', 'Study Smarter':'Study', 'Free Prompt Pack':'Creator Tools'}
 CATEGORY_MOTIFS = {'AI + Automation':'automation', 'Creator Tools':'styles', 'Online Business':'domains', 'Free Printable':'workbook', 'Travel':'travel', 'Study':'study', 'Lifestyle':'meal'}
 
@@ -77,7 +77,13 @@ def bars(c,x,y,width=180,rows=3):
 def draw_motif(c, motif):
     # Artwork has a fixed safe area at x=650..1110, y=160..500.
     c.ellipse((680,151,1102,533),fill=SAND,stroke=None)
-    if motif == 'prompts':
+    if motif == 'wearable':
+        c.box((820,177,959,505),fill=INK,radius=55)
+        c.box((831,250,948,423),fill=PAPER,radius=38)
+        c.ellipse((851,273,928,350),fill=RUST,stroke=None)
+        c.line([(850,388),(865,388),(876,370),(886,401),(898,380),(930,380)],INK,5)
+        c.spark(1026,239,20)
+    elif motif == 'prompts':
         for i in (2,1,0):
             x,y=704+i*27,210-i*28
             paper(c,x,y,300,245)

@@ -1,5 +1,25 @@
 [
   {
+    "slug": "set-up-noop-whoop",
+    "image_url": "/assets/thumbnails/set-up-noop-whoop-440b6d02c4.webp",
+    "image_alt": "Illustrated cover for How to set up NOOP with your WHOOP strap",
+    "variants": [
+      {
+        "url": "/assets/thumbnails/set-up-noop-whoop-440b6d02c4-160.webp",
+        "width": 160
+      },
+      {
+        "url": "/assets/thumbnails/set-up-noop-whoop-440b6d02c4-400.webp",
+        "width": 400
+      },
+      {
+        "url": "/assets/thumbnails/set-up-noop-whoop-440b6d02c4-800.webp",
+        "width": 800
+      }
+    ],
+    "social": "set-up-noop-whoop-440b6d02c4-social.jpg"
+  },
+  {
     "slug": "use-meta-muse-effectively",
     "image_url": "/assets/thumbnails/use-meta-muse-effectively-c371deca69.webp",
     "image_alt": "Illustrated cover for How to use Meta Muse effectively",

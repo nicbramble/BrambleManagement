@@ -320,5 +320,19 @@
       "url": "/assets/thumbnails/use-meta-muse-effectively-c371deca69-800.webp",
       "width": 800
     }
+  ],
+  "/assets/thumbnails/set-up-noop-whoop-440b6d02c4.webp": [
+    {
+      "url": "/assets/thumbnails/set-up-noop-whoop-440b6d02c4-160.webp",
+      "width": 160
+    },
+    {
+      "url": "/assets/thumbnails/set-up-noop-whoop-440b6d02c4-400.webp",
+      "width": 400
+    },
+    {
+      "url": "/assets/thumbnails/set-up-noop-whoop-440b6d02c4-800.webp",
+      "width": 800
+    }
   ]
 }
