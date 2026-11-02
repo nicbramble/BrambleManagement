@@ -108,7 +108,20 @@
     const variants = global.BRAMBLE_ASSET_VARIANTS?.[path];
     return variants?.length ? `srcset="${variants.map(v=>`${escape(v.url)} ${v.width}w`).join(', ')}" sizes="(max-width: 699px) 100px, (max-width: 1049px) 130px, 360px"` : '';
   }
-  function card(item,{latest = false} = {}) {
+  function card(item,{latest = false, collection = null} = {}) {
+    if (collection) {
+      const icons = {
+        create:'<rect x="4" y="7" width="16" height="13" rx="2"/><path d="m4 7 15-4 1 4M8 6l2-2m3 1 2-2m-5 9 5 3-5 3z"/>',
+        work:'<path d="m14 3-9 11h6l-1 7 9-11h-6z"/>',
+        money:'<rect x="3" y="6" width="18" height="14" rx="3"/><path d="M17 11h4v5h-4a2.5 2.5 0 0 1 0-5ZM6 6V4h11"/>',
+        everyday:'<path d="M20.8 5.6a5.4 5.4 0 0 0-7.6 0L12 6.8l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 22l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/>',
+        learn:'<path d="M12 5C9 3 5 3 2 4v15c3-1 7-1 10 1 3-2 7-2 10-1V4c-3-1-7-1-10 1Zm0 0v15"/>'
+      };
+      const id = Object.hasOwn(icons,collection.id) ? collection.id : 'work';
+      return `<a class="resource-card library-card${latest ? ' latest-card' : ''}" data-collection="${id}" href="${escape(attributed(publicPath(item)))}" data-event="${latest ? 'latest_reel_click' : 'resource_click'}" data-slug="${escape(item.slug)}">
+        <span class="guide-icon" aria-hidden="true"><svg viewBox="0 0 24 24">${icons[id]}</svg></span>
+        <div class="resource-card-body">${latest || item.is_latest_reel ? '<span class="library-reel-label">From the latest Reel</span>' : ''}<h4>${escape(item.title)}</h4><p>${escape(item.description)}</p><span class="resource-detail">${escape(item.format || 'Guide')} · ${escape(reading(item))}</span></div><span class="guide-open" aria-hidden="true">↗</span></a>`;
+    }
     const imagePath = item.image_url || '/assets/thumbnails/default-v1.webp';
     const image = assetURL(imagePath,'image');
     return `<a class="resource-card${latest ? ' latest-card' : ''}${image ? ' has-image' : ''}" href="${escape(attributed(publicPath(item)))}" data-event="${latest ? 'latest_reel_click' : 'resource_click'}" data-slug="${escape(item.slug)}">

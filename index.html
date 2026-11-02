@@ -15,13 +15,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=thumbnails-v1-20261007">
-  <link rel="stylesheet" href="home.css?v=mobile-pop-20261101">
+  <link rel="stylesheet" href="home.css?v=collections-20261101">
   <script src="site-config.js" defer></script>
   <script src="safe-url.js" defer></script>
-  <script src="asset-variants.js?v=thumbnails-v1-20261007" defer></script><script src="resource-core.js?v=thumbnails-v1-20261007" defer></script>
+  <script src="asset-variants.js?v=thumbnails-v1-20261007" defer></script><script src="resource-core.js?v=collections-20261101" defer></script>
   <script src="site-events.js" defer></script>
   <script src="newsletter.js" defer></script>
-  <script src="app.js?v=mobile-pop-20261101" defer></script>
+  <script src="library-collections.js?v=collections-20261101" defer></script>
+  <script src="app.js?v=collections-20261101" defer></script>
   <link rel="canonical" href="https://nicbuilds.com/">
   <meta property="og:url" content="https://nicbuilds.com/">
   <meta property="og:type" content="website">
@@ -73,12 +74,11 @@
         </div>
       </section>
       <section class="resources-section site-width" id="resources" aria-labelledby="resources-heading" tabindex="-1">
-        <div class="section-heading"><div><h2 id="resources-heading">The good stuff.</h2><p>Free guides, prompts, and things worth trying.</p></div><label class="resource-search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 5 5"></path></svg><span class="sr-only">Search resources</span><input id="resource-search" type="search" placeholder="Find your next idea" autocomplete="off"></label></div>
-        <div class="resource-filters" id="resource-filters" role="group" aria-label="Filter resources"></div>
-        <p id="filter-status" class="sr-only" role="status" aria-live="polite"></p>
+        <div class="section-heading"><div><h2 id="resources-heading">Find your next idea.</h2><p>Pick what you want to do. There’s a shortcut for that.</p></div><label class="resource-search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 5 5"></path></svg><span class="sr-only">Search resources</span><input id="resource-search" type="search" placeholder="Find your next idea" autocomplete="off"></label></div>
+        <div class="resource-filters" id="resource-filters" role="group" aria-label="Browse guide collections"></div>
+        <div class="library-summary"><p id="filter-status" role="status" aria-live="polite"></p><button id="clear-filters" type="button" hidden>Clear filters</button></div>
         <section id="latest-reel" class="latest-section" aria-label="From the latest Reel" hidden></section>
-        <div class="resource-grid" id="resource-grid"><p class="loading-card">Loading the good stuff…</p></div>
-        <div class="library-more"><button id="load-more" class="button button-quiet" type="button" hidden>More good stuff <span aria-hidden="true">↓</span></button><span id="resource-count"></span></div>
+        <div class="collection-library" id="resource-grid"><p class="loading-card">Loading the good stuff…</p></div>
       </section>
       <section class="newsletter-card newsletter-section site-width" id="newsletter" aria-labelledby="newsletter-heading">
           <div class="newsletter-copy"><span class="newsletter-mark" aria-hidden="true">✳</span><p class="newsletter-kicker" id="start-here">Good ideas travel.</p>

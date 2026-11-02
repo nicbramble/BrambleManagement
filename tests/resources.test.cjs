@@ -57,7 +57,7 @@ test('a new published resource is rendered and addressable without homepage edit
 });
 test('homepage renders Latest Reel first and filters it accessibly',()=>{
  const nodes={'#latest-reel':{hidden:true,innerHTML:''},'#resource-grid':{innerHTML:''},'#filter-status':{textContent:''}};
- const ctx=vm.createContext({Bramble:B,document:{addEventListener(){},querySelector:s=>nodes[s]}});vm.runInContext(fs.readFileSync(path.join(root,'app.js'),'utf8'),ctx);
+ const ctx=vm.createContext({Bramble:B,BrambleLibrary:require('../library-collections.js'),document:{addEventListener(){},querySelector:s=>nodes[s]}});vm.runInContext(fs.readFileSync(path.join(root,'app.js'),'utf8'),ctx);
  const latest={...base,is_latest_reel:true};const normal={...base,slug:'other',is_latest_reel:false};
  ctx.renderResources([latest,normal]);assert.equal(nodes['#latest-reel'].hidden,false);assert.match(nodes['#latest-reel'].innerHTML,/From the latest Reel/);assert.ok(!nodes['#resource-grid'].innerHTML.includes('data-slug="test-resource"'));assert.match(nodes['#filter-status'].textContent,/2 resources/);
  ctx.renderResources([latest,normal],'Latest Reel');assert.equal(nodes['#latest-reel'].hidden,true);assert.match(nodes['#filter-status'].textContent,/1 resource\./);assert.match(nodes['#resource-grid'].innerHTML,/From the latest Reel/);
