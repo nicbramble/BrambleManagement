@@ -1,6 +1,6 @@
 # Bramble Management / nic.buildz
 
-A mobile-first resource hub for Nic Bramble: newsletter, Latest Reel, resource library, and a quiet secondary work link.
+A mobile-first resource hub for Nic Bramble: a bold avatar hero, featured shortcuts, searchable resource library, newsletter, and a secondary work link. The homepage visual system lives in `home.css`; shared guide and admin styles remain in `styles.css`.
 
 ## Local preview
 
@@ -28,7 +28,7 @@ references and resource-specific footer copy.
 
 ## Newsletter
 
-The canonical signup form sits in the compact homepage hero at `#newsletter`. The collection has its own `#resources` anchor. It posts to a Google
+The canonical signup form sits after the resource library at `#newsletter`, with a direct link in the main navigation. The collection has its own `#resources` anchor. Search and category filters work together; the library reveals six resources at a time. It posts to a Google
 Apps Script web app, which validates the request and writes to a restricted Google
 Sheet. There are no Google credentials or subscriber records in this repository.
 
