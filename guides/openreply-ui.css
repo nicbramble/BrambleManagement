@@ -22,3 +22,17 @@ body{--cream:#fff;--paper:#f6f6f8;--ink:#161618;--muted:#5e5e67;--accent:#e60012
 .guide-sources{font-size:.9rem}.guide-newsletter{border-top:1px solid var(--line);margin-top:20px}.guide-newsletter h2,.resource-cta h2{font-weight:750}.guide-footer{border-color:var(--line)}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #1764d0;outline-offset:4px}
 @media(max-width:699px){.guide-shell{width:calc(100% - 32px)}.guide-header{padding:28px 0 20px}.guide-header h1,.prompt-guide .guide-header h1{font-size:clamp(2.45rem,10vw,3.5rem)}.guide-actions .button{width:100%;justify-content:center}.guide-content{font-size:1rem}.prompt-text{padding:16px}}
+
+/* Carry the homepage's full-width red introduction into this guide. */
+.guide-nav,.guide-header{position:relative;isolation:isolate;color:#fff;border:0}
+.guide-nav::before,.guide-header::before{content:'';position:absolute;z-index:-1;inset-block:0;left:50%;width:100vw;transform:translateX(-50%);background:#e60012}
+.guide-nav .wordmark,.guide-nav .nav-cta{color:#fff}.guide-nav .wordmark span{color:#ffd7b1}
+.guide-nav .nav-cta{text-decoration:none;border:1px solid #ffffff80;border-radius:999px;padding:0 18px;min-height:44px;display:inline-flex;align-items:center}
+.guide-header{padding:54px 0 48px}
+.guide-meta,.guide-meta>span:last-child{color:#fff}.guide-meta .badge{color:#fff;background:#ffffff24}
+.guide-header h1{color:#fff}.guide-dek{color:#fff;max-width:590px}
+.guide-actions .button{background:#fff;color:#161618;min-width:220px;justify-content:center}
+.guide-actions .button:hover{background:#fff0ee;color:#161618}
+.share-controls .share-button{color:#fff}.share-controls .share-status{color:#fff}
+.guide-nav :focus-visible,.guide-header :focus-visible{outline-color:#fff}
+@media(max-width:699px){.guide-nav{min-height:72px}.guide-nav .nav-cta{font-size:.76rem;padding-inline:14px}.guide-header{padding:36px 0 32px}.guide-header h1,.prompt-guide .guide-header h1{font-size:clamp(2.7rem,11vw,4rem)}.guide-actions .button{min-height:54px}.guide-toc{margin-top:24px}}
