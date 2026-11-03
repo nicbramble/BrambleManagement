@@ -348,5 +348,33 @@
       "url": "/assets/thumbnails/replace-manychat-with-openreply-c7718fbe4c-800.webp",
       "width": 800
     }
+  ],
+  "/assets/thumbnails/build-a-dashboard-to-sell-6251723d41.webp": [
+    {
+      "url": "/assets/thumbnails/build-a-dashboard-to-sell-6251723d41-160.webp",
+      "width": 160
+    },
+    {
+      "url": "/assets/thumbnails/build-a-dashboard-to-sell-6251723d41-400.webp",
+      "width": 400
+    },
+    {
+      "url": "/assets/thumbnails/build-a-dashboard-to-sell-6251723d41-800.webp",
+      "width": 800
+    }
+  ],
+  "/assets/thumbnails/chatgpt-email-savings-monitor-a13dd43831.webp": [
+    {
+      "url": "/assets/thumbnails/chatgpt-email-savings-monitor-a13dd43831-160.webp",
+      "width": 160
+    },
+    {
+      "url": "/assets/thumbnails/chatgpt-email-savings-monitor-a13dd43831-400.webp",
+      "width": 400
+    },
+    {
+      "url": "/assets/thumbnails/chatgpt-email-savings-monitor-a13dd43831-800.webp",
+      "width": 800
+    }
   ]
 }

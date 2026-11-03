@@ -78,5 +78,9 @@
   "replace-manychat-with-openreply": {
     "headline": "SWITCH YOUR\nDM AUTOMATION",
     "motif": "swaps"
+  },
+  "build-a-dashboard-to-sell": {
+    "headline": "BUILD A\nCLIENT DASHBOARD",
+    "motif": "automation"
   }
 }

@@ -1,5 +1,41 @@
 [
   {
+    "slug": "build-a-dashboard-to-sell",
+    "title": "Build a dashboard you can sell as a subscription",
+    "category": "Online Business",
+    "description": "Plan, build, test, and sell a useful client dashboard with recurring billing.",
+    "published": true,
+    "is_latest_reel": false,
+    "featured": false,
+    "sort_order": 100,
+    "format": "Build guide",
+    "read_time": "7 min read",
+    "body": "Turn one recurring business problem into a dashboard a customer can use every week. This walkthrough uses a fictional local-service lead tracker as an example: each business signs in to see its own leads, their status, and the next follow-up. Adapt the same process to a different problem.\n\n**Your first result:** a working demo with sample data, a separate account for each business, and a way to charge monthly. Start with a small pilot and agree on what you will provide; a dashboard does not guarantee leads or income.\n\n## 1. Pick the job and the customer\n\nChoose one kind of customer and one decision they need to make regularly. For the example, a home-service owner wants to know which inquiries need a reply. Ask a few potential customers how they track inquiries today, which step gets missed, and whether a weekly view would help. Do not promise an integration before checking that you can access the data.\n\nWrite your offer in one sentence: “A dashboard for [customer] that helps them [specific job] using [data source].” Define what the subscription includes, how often data updates, who enters it, support hours, and the cancellation process. Check your builder, hosting, database, and payment costs before setting a price.\n\n## 2. Gather the pieces\n\nYou need an AI app builder or a developer, a place to host the app, a database with user accounts, and a payment provider. This example uses Supabase for accounts and data and Stripe for billing; check current access, fees, and plan limits before signing up. Start with fictional names and inquiries, never a real customer's private data in a public demo.\n\nCreate a sample list with business name, inquiry date, customer name, service requested, status, and next action. The dashboard should show a total, a list of inquiries, and a way to update a status. A dashboard is only as current as the information entered into it: label manual updates honestly.\n\n## 3. Build the first version\n\nPaste this brief into your chosen AI app builder or give it to a developer. Replace the brackets first. Ask for a working application and setup instructions, then inspect and test what it creates.\n\n```prompt\nBuild a mobile-friendly web dashboard for [type of business] to track [recurring job]. Start with fictional sample data only. Each business must have its own account and see only its own records. Provide sign-in, a summary of open items, a list with status and next action, and a form to add and update an item. Label the data as manually entered; do not invent integrations or analytics. Use Supabase Auth and Postgres with server-enforced row-level security for every exposed table. Explain setup, costs, security policies, deployment, and how to test two separate business accounts. Do not put service-role keys in browser code. Explain which parts are complete and which require manual setup.\n```\n\nCreate a Supabase project and connect it using the builder's documented setup. Keep secret keys on the server. Ask the builder to explain and apply database grants and row-level security for each table, scoped to the signed-in business. A filtered screen alone is not access control. Review generated code and policies before storing real data.\n\n## 4. Test the dashboard before inviting customers\n\nCreate two test businesses with different accounts and distinctive fictional records. Sign in as each and confirm its own records appear. Try reading and changing the other business's records through the app and direct database requests: both must be denied. Also test a signed-out user, an empty account, invalid form inputs, and mobile layout. Fix any cross-account access before proceeding. If you cannot verify the policies yourself, have a qualified developer review them.\n\nAsk a pilot customer to complete a realistic task with sample data: add an inquiry, mark it contacted, and find the next follow-up. Note where they get stuck and fix the highest-impact issue before adding features.\n\n## 5. Set up the monthly subscription\n\nFor a first pilot, Stripe Payment Links can sell a recurring subscription without building a custom checkout. Create a recurring product and price in Stripe, configure the payment link, and verify the amount, billing frequency, customer contact details, and cancellation terms. Run a test payment in Stripe's test environment. Make clear whether setup is included and when the subscription begins.\n\nA payment link does not automatically secure dashboard access. For a small pilot, manually verify the paid subscription in Stripe, create or enable the correct business account, and tell the customer when access is ready. Keep a record of the Stripe customer and the matching business account. Review failed payments, cancellations, and access regularly; define your grace period and follow it consistently.\n\nTo automate access later, use a server-side integration that verifies Stripe webhook signatures, matches each Stripe customer to the correct business, and handles successful payments, changes, failed payments, and cancellation. Test duplicate and delayed events as well as a cancellation. Do not rely on a success-page redirect as proof of payment. Stripe's subscription webhook documentation is linked below.\n\n## 6. Deliver and support the first customer\n\nGive the customer their sign-in link, a short explanation of the numbers, and one example task. Confirm who adds data and how they can contact you. Keep the subscription terms, support commitments, and cancellation instructions easy to find. Use backups and limit access to customer data. Only connect real data once permissions, security, and consent are in place.\n\n## If you get stuck\n\n- **The numbers are empty:** add sample records and check the selected account and date range. Verify whether updates are manual or connected.\n- **A customer sees another business's data:** stop the pilot, remove access, and fix and retest database permissions before resuming.\n- **A payment succeeds but access is missing:** check the Stripe customer and account mapping; grant access only after verifying payment and the intended account.\n- **A customer cancels:** check the subscription end date and apply the access policy you communicated. Do not delete records without following your retention agreement.\n\n**Done:** two test businesses are isolated, the workflow works on a phone, the pilot checkout has been tested, and you can explain exactly how access and cancellation work.",
+    "cta_label": "Browse more resources",
+    "cta_url": "/#resources",
+    "sources_intro": "Documentation checked November 3, 2026. This is an illustrative workflow, not a hands-on test of a specific app builder.",
+    "sources": [
+      {
+        "label": "Supabase: row-level security",
+        "url": "https://supabase.com/docs/guides/database/postgres/row-level-security"
+      },
+      {
+        "label": "Supabase: authentication",
+        "url": "https://supabase.com/docs/guides/auth"
+      },
+      {
+        "label": "Stripe: Payment Links",
+        "url": "https://docs.stripe.com/payment-links"
+      },
+      {
+        "label": "Stripe: subscription webhooks",
+        "url": "https://docs.stripe.com/billing/subscriptions/webhooks"
+      }
+    ],
+    "image_url": "/assets/thumbnails/build-a-dashboard-to-sell-6251723d41.webp",
+    "image_alt": "Illustrated cover for Build a dashboard you can sell as a subscription"
+  },
+  {
     "slug": "replace-manychat-with-openreply",
     "title": "Switch from Manychat to OpenReply",
     "category": "AI + Automation",
@@ -767,7 +803,7 @@
         "url": "https://help.openai.com/en/articles/10408842-google-app-data-controls-faq"
       }
     ],
-    "image_url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c.webp",
+    "image_url": "/assets/thumbnails/chatgpt-email-savings-monitor-a13dd43831.webp",
     "image_alt": "Illustrated cover for Find subscription savings in your email with ChatGPT"
   },
   {

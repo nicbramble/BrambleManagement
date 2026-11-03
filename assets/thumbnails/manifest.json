@@ -1,5 +1,25 @@
 [
   {
+    "slug": "build-a-dashboard-to-sell",
+    "image_url": "/assets/thumbnails/build-a-dashboard-to-sell-6251723d41.webp",
+    "image_alt": "Illustrated cover for Build a dashboard you can sell as a subscription",
+    "variants": [
+      {
+        "url": "/assets/thumbnails/build-a-dashboard-to-sell-6251723d41-160.webp",
+        "width": 160
+      },
+      {
+        "url": "/assets/thumbnails/build-a-dashboard-to-sell-6251723d41-400.webp",
+        "width": 400
+      },
+      {
+        "url": "/assets/thumbnails/build-a-dashboard-to-sell-6251723d41-800.webp",
+        "width": 800
+      }
+    ],
+    "social": "build-a-dashboard-to-sell-6251723d41-social.jpg"
+  },
+  {
     "slug": "replace-manychat-with-openreply",
     "image_url": "/assets/thumbnails/replace-manychat-with-openreply-c7718fbe4c.webp",
     "image_alt": "Illustrated cover for Switch from Manychat to OpenReply",
@@ -162,7 +182,7 @@
   {
     "slug": "meta-muse-marketplace",
     "image_url": "/assets/thumbnails/meta-muse-marketplace-ab95298c74.webp",
-    "image_alt": "Illustrated cover for Negotiate on Marketplace with Meta’s Muse",
+    "image_alt": "Illustrated cover for Negotiate on Marketplace with Meta\u2019s Muse",
     "variants": [
       {
         "url": "/assets/thumbnails/meta-muse-marketplace-ab95298c74-160.webp",
@@ -361,23 +381,23 @@
   },
   {
     "slug": "chatgpt-email-savings-monitor",
-    "image_url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c.webp",
+    "image_url": "/assets/thumbnails/chatgpt-email-savings-monitor-a13dd43831.webp",
     "image_alt": "Illustrated cover for Find subscription savings in your email with ChatGPT",
     "variants": [
       {
-        "url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c-160.webp",
+        "url": "/assets/thumbnails/chatgpt-email-savings-monitor-a13dd43831-160.webp",
         "width": 160
       },
       {
-        "url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c-400.webp",
+        "url": "/assets/thumbnails/chatgpt-email-savings-monitor-a13dd43831-400.webp",
         "width": 400
       },
       {
-        "url": "/assets/thumbnails/chatgpt-email-savings-monitor-4949b2c31c-800.webp",
+        "url": "/assets/thumbnails/chatgpt-email-savings-monitor-a13dd43831-800.webp",
         "width": 800
       }
     ],
-    "social": "chatgpt-email-savings-monitor-4949b2c31c-social.jpg"
+    "social": "chatgpt-email-savings-monitor-a13dd43831-social.jpg"
   },
   {
     "slug": "ai-for-parents-three-easy-ways",
