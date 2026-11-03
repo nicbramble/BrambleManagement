@@ -1,5 +1,25 @@
 [
   {
+    "slug": "replace-manychat-with-openreply",
+    "image_url": "/assets/thumbnails/replace-manychat-with-openreply-c7718fbe4c.webp",
+    "image_alt": "Illustrated cover for Replace Manychat with OpenReply: a creator’s migration guide",
+    "variants": [
+      {
+        "url": "/assets/thumbnails/replace-manychat-with-openreply-c7718fbe4c-160.webp",
+        "width": 160
+      },
+      {
+        "url": "/assets/thumbnails/replace-manychat-with-openreply-c7718fbe4c-400.webp",
+        "width": 400
+      },
+      {
+        "url": "/assets/thumbnails/replace-manychat-with-openreply-c7718fbe4c-800.webp",
+        "width": 800
+      }
+    ],
+    "social": "replace-manychat-with-openreply-c7718fbe4c-social.jpg"
+  },
+  {
     "slug": "set-up-noop-whoop",
     "image_url": "/assets/thumbnails/set-up-noop-whoop-440b6d02c4.webp",
     "image_alt": "Illustrated cover for How to set up NOOP with your WHOOP strap",
@@ -142,7 +162,7 @@
   {
     "slug": "meta-muse-marketplace",
     "image_url": "/assets/thumbnails/meta-muse-marketplace-ab95298c74.webp",
-    "image_alt": "Illustrated cover for Negotiate on Marketplace with Meta\u2019s Muse",
+    "image_alt": "Illustrated cover for Negotiate on Marketplace with Meta’s Muse",
     "variants": [
       {
         "url": "/assets/thumbnails/meta-muse-marketplace-ab95298c74-160.webp",

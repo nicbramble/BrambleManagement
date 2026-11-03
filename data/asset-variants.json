@@ -334,5 +334,19 @@
       "url": "/assets/thumbnails/set-up-noop-whoop-440b6d02c4-800.webp",
       "width": 800
     }
+  ],
+  "/assets/thumbnails/replace-manychat-with-openreply-c7718fbe4c.webp": [
+    {
+      "url": "/assets/thumbnails/replace-manychat-with-openreply-c7718fbe4c-160.webp",
+      "width": 160
+    },
+    {
+      "url": "/assets/thumbnails/replace-manychat-with-openreply-c7718fbe4c-400.webp",
+      "width": 400
+    },
+    {
+      "url": "/assets/thumbnails/replace-manychat-with-openreply-c7718fbe4c-800.webp",
+      "width": 800
+    }
   ]
 }

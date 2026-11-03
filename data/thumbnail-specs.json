@@ -74,5 +74,9 @@
   "set-up-noop-whoop": {
     "headline": "YOUR STRAP.\nYOUR DATA.",
     "motif": "wearable"
+  },
+  "replace-manychat-with-openreply": {
+    "headline": "SWITCH YOUR\nDM AUTOMATION",
+    "motif": "swaps"
   }
 }
