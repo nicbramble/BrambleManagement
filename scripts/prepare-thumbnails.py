@@ -17,7 +17,7 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[1]
 WIDTH, HEIGHT, SCALE = 1200, 630, 2
 CREAM, PAPER, INK, RUST, SAND, LINE = '#f4efe5', '#fbf8f1', '#171512', '#b7351e', '#e5dac8', '#c9bead'
-MOTIFS = ('prompts', 'planner', 'automation', 'email-savings', 'video', 'domains', 'learning', 'swaps', 'tree', 'marketplace', 'workbook', 'travel', 'study', 'styles', 'avatar', 'meal', 'resource', 'wearable')
+MOTIFS = ('prompts', 'planner', 'automation', 'email-savings', 'video', 'domains', 'learning', 'swaps', 'tree', 'marketplace', 'workbook', 'travel', 'study', 'styles', 'avatar', 'meal', 'resource', 'wearable', 'reviews')
 CATEGORY_ALIASES = {'Travel Smarter':'Travel', 'Study Smarter':'Study', 'Free Prompt Pack':'Creator Tools'}
 CATEGORY_MOTIFS = {'AI + Automation':'automation', 'Creator Tools':'styles', 'Online Business':'domains', 'Free Printable':'workbook', 'Travel':'travel', 'Study':'study', 'Lifestyle':'meal'}
 
@@ -107,6 +107,19 @@ def draw_motif(c, motif):
         c.arrow((858,251),(995,251));c.arrow((995,251),(995,331))
         c.arrow((895,410),(770,410));c.arrow((770,410),(770,327))
         c.spark(894,171,19)
+    elif motif == 'reviews':
+        # A review dashboard and a tap card; illustrative, not a product screenshot.
+        paper(c, 697, 182, 343, 268)
+        c.text((720, 203), 'REVIEWS', 29, display=True)
+        c.line([(721, 246), (1016, 246)], LINE, 3)
+        c.text((724, 264), '4.8', 50, RUST, display=True)
+        c.text((858, 267), 'REPLIES', 24, display=True)
+        c.text((867, 299), '3', 39, INK, display=True)
+        c.box((721, 359, 1007, 415), fill=RUST, stroke=None, radius=8)
+        c.text((739, 372), 'DRAFT A REPLY', 24, PAPER, display=True)
+        c.box((901, 428, 1082, 506), fill=PAPER, radius=10)
+        c.text((918, 445), 'TAP', 30, RUST, display=True)
+        c.spark(1048, 202, 20)
     elif motif == 'email-savings':
         # Receipt and inbox loop: recurring email review, not a product screenshot.
         paper(c,727,174,251,254)

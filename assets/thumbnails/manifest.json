@@ -1,23 +1,23 @@
 [
   {
     "slug": "build-a-dashboard-to-sell",
-    "image_url": "/assets/thumbnails/build-a-dashboard-to-sell-6251723d41.webp",
-    "image_alt": "Illustrated cover for Build a dashboard you can sell as a subscription",
+    "image_url": "/assets/thumbnails/build-a-dashboard-to-sell-de76ea0c05.webp",
+    "image_alt": "Illustrated cover for Google Review Dashboard Business",
     "variants": [
       {
-        "url": "/assets/thumbnails/build-a-dashboard-to-sell-6251723d41-160.webp",
+        "url": "/assets/thumbnails/build-a-dashboard-to-sell-de76ea0c05-160.webp",
         "width": 160
       },
       {
-        "url": "/assets/thumbnails/build-a-dashboard-to-sell-6251723d41-400.webp",
+        "url": "/assets/thumbnails/build-a-dashboard-to-sell-de76ea0c05-400.webp",
         "width": 400
       },
       {
-        "url": "/assets/thumbnails/build-a-dashboard-to-sell-6251723d41-800.webp",
+        "url": "/assets/thumbnails/build-a-dashboard-to-sell-de76ea0c05-800.webp",
         "width": 800
       }
     ],
-    "social": "build-a-dashboard-to-sell-6251723d41-social.jpg"
+    "social": "build-a-dashboard-to-sell-de76ea0c05-social.jpg"
   },
   {
     "slug": "replace-manychat-with-openreply",
