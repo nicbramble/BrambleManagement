@@ -438,5 +438,25 @@
       }
     ],
     "social": "ai-for-parents-three-easy-ways-959e9ed985-social.jpg"
+  },
+  {
+    "slug": "chatgpt-selfie-prompt",
+    "image_url": "/assets/thumbnails/chatgpt-selfie-prompt-23a08222b0.webp",
+    "image_alt": "Illustrated cover for What would ChatGPT look like? Try this selfie prompt",
+    "variants": [
+      {
+        "url": "/assets/thumbnails/chatgpt-selfie-prompt-23a08222b0-160.webp",
+        "width": 160
+      },
+      {
+        "url": "/assets/thumbnails/chatgpt-selfie-prompt-23a08222b0-400.webp",
+        "width": 400
+      },
+      {
+        "url": "/assets/thumbnails/chatgpt-selfie-prompt-23a08222b0-800.webp",
+        "width": 800
+      }
+    ],
+    "social": "chatgpt-selfie-prompt-23a08222b0-social.jpg"
   }
 ]

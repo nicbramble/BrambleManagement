@@ -418,5 +418,19 @@
       "url": "/assets/thumbnails/on-device-ai-journal-a7f62b8f58-800.webp",
       "width": 800
     }
+  ],
+  "/assets/thumbnails/chatgpt-selfie-prompt-23a08222b0.webp": [
+    {
+      "url": "/assets/thumbnails/chatgpt-selfie-prompt-23a08222b0-160.webp",
+      "width": 160
+    },
+    {
+      "url": "/assets/thumbnails/chatgpt-selfie-prompt-23a08222b0-400.webp",
+      "width": 400
+    },
+    {
+      "url": "/assets/thumbnails/chatgpt-selfie-prompt-23a08222b0-800.webp",
+      "width": 800
+    }
   ]
 }

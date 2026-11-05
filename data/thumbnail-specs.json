@@ -86,5 +86,9 @@
   "on-device-ai-journal": {
     "headline": "YOUR DAY.\nYOUR JOURNAL.",
     "motif": "workbook"
+  },
+  "chatgpt-selfie-prompt": {
+    "headline": "CHATGPT,\nSHOW YOURSELF",
+    "motif": "avatar"
   }
 }

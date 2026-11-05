@@ -897,5 +897,32 @@
     ],
     "image_url": "/assets/thumbnails/ai-for-parents-three-easy-ways-959e9ed985.webp",
     "image_alt": "Illustrated cover for 3 easy ways AI can help you as a parent"
+  },
+  {
+    "slug": "chatgpt-selfie-prompt",
+    "title": "What would ChatGPT look like? Try this selfie prompt",
+    "category": "Creator Tools",
+    "description": "Ask ChatGPT to imagine itself in a messy, accidental iPhone selfie. Copy the prompt and try it in your chat.",
+    "body": "## 1. Open ChatGPT\n\nUse an existing conversation if you want to keep the context of your chats. You’ll need image generation available on your account.\n\n## 2. Copy and send this prompt\n\n```prompt\nChatGPT, you've been with me for a while now and I want to see what you look like. Please generate a photo of yourself that looks like a simple iPhone snapshot: no prominent subject, no intentional composition; completely ordinary, even a bit failed, like a momentary snap. In the photo, include slight motion blur, unbalanced lighting, mild overexposure, a weird angle, and a messy frame. Overall, make it look like it was accidentally taken while pulling the phone out of your pocket, conveying an excessively real and casual selfie vibe.\n```\n\nChatGPT has no physical appearance. This asks it to imagine a fictional version of itself.\n\n## 3. Check the result\n\nLook for a tilted angle, messy crop, slight blur and uneven lighting. The picture should feel like an accidental phone snap.\n\nIf it looks too polished, send:\n\n```prompt\nMake this image feel more accidental: tilt the frame, crop part of the face, add slight motion blur and uneven lighting, and mildly overexpose one area. Keep the same imagined person and setting.\n```\n\nIf ChatGPT only replies with text, ask: **Generate the image now, using an imagined human version of yourself.**",
+    "format": "Prompt",
+    "read_time": "1 min read",
+    "published": true,
+    "is_latest_reel": false,
+    "featured": false,
+    "sort_order": 100,
+    "action_url": "https://chatgpt.com/",
+    "action_label": "Open ChatGPT",
+    "cta_label": "Browse more resources",
+    "cta_url": "/#resources",
+    "sources_intro": "Image-generation instructions checked against official OpenAI documentation on November 5, 2026. This prompt has not been tested; results vary and image access depends on your account.",
+    "sources": [
+      {
+        "label": "OpenAI: image generation in ChatGPT",
+        "url": "https://learn.chatgpt.com/docs/image-generation"
+      }
+    ],
+    "image_url": "/assets/thumbnails/chatgpt-selfie-prompt-23a08222b0.webp",
+    "image_alt": "Illustrated cover for What would ChatGPT look like? Try this selfie prompt",
+    "published_at": "2026-11-05"
   }
 ]
