@@ -404,5 +404,19 @@
       "url": "/assets/thumbnails/build-a-dashboard-to-sell-de76ea0c05-800.webp",
       "width": 800
     }
+  ],
+  "/assets/thumbnails/on-device-ai-journal-a7f62b8f58.webp": [
+    {
+      "url": "/assets/thumbnails/on-device-ai-journal-a7f62b8f58-160.webp",
+      "width": 160
+    },
+    {
+      "url": "/assets/thumbnails/on-device-ai-journal-a7f62b8f58-400.webp",
+      "width": 400
+    },
+    {
+      "url": "/assets/thumbnails/on-device-ai-journal-a7f62b8f58-800.webp",
+      "width": 800
+    }
   ]
 }

@@ -1,5 +1,23 @@
 [
   {
+    "slug": "on-device-ai-journal",
+    "title": "On-device AI Journal",
+    "category": "Lifestyle",
+    "description": "Download the shortcut and create your journal folder in Files.",
+    "body": "## 1. Download the shortcut\n\nTap **Download AI Journal** above on your iPhone, then add it to Shortcuts.\n\n## 2. Create your journal folder\n\n1. Open **Files** and tap **Browse → iCloud Drive → Shortcuts**.\n2. Tap **More (•••) → New Folder**.\n3. Name it **journal**.\n\nIf Shortcuts asks you to choose a save folder, select **journal**. You can also select it in the shortcut’s **Save File** action.",
+    "published": true,
+    "published_at": "2026-11-04",
+    "is_latest_reel": false,
+    "featured": false,
+    "sort_order": 100,
+    "format": "Shortcut",
+    "read_time": "1 min read",
+    "action_url": "https://www.icloud.com/shortcuts/df251711210f4a3a99246b9b52058e99",
+    "action_label": "Download AI Journal",
+    "image_url": "/assets/thumbnails/on-device-ai-journal-a7f62b8f58.webp",
+    "image_alt": "Illustrated cover for On-device AI Journal"
+  },
+  {
     "slug": "build-a-dashboard-to-sell",
     "title": "Google Review Dashboard Business",
     "category": "Online Business",

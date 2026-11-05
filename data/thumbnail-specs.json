@@ -82,5 +82,9 @@
   "build-a-dashboard-to-sell": {
     "headline": "BUILD A\nREVIEW DASHBOARD",
     "motif": "reviews"
+  },
+  "on-device-ai-journal": {
+    "headline": "YOUR DAY.\nYOUR JOURNAL.",
+    "motif": "workbook"
   }
 }

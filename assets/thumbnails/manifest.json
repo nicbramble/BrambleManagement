@@ -1,5 +1,25 @@
 [
   {
+    "slug": "on-device-ai-journal",
+    "image_url": "/assets/thumbnails/on-device-ai-journal-a7f62b8f58.webp",
+    "image_alt": "Illustrated cover for On-device AI Journal",
+    "variants": [
+      {
+        "url": "/assets/thumbnails/on-device-ai-journal-a7f62b8f58-160.webp",
+        "width": 160
+      },
+      {
+        "url": "/assets/thumbnails/on-device-ai-journal-a7f62b8f58-400.webp",
+        "width": 400
+      },
+      {
+        "url": "/assets/thumbnails/on-device-ai-journal-a7f62b8f58-800.webp",
+        "width": 800
+      }
+    ],
+    "social": "on-device-ai-journal-a7f62b8f58-social.jpg"
+  },
+  {
     "slug": "build-a-dashboard-to-sell",
     "image_url": "/assets/thumbnails/build-a-dashboard-to-sell-de76ea0c05.webp",
     "image_alt": "Illustrated cover for Google Review Dashboard Business",

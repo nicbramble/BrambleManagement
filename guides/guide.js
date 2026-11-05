@@ -141,7 +141,7 @@ function updateGuideMetadata(item) {
 function renderGuide(item,{metadata = true} = {}) {
   if (metadata) updateGuideMetadata(item);
   const root = document.querySelector('#guide-root');
-  root.className = (/^```prompt\s*$/m.test(item.body || '') ? 'prompt-guide ' : '') + (item.slug === 'build-a-dashboard-to-sell' ? 'review-business' : '');
+  root.className = (/^```prompt\s*$/m.test(item.body || '') ? 'prompt-guide ' : '') + (['build-a-dashboard-to-sell', 'on-device-ai-journal'].includes(item.slug) ? 'review-business' : '');
   root.innerHTML = guideMarkup(item);
   bindScorecard(root);
   bindMuseMarketplace(root);

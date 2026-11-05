@@ -9,6 +9,7 @@
     {id:'learn', title:'Study & print', description:'Study prompts and printables to put straight to use.'}
   ];
   const assignments = {
+    'on-device-ai-journal':'everyday',
     'higgsfield-ai-clips-for-reels':'create', 'chatgpt-image-codes':'create', 'meta-avatar-prompt-pack':'create',
     'use-meta-muse-effectively':'work', 'ai-video-learning':'work', 'tree-quote-agent':'work',
     'automation-opportunity-audit':'work', 'better-ai-prompts':'work', 'plan-your-week-with-chatgpt':'work',
