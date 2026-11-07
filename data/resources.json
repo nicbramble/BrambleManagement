@@ -1,5 +1,39 @@
 [
   {
+    "slug": "analyze-your-golf-swing-with-chatgpt",
+    "title": "Analyze your golf swing with ChatGPT",
+    "category": "Lifestyle",
+    "description": "Film two clear angles, copy one coaching prompt, and get one change to test on your next 10 balls.",
+    "body": "## 1. Film your swing clearly\n\nUse a tripod or stable phone mount, with the lens at the height of your hands at address. Record two views:\n\n- **Down the line:** Put the phone behind you on a line through your hands, parallel to the ball-to-target line. Aim toward the target.\n- **Face on:** Put the phone directly opposite the middle of your stance, looking squarely at you, perpendicular to the target line.\n\nStart about 10–12 feet away and adjust until your feet, ball, hands, and entire club stay in frame from setup to finish. Use the rear camera at 1×, keep it level, and leave room above your head for the club.\n\nFilm in bright daylight with the sun behind the camera. Use 120 or 240 fps slow motion if available; otherwise use 60 fps. Check that the club is visible near impact. Record 2–3 normal swings per angle with the same club. Keep a second before the takeaway and after the finish; send the original clips rather than a compressed social-media copy.\n\n## 2. Choose Astra 6 · High\n\n**Use ChatGPT Work. Select GPT-6 Astra (Astra 6) and set reasoning effort to High before sending.** You need an account with access to that model and effort setting.\n\nAttach the clips and paste the prompt below. If ChatGPT cannot open the video, upload 6–8 clear stills instead: setup, takeaway, top, transition, downswing, just before and after impact, and finish. Label their order and any known timestamps. Screenshot extraction and annotation depend on the tools available in your chat.\n\n## 3. Copy the coaching prompt\n\nReplace the optional context at the end, or delete it.\n\n```prompt\nWatch my golf swing like a coach standing next to me at the range. Be direct. I want to know what I’m doing well, where the swing starts to go wrong, and the one change you’d have me make before I hit the next ball.\n\nStart with the verdict. In three sentences, tell me my biggest strength, my highest-priority issue, and how that issue could affect my shots. If several things look off, trace them back to the earliest move you can actually see. Explain which later movement might be a compensation.\n\nWalk me through the swing frame by frame. Cover my stance and setup, takeaway, backswing, transition, downswing, contact, and follow-through. At each stage, tell me what you see and why it matters. Use plain English. If you say I’m “steep,” “stuck,” or “early extending,” point to the exact movement that earns that description.\n\nShow me the evidence. Pull 4–6 actual screenshots from my video, including one move worth keeping and the frames that best explain the main issue. Put the two most revealing frames side by side. Label each with its timestamp and use a simple line, circle, or arrow to show exactly where I should look. If you can’t extract screenshots, give me the timestamps to pause on and tell me what to compare. Never invent frames or timestamps. If you cannot inspect the video, say so and ask me to upload still frames; analyze only the frames I provide.\n\nPay special attention to contact. What can you tell from the frames immediately before and after the strike, the turf interaction, and any visible ball flight? Separate what you can see from what you suspect. If the clubface, strike location, or ball flight is unclear, say so. If I include multiple swings, tell me which patterns repeat.\n\nFinish with a 10-ball range test. Give me one swing thought, one drill using a club or something already in my bag, and a simple way to score the 10 shots. Tell me what improvement I should see in the strike, ball flight, or next recording. If a different camera angle would help confirm your diagnosis, tell me exactly where to put my phone.\n\nOptional context: club used [club or unknown]; right- or left-handed [hand]; usual miss [miss or unknown]; intended target [target]; recording frame rate / slow-motion playback [if known].\n```\n\n**At the range:** Check the cited frames against your recording, then test just the one priority change. Record again from the same position so you can compare.",
+    "format": "Prompt + camera setup",
+    "read_time": "4 min read",
+    "published": true,
+    "is_latest_reel": false,
+    "featured": false,
+    "sort_order": 100,
+    "action_url": "https://chatgpt.com/",
+    "action_label": "Open ChatGPT",
+    "cta_label": "Browse more resources",
+    "cta_url": "/#resources",
+    "prompt_toolbar": "Copy the coaching prompt",
+    "toc_title": "Film, upload, get feedback",
+    "toc_description": "Two camera angles and one prompt to take to the range.",
+    "sources_intro": "Checked November 7, 2026 against official OpenAI documentation and Titleist filming guidance. This workflow has not been tested on a swing video. Model access and file tools vary by account; use still frames if video inspection is unavailable.",
+    "sources": [
+      {
+        "label": "OpenAI: models and reasoning effort in ChatGPT Work",
+        "url": "https://learn.chatgpt.com/docs/models"
+      },
+      {
+        "label": "Titleist: how to film your swing",
+        "url": "https://www.titleist.com/teamtitleist/team-titleist/f/golf-tips/54984/online-golf-instruction-how-to-film-your-swing/296770"
+      }
+    ],
+    "image_url": "/assets/thumbnails/analyze-your-golf-swing-with-chatgpt-39ef234dda.webp",
+    "image_alt": "Illustrated cover for Analyze your golf swing with ChatGPT",
+    "published_at": "2026-11-07"
+  },
+  {
     "slug": "on-device-ai-journal",
     "title": "On-device AI Journal",
     "category": "Lifestyle",

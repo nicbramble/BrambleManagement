@@ -432,5 +432,19 @@
       "url": "/assets/thumbnails/chatgpt-selfie-prompt-23a08222b0-800.webp",
       "width": 800
     }
+  ],
+  "/assets/thumbnails/analyze-your-golf-swing-with-chatgpt-39ef234dda.webp": [
+    {
+      "url": "/assets/thumbnails/analyze-your-golf-swing-with-chatgpt-39ef234dda-160.webp",
+      "width": 160
+    },
+    {
+      "url": "/assets/thumbnails/analyze-your-golf-swing-with-chatgpt-39ef234dda-400.webp",
+      "width": 400
+    },
+    {
+      "url": "/assets/thumbnails/analyze-your-golf-swing-with-chatgpt-39ef234dda-800.webp",
+      "width": 800
+    }
   ]
 }

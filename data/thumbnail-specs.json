@@ -90,5 +90,9 @@
   "chatgpt-selfie-prompt": {
     "headline": "CHATGPT,\nSHOW YOURSELF",
     "motif": "avatar"
+  },
+  "analyze-your-golf-swing-with-chatgpt": {
+    "headline": "ANALYZE YOUR\nGOLF SWING",
+    "motif": "video"
   }
 }
